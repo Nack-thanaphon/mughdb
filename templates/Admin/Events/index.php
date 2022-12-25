@@ -38,7 +38,7 @@
 
         </div>
         <div class="col-sm-4  col-12 my-3">
-            <div class="card p-2" id='calendar'></div>
+            <div class="card p-2 w-100 nowarp" id='calendar'></div>
         </div>
         <div class="col-sm-8  col-12 ">
             <div class="row  my-3">
@@ -197,45 +197,49 @@
                 html = ''
                 html += `
                  <div class="row mb-3">
-                        <div class="col-12 my-2">
+                        <div class="col-12 my-2 m-0 p-0">
                             <p class="m-0 p-0 text-primary">ชนิดกิจกรรม :</p>
                             <small class="text-dark text-wrap m-0 p-0">${data['type']}</small>
                         </div>
-                        <div class="col-12 my-2">
+                        <div class="col-12 my-2 m-0 p-0">
                             <p class="m-0 p-0 text-primary">หัวข้อกิจกรรม  ${resp.ContDateleft > 0 ? '<span class="text-muted">(กำลังมาถึงอีก '+resp.ContDateleft+' วัน)</span>':'<span class="text-danger">(หมดอายุ)</span>'}  :</p>
                             <h5 class="text-dark text-wrap m-0 pt-2">${data['title']}</h5>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 m-0 p-0">
                             <p class="m-0 p-0 text-primary">รายละเอียด :</p>
                             <p class="text-dark">${data['detail']?data['detail']:'ไม่มีข้อมูล'}</p>
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 m-0 p-0">
                             <p class="m-0 p-0 text-primary">วันเริ่มต้น :</p>
                             <p class="text-dark">${data['start']?data['start']:'ไม่มีข้อมูล'}</p>
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 m-0 p-0">
                             <p class="m-0 p-0 text-primary">วันสิ้นสุด :</p>
                             <p class="text-dark">${data['end']?data['end']:'ไม่มีข้อมูล'}</p>
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 m-0 p-0">
                             <p class="m-0 p-0 text-primary">เวลาเริ่มต้น :</p>
                             <p class="text-dark">${data['time_start']?'<i class="fa-solid fa-clock"></i> '+data['time_start']+'':'ไม่มีข้อมูล'}</p>
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 m-0 p-0">
                             <p class="m-0 p-0 text-primary">เวลาสิ้นสุด :</p>
                             <p class="text-dark">${data['time_end']?'<i class="fa-solid fa-clock"></i> '+data['time_end']+'':'ไม่มีข้อมูล'}</p>
                         </div>
-                    </div>
-                   <hr>
-                    <p class="m-0  text-muted">ลิงค์เพิ่มเติม : <a href="${data['link']}">เยี่ยมชมเว็บไซต์</a></p>
-                    <p class="m-0  text-muted">ลิงค์เอกสาร : <a href="<?php echo $this->Url->build('/'); ?>${data['file']}">ดาวน์โหลด</a></p>
-                   <hr>
-                    <div class="mt-2">
-                        <p class="m-0 p-0 text-primary">ผู้ลงข้อมูล :</p>
-                        <p class="text-dark ">${data['user']}</p>
-                        <p class="m-0 p-0 text-primary">วันที่ลงข้อมูล :</p>
-                        <p class="text-dark ">${data['created']}</p>
-                   </div>`
+                   
+                    <div class="col- m-0 p-0">
+                        <hr>
+                            <p class="m-0  text-muted">ลิงค์เพิ่มเติม : <a href="${data['link']}">เยี่ยมชมเว็บไซต์</a></p>
+                            <p class="m-0  text-muted">ลิงค์เอกสาร : <a href="<?php echo $this->Url->build('/'); ?>${data['file']}">ดาวน์โหลด</a></p>
+                        <hr>
+                        <div class="mt-2 m-0 p-0">
+                            <p class="m-0 p-0 text-primary">ผู้ลงข้อมูล :</p>
+                            <p class="text-dark ">${data['user']}</p>
+                            <p class="m-0 p-0 text-primary">วันที่ลงข้อมูล :</p>
+                            <p class="text-dark ">${data['created']}</p>
+                        </div>
+                    </div> 
+                   </div>
+                   `
                 $('#PreviewsData').html(html)
                 $('#viewsData').modal('show')
             }

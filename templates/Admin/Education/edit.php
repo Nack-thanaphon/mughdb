@@ -49,9 +49,8 @@
                                 </div>
                             </div>
                             <div class="col-12 m-0 p-0">
-                                <div class="form-floating row m-0 p-0 my-auto mb-3">
-                                    <label for="floatingemail" class="mr-2 my-auto mb-2">จำนวนหน่วยกิต</label>
-                                    <br>
+                                <label for="floatingemail" class="mr-2 my-auto mb-2">จำนวนหน่วยกิต</label>
+                                <div class="form-floating row m-0 p-0 my-auto pt-2">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="score" id="inlineRadio1" value="1" <?= ($education->score == 1) ? 'checked' : '' ?>>
                                         <label class="form-check-label text-start text-sm-end" for="inlineRadio1">1</label>
@@ -138,7 +137,7 @@
                             <label for="floatingemail">เอกสารประกอบ </label>
                             <input type="file" name="file" class="form-control">
                             <input type="hidden" name="fileOld" class="form-control" value="<?= $education->file ?>">
-                            <small class="text-muted mt-2">ไฟล์ปัจจุบัน : <a href="<?= $this->Url->build($education->file)?>">ดาวน์โหลด</a></small>
+                            <small class="text-muted mt-2">ไฟล์ปัจจุบัน : <a href="<?= $this->Url->build($education->file) ?>">ดาวน์โหลด</a></small>
                         </div>
                         <div class="form-floating mb-1">
                             <label for="floatingemail">ลิงค์ </label>

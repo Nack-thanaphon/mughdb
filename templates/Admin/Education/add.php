@@ -2,7 +2,7 @@
     <div class="col-12 d-flex justify-content-between mb-3">
         <div>
             <small class="text-muted">Insert Education Systems </small>
-            <h3 class="m-0 p-0"><i class="fas fa-plus-circle"></i> เพิ่มหลักสูตร</h3>
+            <h3 class="m-0 p-0">เพิ่มหลักสูตร</h3>
         </div>
         <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="m-0 p-0  text-reset my-auto">
             <h3 class="fas fa-arrow-alt-circle-left my-auto"></h3>
@@ -45,9 +45,9 @@
                                 </div>
                             </div>
                             <div class="col-12 m-0 p-0">
-                                <div class="form-floating row m-0 p-0 my-auto mb-3">
-                                    <label for="floatingemail" class="mr-2 my-auto mb-2">จำนวนหน่วยกิต</label>
-                                    <br>
+                                <label for="floatingemail" class="mr-2 my-auto mb-2">จำนวนหน่วยกิต</label>
+                              
+                                <div class="form-floating row m-0 p-0 my-auto pt-2">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="score" id="inlineRadio1" value="1" checked>
                                         <label class="form-check-label text-start text-sm-end" for="inlineRadio1">1</label>
