@@ -55,16 +55,32 @@ class ContactTable extends Table
             ->allowEmptyString('name');
 
         $validator
+            ->scalar('nickname')
+            ->allowEmptyString('nickname');
+
+        $validator
             ->scalar('about')
             ->allowEmptyString('about');
 
         $validator
-            ->scalar('adress')
-            ->allowEmptyString('adress');
+            ->scalar('name_address')
+            ->allowEmptyString('name_address');
+
+        $validator
+            ->scalar('address')
+            ->allowEmptyString('address');
+
+        $validator
+            ->scalar('fax')
+            ->allowEmptyString('fax');
 
         $validator
             ->scalar('phone')
             ->allowEmptyString('phone');
+
+        $validator
+            ->email('email')
+            ->allowEmptyString('email');
 
         $validator
             ->scalar('facebook')
@@ -75,14 +91,6 @@ class ContactTable extends Table
             ->allowEmptyString('line');
 
         $validator
-            ->scalar('instagram')
-            ->allowEmptyString('instagram');
-
-        $validator
-            ->scalar('tiktok')
-            ->allowEmptyString('tiktok');
-
-        $validator
             ->scalar('linetoken')
             ->allowEmptyString('linetoken');
 
@@ -91,8 +99,8 @@ class ContactTable extends Table
             ->allowEmptyString('lineoficial');
 
         $validator
-            ->scalar('paymentimg')
-            ->allowEmptyString('paymentimg');
+            ->scalar('logo')
+            ->allowEmptyString('logo');
 
         $validator
             ->dateTime('updated_at')

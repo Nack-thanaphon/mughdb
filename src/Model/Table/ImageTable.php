@@ -12,7 +12,6 @@ use Cake\Validation\Validator;
  * Image Model
  *
  * @property \App\Model\Table\PostsTable&\Cake\ORM\Association\BelongsTo $Posts
- * @property \App\Model\Table\ProductsTable&\Cake\ORM\Association\BelongsTo $Products
  * @property \App\Model\Table\OrdersTable&\Cake\ORM\Association\BelongsTo $Orders
  *
  * @method \App\Model\Entity\Image newEmptyEntity()
@@ -48,9 +47,6 @@ class ImageTable extends Table
         $this->belongsTo('Posts', [
             'foreignKey' => 'post_id',
         ]);
-        $this->belongsTo('Products', [
-            'foreignKey' => 'product_id',
-        ]);
         $this->belongsTo('Orders', [
             'foreignKey' => 'order_id',
         ]);
@@ -69,8 +65,8 @@ class ImageTable extends Table
             ->allowEmptyString('post_id');
 
         $validator
-            ->integer('product_id')
-            ->allowEmptyString('product_id');
+            ->integer('gallery_id')
+            ->allowEmptyString('gallery_id');
 
         $validator
             ->integer('order_id')
@@ -110,7 +106,6 @@ class ImageTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn('post_id', 'Posts'), ['errorField' => 'post_id']);
-        $rules->add($rules->existsIn('product_id', 'Products'), ['errorField' => 'product_id']);
         $rules->add($rules->existsIn('order_id', 'Orders'), ['errorField' => 'order_id']);
 
         return $rules;

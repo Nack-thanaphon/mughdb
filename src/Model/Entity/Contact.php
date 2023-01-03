@@ -10,16 +10,18 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string|null $name
+ * @property string|null $nickname
  * @property string|null $about
- * @property string|null $adress
+ * @property string|null $name_address
+ * @property string|null $address
+ * @property string|null $fax
  * @property string|null $phone
+ * @property string|null $email
  * @property string|null $facebook
  * @property string|null $line
- * @property string|null $instagram
- * @property string|null $tiktok
  * @property string|null $linetoken
  * @property string|null $lineoficial
- * @property string|null $paymentimg
+ * @property string|null $logo
  * @property \Cake\I18n\FrozenTime $updated_at
  * @property \Cake\I18n\FrozenTime $created_at
  */
@@ -36,16 +38,18 @@ class Contact extends Entity
      */
     protected $_accessible = [
         'name' => true,
+        'nickname' => true,
         'about' => true,
-        'adress' => true,
+        'name_address' => true,
+        'address' => true,
+        'fax' => true,
         'phone' => true,
+        'email' => true,
         'facebook' => true,
         'line' => true,
-        'instagram' => true,
-        'tiktok' => true,
         'linetoken' => true,
         'lineoficial' => true,
-        'paymentimg' => true,
+        'logo' => true,
         'updated_at' => true,
         'created_at' => true,
     ];

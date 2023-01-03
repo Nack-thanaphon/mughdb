@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -41,7 +40,6 @@ class UsersRoleTable extends Table
         $this->setTable('users_role');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
-
     }
 
     /**

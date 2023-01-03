@@ -11,6 +11,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $name
  * @property string|null $detail
+ * @property string $date
  * @property string $status
  * @property int|null $user_id
  * @property \Cake\I18n\FrozenTime $created
@@ -32,6 +33,7 @@ class Gallery extends Entity
     protected $_accessible = [
         'name' => true,
         'detail' => true,
+        'date' => true,
         'status' => true,
         'user_id' => true,
         'created' => true,

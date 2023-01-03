@@ -7,6 +7,7 @@
 
 
 
+
 <?php foreach ($posts as $data) : ?>
 
     <?php $this->assign('title', $data->title); ?>

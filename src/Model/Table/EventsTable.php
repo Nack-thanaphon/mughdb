@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -82,6 +83,15 @@ class EventsTable extends Table
             ->maxLength('address', 250)
             ->requirePresence('address', 'create')
             ->notEmptyString('address');
+
+
+        $validator
+            ->isArray('docfile')
+            ->allowEmptyArray('docfile');
+        // ->allowEmptyFile('file');
+        $validator
+            ->isArray('imgcover')
+            ->allowEmptyArray('imgcover');
 
         $validator
             ->scalar('link')

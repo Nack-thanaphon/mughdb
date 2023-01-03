@@ -50,6 +50,9 @@ class GalleryTable extends Table
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
         ]);
+        $this->hasMany('Image', [
+            'foreignKey' => 'gallery_id',
+        ]);
     }
 
     /**
@@ -68,6 +71,12 @@ class GalleryTable extends Table
         $validator
             ->scalar('detail')
             ->allowEmptyString('detail');
+
+        $validator
+            ->scalar('date')
+            ->maxLength('date', 300)
+            ->requirePresence('date', 'create')
+            ->notEmptyString('date');
 
         $validator
             ->scalar('status')

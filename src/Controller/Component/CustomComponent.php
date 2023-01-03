@@ -61,22 +61,32 @@ class CustomComponent extends Component
                     'token' => 'users.token',
                     'email' => 'users.email',
                     'address' => 'users.address',
+                    'verified' => 'users.verified',
                     'phone' => 'users.phone',
+                    'image' => 'users.image',
                     'name' => 'users.name',
-                    'role' => 'ur.ur_name'
+                    'type' => 'ut.ut_name',
+                    'role' => 'ur.ur_name',
+                    'status' => 'users.status',
+                    'role_id' => 'users.user_role_id'
                 ])
                 ->join([
                     'ur' => ([
                         'table' => 'users_role',
                         'type' => 'INNER',
                         'conditions' => 'ur.id = users.user_role_id'
+                    ]),
+                    'ut' => ([
+                        'table' => 'users_type',
+                        'type' => 'INNER',
+                        'conditions' => 'ut.id = users.user_type_id'
                     ])
                 ])
                 ->from('users')
                 ->where([
                     'users.token' => $token
                 ])
-                ->toArray();
+                ->first();
             return $user;
         }
     }
@@ -131,6 +141,27 @@ class CustomComponent extends Component
         $table = TableRegistry::getTableLocator()->get('FileGroup');
         $getFileGroup = $table->find('all')->toArray();
         return $getFileGroup;
+    }
+
+    public function getUserRole()
+    {
+        $table = TableRegistry::getTableLocator()->get('UsersRole');
+        $getUserRole = $table->find('all')->toArray();
+        return $getUserRole;
+    }
+
+    public function getUserType()
+    {
+        $table = TableRegistry::getTableLocator()->get('UsersType');
+        $getUserType = $table->find('all')->toArray();
+        return $getUserType;
+    }
+
+    public function getEventGroup()
+    {
+        $table = TableRegistry::getTableLocator()->get('EventsType');
+        $getEventGroup = $table->find('all')->toArray();
+        return $getEventGroup;
     }
 
 
@@ -274,6 +305,13 @@ class CustomComponent extends Component
         $getUserlogData = $table->find()->contain(['Users'])->order(['Userlog.id' => 'desc'])->limit(5)->toArray();
         return $getUserlogData;
     }
+
+    public function getUserlogDataAll()
+    {
+        $table = TableRegistry::getTableLocator()->get('Userlog');
+        $getUserlogData = $table->find()->contain(['Users'])->order(['Userlog.id' => 'desc'])->toArray();
+        return $getUserlogData;
+    }
     public function getPosts()
     {
         $table = TableRegistry::getTableLocator()->get('Posts');
@@ -293,7 +331,7 @@ class CustomComponent extends Component
     {
         $table = TableRegistry::getTableLocator()->get('Events');
         $Today = date('Y-m-d');
-    
+
         $CountActiveEvents = $table->find()
             ->where([
                 'DATE(`end`) >=' => $Today
@@ -306,7 +344,7 @@ class CustomComponent extends Component
     {
         $table = TableRegistry::getTableLocator()->get('Events');
         $Today = date('Y-m-d');
-    
+
         $CountActiveEvents = $table->find()
             ->where([
                 'DATE(`end`) <=' => $Today
@@ -320,5 +358,24 @@ class CustomComponent extends Component
         $table = TableRegistry::getTableLocator()->get('Contact');
         $GetContactData = $table->find('all')->first();
         return $GetContactData;
+    }
+    public function countImgActive()
+    {
+        $table = TableRegistry::getTableLocator()->get('Gallery');
+        $countImgActive = $table->find()->where(['status' => 1])->count();
+        return $countImgActive;
+    }
+    public function countImgUnActive()
+    {
+        $table = TableRegistry::getTableLocator()->get('Gallery');
+        $countImgUnActive = $table->find()->where(['status' => 0])->count();
+        return $countImgUnActive;
+    }
+
+    public function countImg()
+    {
+        $table = TableRegistry::getTableLocator()->get('Gallery');
+        $countImg = $table->find()->count();
+        return $countImg;
     }
 }

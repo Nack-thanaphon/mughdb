@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
     <div class="row m-2 my-2 h-100 ">
-        <div class="col-sm-12  col-12">
+        <div class="col-sm-12  col-12 p-0 p-sm-1 m-0">
             <div class="d-flex justify-content-between py-2 my-auto">
                 <div>
                     <small class="text-muted">Education Management Systems </small>
@@ -12,7 +12,7 @@
                     <h3 class="fas fa-arrow-alt-circle-left my-auto"></h3>
                 </a>
             </div>
-            <div class="row  my-3">
+            <div class="row m-0 p-0 my-3">
                 <div class="col-12 col-sm-4 m-0 p-0">
                     <div class="m-1 py-4 p-2 card bg-success">
                         <h5 class="m-0 p-0 ">ยอดดาวน์โหลดทั้งหมด</h5>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12  col-12 ">
+        <div class="col-sm-12  col-12 p-0 p-sm-1 m-0 ">
             <div class="card  p-2 table-responsive-lg">
                 <?= $this->Flash->render() ?>
                 <div class="col-12  d-sm-flex justify-content-end mb-2 m-0 p-0">
@@ -54,9 +54,11 @@
                     </div>
 
                 </div>
-                <table id="example" class="display responsive nowrap" style="width:100%">
+                <table id="example" class="table table-hover row-border display dt-responsive nowrap" style="width:100%">
+
                     <thead>
                         <tr>
+                            <th>ลำดับ</th>
                             <th>รหัสและชื่อรายวิชา</th>
                             <th>หัวข้อ</th>
                             <th>ระดับ</th>
@@ -67,6 +69,7 @@
                     <tbody>
                         <?php foreach ($education as $key => $data) : ?>
                             <tr class="shadow-sm">
+                                <td width="10"><?= $key + 1 ?></td>
                                 <td width="10">
                                     <h2 class="m-0 p-0 text-center text-primary"><?= $data->code ?></a></h2>
                                 </td>
@@ -160,14 +163,8 @@
 
 
 <script>
-    $(document).ready(function() {
-        var t = $('#example').DataTable({
-            responsive: true,
-        });
-
-    });
-
     function viewsEducation(id) {
+        $.LoadingOverlay("show");
         $.ajax({
             url: "<?= $this->Url->build(['action' => 'view']) ?>",
             type: "post",
@@ -230,7 +227,7 @@
                    </div>
                    
                     `
-
+                $.LoadingOverlay("hide");
                 $('#PreviewsData').html(html)
                 $('#viewsData').modal('show')
             }

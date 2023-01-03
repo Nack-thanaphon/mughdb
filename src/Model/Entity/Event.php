@@ -14,6 +14,8 @@ use Cake\ORM\Entity;
  * @property string $title
  * @property string $detail
  * @property string $address
+ * @property string|null $docfile
+ * @property string|null $imgcover
  * @property string $link
  * @property string $start
  * @property string $end
@@ -41,6 +43,8 @@ class Event extends Entity
         'title' => true,
         'detail' => true,
         'address' => true,
+        'docfile' => true,
+        'imgcover' => true,
         'link' => true,
         'start' => true,
         'end' => true,

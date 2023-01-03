@@ -81,7 +81,7 @@ class DashboardController extends AppController
     {
         $userlogviewtable = TableRegistry::getTableLocator()->get('Userlog');
 
-        $userlog= $this->Custom->getUserlogData();
+        $userlog= $this->Custom->getUserlogDataAll();
 
         
         $this->set('userlog', $userlog);

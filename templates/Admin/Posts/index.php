@@ -1,8 +1,8 @@
 <?php $this->assign('title', 'ข่าวสาร'); ?>
 
 <div class="container-fluid">
-    <div class="row m-2 my-2 h-100 ">
-        <div class="col-sm-12  col-12">
+    <div class="row m-2  my-2 h-100 ">
+        <div class="col-sm-12  col-12 p-0 p-sm-1 m-0">
             <div class="d-flex justify-content-between py-2 my-auto">
                 <div>
                     <small class="text-muted">Article & News Management Systems </small>
@@ -12,7 +12,7 @@
                     <h3 class="fas fa-arrow-alt-circle-left my-auto"></h3>
                 </a>
             </div>
-            <div class="row  my-3">
+            <div class="row m-0 p-0  my-3">
                 <div class="col-12 col-sm-4 m-0 p-0">
                     <div class="m-1 py-4 p-2 card bg-success">
                         <h5 class="m-0 p-0 ">ข่าวสารทั้งหมด</h5>
@@ -42,19 +42,22 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12  col-12 ">
+        <div class="col-sm-12  col-12 p-0 p-sm-1 m-0 ">
             <div class="card  p-2 table-responsive-lg">
                 <div class="col-12  d-sm-flex justify-content-end mb-2 m-0 p-0">
                     <div class="">
                         <a href="<?= $this->Url->build(['controller' => 'Posts', 'action' => 'add']) ?>" class="btn btn-primary m-1"><i class="fas fa-plus-circle"></i> เพิ่มข่าวสาร</a>
                     </div>
                 </div>
-                <table id="example" class="display responsive nowrap" style="width:100%">
+
+                <table id="example" class="table table-hover row-border display dt-responsive nowrap" style="width:100%">
+
 
                     <thead>
                         <tr>
+                            <th>ลำดับ</th>
                             <th>รูปภาพปก</th>
-                            <th>รายละเอียด</th>
+                            <th data-priority="1">รายละเอียด</th>
                             <th>สถานะ</th>
                             <th>จัดการ</th>
                         </tr>
@@ -63,8 +66,8 @@
                         <?php foreach ($post as $key => $posts) : ?>
 
                             <tr class="shadow-sm">
+                                <td width="10"><?= $key + 1 ?></td>
                                 <td class="w-60" style="width: 250px; overflow: hidden;height:150px ;">
-
                                     <a data-fslightbox href="<?php echo $this->Url->build($posts->image, ['fullBase' => true]); ?>">
                                         <img class="w-100" style="object-fit:contain;" src="<?php echo $this->Url->build($posts->image, ['fullBase' => true]); ?>">
                                     </a>
@@ -90,12 +93,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    $(document).ready(function() {
-        var t = $('#example').DataTable({
-            responsive: true,
-        });
-
-    });
-</script>

@@ -99,10 +99,13 @@ class FileController extends AppController
                 $file = $this->File->patchEntity($file, $this->request->getData());
                 $fileName = $fileData->getClientFilename();
                 $fileType = $fileData->getClientMediaType();
+
+                pr($fileType);die;
                 $FilePath = WWW_ROOT . "document/file/" . DS . $fileName;
                 $fileData->moveTo($FilePath);
                 $fileDataSave = "document/file/" . $fileName;
                 $file->file = $fileDataSave;
+                $file->filetype = $fileType;
                 $file->download = 0;
                 $file->user_id = $this->getUsersId();
 
@@ -160,6 +163,7 @@ class FileController extends AppController
                 $fileDataData = "document/file/" . $fileName;
 
                 $File->file = $fileDataData;
+                $File->filetype = $fileType;
 
                 if ($this->File->save($File)) {
                     $this->Flash->success(__('The File has been saved.'));

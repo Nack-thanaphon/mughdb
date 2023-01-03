@@ -149,15 +149,70 @@ class ImageController extends AppController
                     "cover" => 1,
                     "status" => 1,
                 ));
-                if ($this->Image->save($imageData)) {
-                    $this->Flash->success(__('The image has been saved.'));
-
-                    return $this->redirect(['action' => 'index']);
-                }
+                $this->Image->save($imageData);
             }
-            $this->Flash->error(__('The image could not be saved. Please, try again.'));
         }
         $this->set(compact('products'));
+    }
+    public function galleryCoverAdd()
+    {
+
+        if ($this->request->is('post')) {
+            $id = $this->request->getData('id');
+            $galleryid = $this->request->getData('gallery_id');
+            $files = $this->request->getData('files');
+
+            $fileName = $files->getClientFilename();
+            $fileType = $files->getClientMediaType();
+            if ($fileType == "image/webp" || $fileType == "image/png" || $fileType == "image/jpeg" || $fileType == "image/jpg") {
+                $imagePath = WWW_ROOT . "img/gallery/" . DS . $fileName;
+                $files->moveTo($imagePath);
+                $Name = "img/gallery/" . $fileName;
+                $imageData = $this->Image->newEmptyEntity();
+                $imageData->id = $id;
+                $imageData->gallery_id = $galleryid;
+                $imageData = $this->Image->patchEntity($imageData, array(
+                    "name" => $Name,
+                    "cover" => 1,
+                    "status" => 1,
+                ));
+                $this->Image->save($imageData);
+            }
+        }
+        $this->set(compact('image', 'posts', 'products'));
+    }
+
+
+
+
+    public function galleryImageAdd()
+    {
+
+        if ($this->request->is('post')) {
+            $gallery_id = $this->request->getData('gallery_id');
+            $files = $this->request->getData('files');
+            if (count($files)) {
+                foreach ($files as $key => $imageFile) {
+                    $fileName = $files[$key]->getClientFilename();
+                    $fileType = $files[$key]->getClientMediaType();
+                    if ($fileType == "image/webp" || $fileType == "image/png" || $fileType == "image/jpeg" || $fileType == "image/jpg") {
+                        $imagePath = WWW_ROOT . "img/gallery/" . DS . $fileName;
+                        $files[$key]->moveTo($imagePath);
+                        $data["name"] = "img/gallery/" . $fileName;
+                        $imageData = $this->Image->newEmptyEntity();
+                        $imageData = $this->Image->patchEntity($imageData, array(
+                            "gallery_id" => $gallery_id,
+                            "name" => $data["name"],
+                            "cover" => 0,
+                            "status" => 1,
+                        ));
+                        $this->Image->save($imageData);
+                       
+                    }
+                }
+            }
+        }
+        $this->set(compact('image', 'posts', 'products'));
     }
 
     public function postsImageAdd()
@@ -176,7 +231,7 @@ class ImageController extends AppController
                         $data["name"] = "img/posts/" . $fileName;
                         $imageData = $this->Image->newEmptyEntity();
                         $imageData = $this->Image->patchEntity($imageData, array(
-                            "product_id" => $post_id,
+                            "post_id" => $post_id,
                             "name" => $data["name"],
                             "cover" => 0,
                             "status" => 1,
@@ -221,17 +276,16 @@ class ImageController extends AppController
         $Image = $this->Image->get($id);
 
         if ($this->Image->delete($Image)) {
-            $responseData = ['success' => true];
+            $responseData = [true];
             $this->set('responseData', $responseData);
             $this->set('_serialize', ['responseData']);
-            die;
+           
         } else {
-            $responseData = ['error' => false];
+            $responseData = [false];
             $this->set('responseData', $responseData);
             $this->set('_serialize', ['responseData']);
-            die;
+    
         }
 
-        return $this->redirect(['action' => 'index']);
     }
 }

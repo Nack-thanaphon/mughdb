@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property int|null $post_id
- * @property int|null $product_id
+ * @property int|null $gallery_id
  * @property int|null $order_id
  * @property string $name
  * @property int $status
@@ -35,7 +35,7 @@ class Image extends Entity
      */
     protected $_accessible = [
         'post_id' => true,
-        'product_id' => true,
+        'gallery_id' => true,
         'order_id' => true,
         'name' => true,
         'status' => true,

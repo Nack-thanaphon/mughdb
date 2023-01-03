@@ -33,10 +33,11 @@
 
     <!-- Notifications Dropdown Menu -->
     <li class="nav-item dropdown">
-      <a class="nav-link" data-toggle="dropdown" href="#">
+      <a class="nav-link" type="button" onclick="Userdata()">
         <i class="fas fa-circle-user"></i>
         <span class="badge badge-warning navbar-badge" id="newMsg"></span>
       </a>
+
       <!-- <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <span class="dropdown-item dropdown-header">15 Notifications</span>
         <div class="dropdown-divider"></div>

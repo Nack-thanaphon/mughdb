@@ -1,3 +1,5 @@
+<?php $this->assign('title', 'แก้ไขผู้ใช้งาน'); ?>
+
 <div class="row my-3 m-2">
     <div class="col-12 d-flex justify-content-between my-4">
         <h3 class="font-weight-bold"><?= __('อัพเดตข้อมูลผู้ใช้งาน') ?></h3>
@@ -6,21 +8,24 @@
     <div class="col-12 col-md-12 col-lg-12 card">
         <?= $this->Form->create($user, ["enctype" => "multipart/form-data"]) ?>
         <div class="row p-3 ">
+            <div class="col-12 d-flex justify-content-end mb-3">
+                <h5 class="fas fa-trash-alt my-auto" type="button" onclick="deletePosts(<?= $user->id ?>)"></h5>
+            </div>
             <div class="col-12  my-2">
                 <h3>รูปภาพประจำตัว</h3>
             </div>
             <div class="col-12 col-sm-6 my-2">
-                <input type="file" name="userimage" id="user_image" value="<?php echo $this->Url->build($user->image, ['fullBase' => true]); ?>">
-                <input type="hidden" name="imgold" id="user_image" value="<?php echo $this->Url->build($user->image, ['fullBase' => true]); ?>">
+                <input type="file" name="userimage" id="user_image" >
+                <input type="hidden" name="imgold" value="<?php echo $this->Url->build($user->image, ['fullBase' => true]); ?>">
                 <input type="hidden" name="userId" value="<?= $user->id ?>">
                 <?php if (!empty($user->image)) { ?>
-                    <div class="row m-0 py-3 my-auto w-100" style="overflow: hidden;">
+                    <div class="row m-0 py-3 my-auto ">
                         <a data-fslightbox href="<?php echo $this->Url->build($user->image, ['fullBase' => true]); ?>">
-                            <img id="user_image_file" src="<?php echo $this->Url->build($user->image, ['fullBase' => true]); ?>" class="p-3 w-100">
+                            <img id="UsersImgPreviews" src="<?php echo $this->Url->build($user->image, ['fullBase' => true]); ?>" class="p-3 w-100">
                         </a>
                     </div>
                 <?php } else { ?>
-                    <img id="user_image_file" src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png" class=" m-auto p-3" alt="">
+                    <img id="UsersImgPreviews" src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png" class="w-100 m-auto p-3" alt="">
                 <?php } ?>
             </div>
             <div class="form-group col-12 col-sm-6 mt-2">
@@ -33,15 +38,27 @@
                     <label for="floatingemail">อีเมลล์ผู้ใช้งาน</label>
                     <?= $this->Form->input('email', ['class' => 'form-control ', 'placeholder' => 'อีเมลล์ผู้ใช้งาน']); ?>
                 </div>
-
-                <div class="form-floating mb-3">
-                    <label for="floatingemail">ตำแหน่งผู้ใช้งาน</label>
-                    <select name="user_role_id" class="form-control selectpicker">
-                        <option value="4" <?php echo ($user['user_role_id'] == 1) ? 'selected' : '' ?>>เจ้าของร้านค้า</option>
-                        <option value="1" <?php echo ($user['user_role_id'] == 2) ? 'selected' : '' ?>>ผู้ใช้งานทั่วไป</option>
-                        <option value="2" <?php echo ($user['user_role_id'] == 3) ? 'selected' : '' ?>>ผู้จัดการร้านค้า</option>
-                        <option value="3" <?php echo ($user['user_role_id'] == 4) ? 'selected' : '' ?>>ผู้จัดการเว็บไซต์</option>
-                    </select>
+                <div class="row m-0 p-0 d-flex  justify-content-between">
+                    <div class="col-6 m-0 p-0">
+                        <div class="form-floating my-3 ">
+                            <label for="floatingemail">ตำแหน่งผู้ใช้งาน</label>
+                            <select class="form-control" name="user_role_id">
+                                <?php foreach ($getUserRole as $data) : ?>
+                                    <option value="<?= $data->id ?>" <?= ($user->user_role_id == $data->id) ? 'selected' : '' ?>><?= $data->ur_name ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-5 m-0 p-0">
+                        <div class="form-floating my-3 ">
+                            <label for="floatingemail">สิทธิ์ผู้ใช้งาน</label>
+                            <select class="form-control" name="user_type_id">
+                                <?php foreach ($getUserType as $data) : ?>
+                                    <option value="<?= $data->id ?>" <?= ($user->user_type_id == $data->id) ? 'selected' : '' ?>><?= $data->ut_name ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-floating mb-3">
                     <label for="floatingemail">สถานะการยืนยันตัวตน</label>
@@ -154,7 +171,8 @@
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
-                    $('#user_image_file').attr('src', e.target.result);
+                    $('#UsersImgPreviews').attr('src', e.target.result);
+                    $('#UsersImgPreviews').attr('hidden', false);
                 }
                 reader.readAsDataURL(input.files[0]);
             }
@@ -163,4 +181,37 @@
             readURL(this);
         });
     })
+
+    function deletePosts(id) {
+        Swal.fire({
+            title: 'คุณแน่ใจใช่ไหม?',
+            text: "คุณต้องการลบข้อมูล " + id + " ใช่ไหม !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ใช่, ลบเลย!',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "<?= $this->Url->build(['action' => 'delete']) ?>",
+                    type: "post",
+                    dataType: 'json',
+                    data: {
+                        id: id
+                    },
+                    headers: {
+                        'X-CSRF-token': $('meta[name="csrfToken"]').attr('content')
+                    },
+                })
+                Swal.fire(
+                    'ลบเรียบร้อย!',
+                    'ดำเนินการเรียบร้อย.',
+                    'success'
+                )
+                window.location = ('<?= $this->Url->build(['action' => 'index']) ?>')
+            }
+        })
+    }
 </script>

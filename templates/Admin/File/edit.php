@@ -1,3 +1,5 @@
+<?php $this->assign('title', 'อัพเดตเอกสารภายใน'); ?>
+
 <div class="row my-3 m-2">
     <div class="col-12 d-flex justify-content-between">
         <div>
@@ -29,7 +31,6 @@
                     <div class="col-6 m-0 ">
                         <div class="form-floating my-3 ">
                             <label for="floatingemail">กลุ่มเอกสาร</label>
-
                             <select class="form-control" name="filegroup">
                                 <?php foreach ($getFileGroup as $data) : ?>
                                     <option value="<?= $data->g_id ?>" <?= ($file->filegroup == $data->g_id) ? 'selected' : '' ?>><?= $data->g_name ?></option>

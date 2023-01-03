@@ -35,6 +35,7 @@
         transition: background 0.5s;
     }
 </style>
+<?php $this->assign('title', 'อัพเดตบทความข่าวสาร'); ?>
 
 <div class="row my-3 m-1">
     <div class="col-12 d-flex justify-content-between mb-3">
@@ -138,7 +139,7 @@
 
             </div>
 
-            <div class="multiimages row" id="getPostsImg">
+            <div class="multiimages row m-0 p-0" id="getPostsImg">
 
             </div>
         </div>
@@ -223,7 +224,7 @@
 
     $('#images').on('change', function() {
         var formData = new FormData();
-        let post_id = ProductId
+        let post_id = PostsId
         formData.append("post_id", post_id)
         var totalfiles = document.getElementById('images').files.length;
         for (var index = 0; index < totalfiles; index++) {
@@ -234,7 +235,6 @@
             url: "<?= $this->Url->build(['controller' => 'Image', 'action' => 'postsImageAdd']) ?>",
             type: 'post',
             data: formData,
-            product_id,
             contentType: false,
             cache: false,
             processData: false,

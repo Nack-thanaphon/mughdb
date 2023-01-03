@@ -65,7 +65,7 @@ class BannerController extends AppController
             ])
             ->first();
 
-        $CountDateEnd = $this->getDateEndInt($Banner['enddate']->i18nFormat('yyyy-M-dd'));
+        $CountDateEnd = $this->getDateEndInt($Banner['enddate']);
 
         $this->set(compact('Banner','CountDateEnd'));
         $this->set('_serialize', ['Banner','CountDateEnd']);
@@ -121,10 +121,12 @@ class BannerController extends AppController
      */
     public function edit($id = null)
     {
-
+        
         $banner = $this->Banner->get($id, [
             'contain' => [],
         ]);
+     
+        $ContDateleft = $this->getDateEndInt($banner['enddate']);
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $banner = $this->Banner->patchEntity($banner, $this->request->getData());
@@ -159,7 +161,7 @@ class BannerController extends AppController
             }
         }
         $users = $this->Banner->Users->find('list', ['limit' => 200])->all();
-        $this->set(compact('banner', 'users'));
+        $this->set(compact('banner', 'users','ContDateleft'));
     }
 
     /**

@@ -1,3 +1,5 @@
+<?php $this->assign('title', 'อัพเดตแบนเนอร์'); ?>
+
 <div class="row my-3 m-2">
     <div class="col-12 d-flex justify-content-between">
         <div>
@@ -16,8 +18,8 @@
                 <?= $this->Flash->render() ?>
                 <?= $this->Form->create($banner, ["enctype" => "multipart/form-data"]); ?>
                 <div class="d-flex justify-content-between py-2 my-auto">
-                    <input type="file" name="img" class="mb-3"  id="bannerImg">
-                    <input type="hidden" name="fileOld" class=" mb-3"  value="<?= $banner->img ?>">
+                    <input type="file" name="img" class="mb-3" id="bannerImg">
+                    <input type="hidden" name="fileOld" class=" mb-3" value="<?= $banner->img ?>">
                     <h6 class="fas fa-trash-alt my-auto" type="button" onclick="deletePosts(<?= $banner->id ?>)"></h6>
                 </div>
                 <?php if (!empty($banner->img)) { ?>
@@ -61,7 +63,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 text-muted d-flex justify-content-end">
-                        <small>เหลืออีก : <span>10 วัน</span> </small>
+                        <small>เหลืออีก : <span><?= ($ContDateleft <= 0) ? '0' : $ContDateleft ?> วัน</span> </small>
                     </div>
                 </div>
                 <div class="col-12 col-sm-12">
@@ -108,7 +110,7 @@
     $(function() {
         $(".addnew").datepicker({
             todayHighlight: true, // to highlight the today's date
-            format: 'dd-MM-yyyy',
+            format: 'dd-m-yyyy',
             autoclose: true,
             todayHighlight: true
         }).datepicker('update', new Date());

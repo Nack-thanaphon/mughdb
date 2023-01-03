@@ -40,6 +40,36 @@ var singleimagesPreview = function (input) {
 
 };
 
+//  $(document).ready(function() {
+
+$('#example').DataTable({
+    olumnDefs: [
+        {
+            searchable: false,
+            orderable: false,
+            targets: 0,
+        },
+    ],
+    order: [[1, 'desc']],
+
+    fnDrawCallback: function () {
+        $('.toggle-event').bootstrapToggle();
+    },
+    responsive: true,
+    stateSave: true,
+    language: {
+        "lengthMenu": "แสดงข้อมูล _MENU_ แถว",
+        "zeroRecords": "ไม่พบข้อมูลที่ต้องการ",
+        "info": "แสดงหน้า _PAGE_ จาก _PAGES_",
+        "infoEmpty": "ไม่พบข้อมูลที่ต้องการ",
+        "infoFiltered": "(ค้นหาจาก _MAX_ ทั้งหมด รายการ)",
+        "search": 'ค้นหา',
+        "paginate": {
+            "previous": "ก่อนหน้านี้",
+            "next": "หน้าต่อไป"
+        }
+    }
+})
 
 var Payment_Preview = function (input) {
 
@@ -169,12 +199,12 @@ function delete_product(id) {
         // cart_list.removeItem(item);
         for (i = 0; i < cart_list.length; i++) {
             // console.log(cart_list[2].id)
-            console.log(id,cart_list[i].id )
+            console.log(id, cart_list[i].id)
             if (id == cart_list[i].id) {
-                console.log('i >>> ',i,1)
+                console.log('i >>> ', i, 1)
                 cart_list.splice(i, 1)
                 console.log(cart_list)
-                
+
             }
         }
 

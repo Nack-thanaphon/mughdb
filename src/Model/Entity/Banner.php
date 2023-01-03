@@ -14,8 +14,8 @@ use Cake\ORM\Entity;
  * @property string $detail
  * @property string|null $img
  * @property string $link
- * @property \Cake\I18n\FrozenDate $startdate
- * @property \Cake\I18n\FrozenDate $enddate
+ * @property string $startdate
+ * @property string $enddate
  * @property int $status
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $updated_at

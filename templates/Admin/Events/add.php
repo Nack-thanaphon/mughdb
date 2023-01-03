@@ -1,3 +1,5 @@
+<?php $this->assign('title', 'เพิ่มกิจกรรม'); ?>
+
 <div class="row my-3 m-2">
     <div class="col-12 d-flex justify-content-between mb-3">
         <div>
@@ -9,13 +11,16 @@
         </a>
     </div>
 
-    <div class="col-12 col-md-12 col-lg-12 card">
-        <div class="row m-0 p-3">
+    <div class="col-12 col-md-12 col-lg-12">
+        <div class="row m-0 p-3 card">
 
             <div class="form-group col-12 col-sm-12 my-auto ">
                 <?= $this->Flash->render() ?>
                 <?= $this->Form->create($event, ["enctype" => "multipart/form-data"]); ?>
                 <div class="row m-0 p-0 mb-2">
+                    <div class="col-12 col-sm-12 mb-2">
+                        <img style="object-fit:cover;height:150px;width: 100%;" id="EventsImgPreviews" class="py-2" src="" hidden>
+                    </div>
                     <div class="col-12 col-sm-6 ">
                         <div class="form-floating mb-3 m-0 p-0">
                             <label for="floatingemail">หัวข้อกิจกรรม</label>
@@ -25,9 +30,10 @@
                     <div class="col-12 col-sm-6 ">
                         <div class="form-floating mb-3 ">
                             <label for="floatingemail">ประเภทของกิจกรรม </label>
-                            <select class="form-control" name="type">
-                                <option value="รายวิชาเฉพาะ" selected>รายวิชาเฉพาะ</option>
-                                <option value="รายวิชาเลือกเสรี">รายวิชาเลือกเสรี</option>
+                            <select class="form-control" name="typeid">
+                                <?php foreach ($getEventGroup as $data) : ?>
+                                    <option value="<?= $data->id ?>"><?= $data->name ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
@@ -37,18 +43,6 @@
                         <div class="form-floating mb-3">
                             <label for="floatingemail">รายละเอียด</label>
                             <textarea class="form-control" rows="4" name="detail" placeholder="รายละเอียด"></textarea>
-                        </div>
-                        <div class="form-floating mb-3 m-0 p-0">
-                            <label for="floatingemail">ลิงค์</label>
-                            <?= $this->Form->input('title', ['class' => 'form-control ', 'placeholder' => 'ลิงค์อื่นๆ']); ?>
-                        </div>
-                        <div class="form-floating mb-3 m-0 p-0">
-                            <label for="floatingemail">ภาพหน้าปกกิจกรรม</label>
-                            <input type="file" class="form-control">
-                        </div>
-                        <div class="form-floating mb-3 m-0 p-0">
-                            <label for="floatingemail">เอกสารเพิ่มเติม</label>
-                            <input type="file" class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-6 col-12 m-0 p-0 ">
@@ -60,7 +54,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar"></i></span>
                                         </div>
-                                        <input type="text" name="startdate" class="form-control addnew" value="">
+                                        <input type="text" name="start" class="form-control addnew" value="">
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +65,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar"></i></span>
                                         </div>
-                                        <input type="text" name="enddate" class="form-control addnew" value="">
+                                        <input type="text" name="end" class="form-control addnew" value="">
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +78,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-clock"></i></span>
                                         </div>
-                                        <input type="time" name="startdate" class="form-control " value="">
+                                        <input type="time" name="time_start" value="00:00:00" class="form-control " value="">
                                     </div>
                                 </div>
                             </div>
@@ -95,13 +89,36 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-clock"></i></span>
                                         </div>
-                                        <input type="time" name="enddate" class="form-control" value="">
+                                        <input type="time" name="time_end" value="00:00:00" class="form-control" value="">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="row m-0 p-0 mb-2">
+                    <div class="col-sm-6 col-12 ">
+                        <div class="form-floating mb-3 m-0 p-0">
+                            <label for="floatingemail">ลิงค์</label>
+                            <?= $this->Form->input('link', ['class' => 'form-control ', 'placeholder' => 'ลิงค์อื่นๆ']); ?>
+                        </div>
+                        <div class="form-floating mb-3 m-0 p-0">
+                            <label for="floatingemail">สถานที่</label>
+                            <?= $this->Form->input('address', ['class' => 'form-control ', 'placeholder' => 'ลิงค์อื่นๆ']); ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12 ">
+                        <div class="form-floating mb-3 m-0 p-0">
+                            <label for="floatingemail">เอกสารเพิ่มเติม</label>
+                            <input type="file" name="docfile" class="form-control">
+                        </div>
+                        <div class="form-floating mb-3 m-0 p-0">
+                            <label for="floatingemail">ภาพหน้าปกกิจกรรม</label>
+                            <input type="file" name="imgcover" id="imgcover" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
 
 
 
@@ -141,16 +158,14 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        $("#EventsImg").change(function() {
+        $("#imgcover").change(function() {
             readURL(this);
         });
-    })
-    $(function() {
+
         $(".addnew").datepicker({
             todayHighlight: true, // to highlight the today's date
-            format: 'dd-MM-yyyy',
+            format: 'dd-m-yyyy',
             autoclose: true,
-            todayHighlight: true
         }).datepicker('update', new Date());
-    });
+    })
 </script>

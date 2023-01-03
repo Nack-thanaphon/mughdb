@@ -1,3 +1,5 @@
+<?php $this->assign('title', 'เพิ่มจดหมายข่าว'); ?>
+
 <div class="row my-3 m-2">
     <div class="col-12 d-flex justify-content-between mb-3">
         <div>

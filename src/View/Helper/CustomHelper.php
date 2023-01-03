@@ -153,12 +153,6 @@ class customHelper extends Helper
     }
 
 
-    public function countProduct()
-    {
-        $table = TableRegistry::getTableLocator()->get('Products');
-        $countProduct = $table->find()->count();
-        return $countProduct;
-    }
 
     public function countPostType()
     {

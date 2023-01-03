@@ -68,7 +68,7 @@ class ContactController extends AppController
         $this->set(compact('contact'));
     }
 
-    public function paymentUpload()
+    public function logoUpload()
     {
 
         if ($this->request->is('post')) {
@@ -92,7 +92,7 @@ class ContactController extends AppController
                     $ImgData = $this->Contact->newEmptyEntity();
                     $ImgData->id = $id;
                     $ImgData = $this->Contact->patchEntity($ImgData, array(
-                        "paymentimg" => $ImgSaveDB,
+                        "logo" => $ImgSaveDB,
                     ));
                     if ($this->Contact->save($ImgData)) {
                         $responseData = ['success' => true];

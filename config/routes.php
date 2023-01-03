@@ -83,10 +83,24 @@ $routes->scope('/', function (RouteBuilder $routes) {
 });
 
 
+
+$routes->scope('/', function ($routes) {
+    $routes->setExtensions(['json']);
+    $routes->setExtensions(['pdf']);
+    $routes->setExtensions(['xlsx']);
+
+    $routes->fallbacks();
+});
+
 $routes->prefix('Admin', function (RouteBuilder $routes) {
 
     $routes->connect('/', ['controller' => 'dashboard', 'action' => 'index']);
     $routes->connect('/users', ['controller' => 'users', 'action' => 'index']);
+    $routes->connect(
+        '/edit/{token}', // For example, /blog/3-CakePHP_Rocks
+        ['controller' => 'users', 'action' => 'edit']
+    )
+        ->setPass(['token']);
     $routes->connect('/posts', ['controller' => 'posts', 'action' => 'index']);
     $routes->connect('/postcover', ['controller' => 'posts', 'action' => 'postcover']);
     $routes->connect('/dashboard', ['controller' => 'dashboard', 'action' => 'index']);

@@ -110,5 +110,7 @@ class AppController extends Controller
         // curl_close($ch);
     }
 
-    
+    public function getuserLocation(){
+        
+    }
 }

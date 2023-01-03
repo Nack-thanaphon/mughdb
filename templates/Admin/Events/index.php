@@ -8,13 +8,13 @@
         text-transform: center !important;
     }
 
-     .fc-day-number {
+    .fc-day-number {
         color: #000000 !important;
     }
 
     .fc-event,
     .fc-event-dot {
-        background-color:#007bff !important;
+        background-color: #007bff !important;
         border: none !important;
     }
 
@@ -25,7 +25,7 @@
 </style>
 <div class="container-fluid">
     <div class="row m-2 my-2 h-100 ">
-        <div class="col-sm-12  col-12">
+        <div class="col-sm-12  col-12 p-0 p-sm-1 m-0">
             <div class="d-flex justify-content-between py-2 my-auto">
                 <div>
                     <small class="text-muted">Events Management Systems </small>
@@ -35,13 +35,14 @@
                     <h3 class="fas fa-arrow-alt-circle-left my-auto"></h3>
                 </a>
             </div>
-
         </div>
-        <div class="col-sm-4  col-12 my-3">
-            <div class="card p-2 w-100 nowarp" id='calendar'></div>
+        <div class="col-sm-4  col-12 my-3 m-0 p-0">
+            <div class="mr-sm-3">
+                <div class="card p-1 w-100 nowarp m-1" id='calendar'></div>
+            </div>
         </div>
-        <div class="col-sm-8  col-12 ">
-            <div class="row  my-3">
+        <div class="col-sm-8  col-12 -0 p-0 ">
+            <div class="row m-0 p-0 my-3">
                 <div class="col-12 col-sm-4 m-0 p-0">
                     <div class="m-1 py-4 p-2 card bg-success">
                         <h5 class="m-0 p-0 ">กิจกรรมทั้งหมด</h5>
@@ -71,7 +72,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row  my-3 m-0 p-0">
+            <div class="row m-0 p-0 my-3 m-0 p-0">
                 <div class="col-12 m-0 p-0 ">
                     <div class="card  p-2 table-responsive-lg">
                         <div class="col-12  d-sm-flex justify-content-end mb-2 m-0 p-0">
@@ -79,9 +80,11 @@
                                 <a href="<?= $this->Url->build(['controller' => 'Events', 'action' => 'add']) ?>" class="btn btn-primary m-1"><i class="fas fa-plus-circle"></i> เพิ่มกิจกรรม</a>
                             </div>
                         </div>
-                        <table id="example" class="display responsive nowrap  w-100" style="width:100%">
+                        <table id="example" class="table table-hover row-border display dt-responsive nowrap" style="width:100%">
+
                             <thead>
                                 <tr>
+                                    <th>ลำดับ</th>
                                     <th>รายละเอียด</th>
                                     <th>สถานะ</th>
                                     <th>จัดการ</th>
@@ -90,6 +93,7 @@
                             <tbody>
                                 <?php foreach ($events as $key => $data) : ?>
                                     <tr class="shadow-sm ">
+                                        <td width="10"><?= $key + 1 ?></td>
                                         <td>
                                             <?= ($this->Custom->getDateEndInt($data->end) > 0 ? '<small class="text-primary">กำลังมาถึงอีก ' . $this->Custom->getDateEndInt($data->end) . ' วัน </small>' : '<small class="text-danger">หมดอายุ</small>') ?>
                                             <h6 class="text-wrap"><?= $data->title ?></h6>
@@ -182,6 +186,7 @@
 
 <script>
     function viewsEvents(id) {
+        $.LoadingOverlay("show");
         $.ajax({
             url: "<?= $this->Url->build(['action' => 'view']) ?>",
             type: "post",
@@ -194,10 +199,16 @@
             },
             success: function(resp) {
                 let data = resp.Events
+
+
+                let date = moment(data['created']).format("Do MMMM YYYY, h:mm:ss a");
+
                 html = ''
+
                 html += `
                  <div class="row mb-3">
                         <div class="col-12 my-2 m-0 p-0">
+                        <img class="w-100 mb-2" src="<?php echo $this->Url->build('/', ['fullBase' => true]); ?>${data['img']}" alt="">
                             <p class="m-0 p-0 text-primary">ชนิดกิจกรรม :</p>
                             <small class="text-dark text-wrap m-0 p-0">${data['type']}</small>
                         </div>
@@ -226,7 +237,7 @@
                             <p class="text-dark">${data['time_end']?'<i class="fa-solid fa-clock"></i> '+data['time_end']+'':'ไม่มีข้อมูล'}</p>
                         </div>
                    
-                    <div class="col- m-0 p-0">
+                    <div class="col-12 m-0 p-0">
                         <hr>
                             <p class="m-0  text-muted">ลิงค์เพิ่มเติม : <a href="${data['link']}">เยี่ยมชมเว็บไซต์</a></p>
                             <p class="m-0  text-muted">ลิงค์เอกสาร : <a href="<?php echo $this->Url->build('/'); ?>${data['file']}">ดาวน์โหลด</a></p>
@@ -235,18 +246,18 @@
                             <p class="m-0 p-0 text-primary">ผู้ลงข้อมูล :</p>
                             <p class="text-dark ">${data['user']}</p>
                             <p class="m-0 p-0 text-primary">วันที่ลงข้อมูล :</p>
-                            <p class="text-dark ">${data['created']}</p>
+                            <p class="text-dark ">${date}</p>
                         </div>
                     </div> 
                    </div>
                    `
+                $.LoadingOverlay("hide");
                 $('#PreviewsData').html(html)
                 $('#viewsData').modal('show')
             }
         })
     }
     $(document).ready(function() {
-        var t = $('#example').DataTable()
 
         $.ajax({
             url: "<?= $this->Url->build(['action' => 'geteventsdata']) ?>",
@@ -261,18 +272,17 @@
                     header: {
                         left: 'prev,next',
                         center: 'title',
-                        right: 'month,agendaWeek,agendaDay'
+                        right: 'month,agendaWeek,list'
                     },
-                    events: response.DataEvents,
+                    events: response.EventData,
                     nowIndicator: true,
                     scrollTime: '08:00:00',
-                    editable: true,
                     navLinks: true,
-                    eventLimit: true, // allow "more" link when there are too many events
                     selectable: true,
+                    dateClick: false,
                     eventClick: function(event) {
                         viewsEvents(event.id)
-                    }
+                    },
                 });
             }
         });

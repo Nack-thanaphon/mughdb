@@ -1,8 +1,11 @@
+<?php $this->assign('title', 'อัพเดตกิจกรรม'); ?>
+
+
 <div class="row my-3 m-2">
     <div class="col-12 d-flex justify-content-between mb-3">
         <div>
-            <small class="text-muted">Update Education Systems </small>
-            <h3 class="m-0 p-0">อัพเดตหลักสูตร</h3>
+            <small class="text-muted">Update event Systems </small>
+            <h3 class="m-0 p-0">อัพเดตกิจกรรม</h3>
         </div>
         <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="m-0 p-0  text-reset my-auto">
             <h3 class="fas fa-arrow-alt-circle-left my-auto"></h3>
@@ -10,169 +13,127 @@
 
     </div>
 
-    <div class="col-12 col-md-12 col-lg-12 card">
+    <div class="col-12 col-md-12 col-lg-12 ">
 
-        <div class="row p-3 ">
+        <div class="row p-3 card">
             <div class="col-12 d-flex justify-content-end mb-3">
-                <h5 class="fas fa-trash-alt my-auto" type="button" onclick="deletePosts(<?= $education->id ?>)"></h5>
+                <h5 class="fas fa-trash-alt my-auto" type="button" onclick="deletePosts(<?= $event->id ?>)"></h5>
             </div>
             <div class="form-group col-12 col-sm-12 my-auto ">
                 <?= $this->Flash->render() ?>
-                <?= $this->Form->create($education, ["enctype" => "multipart/form-data"]); ?>
-
-                <div class="row m-0 p-0">
-                    <div class="col-12 col-sm-6 m-0 ">
-                        <div class="col-12 form-floating mb-3 m-0 p-0">
-                            <label for="floatingemail">รหัสและชื่อรายวิชา</label>
-                            <?= $this->Form->input('code', ['class' => 'form-control ', 'placeholder' => 'รหัสและชื่อรายวิชา']); ?>
+                <?= $this->Form->create($event, ["enctype" => "multipart/form-data"]); ?>
+                <div class="row m-0 p-0 mb-2">
+                    <div class="col-12 col-sm-12 mb-2">
+                        <?php if (!empty($event->imgcover)) { ?>
+                            <img style="object-fit:cover; height: 400px;width: 100%;" id="EventsImgPreviews"  class="py-2" src="<?= $this->Url->build($event->imgcover) ?>">
+                        <?php } else { ?>
+                            <img style="object-fit:cover; height: 400px;width: 100%;" id="EventsImgPreviews" class="py-2" hidden>
+                        <?php } ?>
+                    </div>
+                    <div class="col-12 col-sm-6 ">
+                        <div class="form-floating mb-3 m-0 p-0">
+                            <label for="floatingemail">หัวข้อกิจกรรม</label>
+                            <?= $this->Form->input('title', ['class' => 'form-control ', 'placeholder' => 'หัวข้อกิจกรรม']); ?>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-6 m-0 ">
-                        <div class="row m-0 p-0">
-                            <div class="col-12 col-sm-6 m-0 p-0 p-sm-1">
-                                <div class="form-floating mb-3 m-0 p-0">
-                                    <label for="floatingemail">ประเภทของรายวิชา </label>
-                                    <select class="form-control" name="type">
-                                        <option value="รายวิชาเฉพาะ" <?= ($education->type == 'รายวิชาเฉพาะ') ? 'selected' : '' ?>>รายวิชาเฉพาะ</option>
-                                        <option value="รายวิชาเลือกเสรี" <?= ($education->type == 'รายวิชาเลือกเสรี') ? 'selected' : '' ?>>รายวิชาเลือกเสรี</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 m-0 p-0 p-sm-1">
-                                <div class="form-floating mb-3">
-                                    <label for="floatingemail">ระดับ </label>
-                                    <select class="form-control" name="level">
-                                        <option value="ปริญญาตรี" <?= ($education->level == 'ปริญญาตรี') ? 'selected' : '' ?>>ปริญญาตรี</option>
-                                        <option value="ปริญญาโท" <?= ($education->level == 'ปริญญาโท') ? 'selected' : '' ?>>ปริญญาโท</option>
-                                        <option value="ปริญญาเอก" <?= ($education->level == 'ปริญญาเอก') ? 'selected' : '' ?>>ปริญญาเอก</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-12 m-0 p-0">
-                                <div class="form-floating row m-0 p-0 my-auto mb-3">
-                                    <label for="floatingemail" class="mr-2 my-auto mb-2">จำนวนหน่วยกิต</label>
-                                    <br>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="score" id="inlineRadio1" value="1" <?= ($education->score == 1) ? 'checked' : '' ?>>
-                                        <label class="form-check-label text-start text-sm-end" for="inlineRadio1">1</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="score" id="inlineRadio2" value="2" <?= ($education->score == 2) ? 'checked' : '' ?>>
-                                        <label class="form-check-label text-start text-sm-end" for="inlineRadio2">2</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="score" id="inlineRadio3" value="3" <?= ($education->score == 3) ? 'checked' : '' ?>>
-                                        <label class="form-check-label text-start text-sm-end" for="inlineRadio3">3</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="score" id="inlineRadio3" value="4" <?= ($education->score == 4) ? 'checked' : '' ?>>
-                                        <label class="form-check-label text-start text-sm-end" for="inlineRadio3">4</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="score" id="inlineRadio3" value="5">
-                                        <label class="form-check-label text-start text-sm-end" for="inlineRadio3">5</label>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-12 col-sm-6 ">
+                        <div class="form-floating mb-3 ">
+                            <label for="floatingemail">ประเภทของกิจกรรม </label>
+                            <select class="form-control" name="typeid">
+                                <?php foreach ($getEventGroup as $data) : ?>
+                                    <option value="<?= $data->id ?>" <?= ($event->typeid == $data->id) ? 'selected' : '' ?>><?= $data->name ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-12 form-floating my-3">
-                    <label for="floatingemail">หัวข้อหลักสูตร</label>
-                    <?= $this->Form->input('title', ['class' => 'form-control ', 'placeholder' => 'หัวข้อหลักสูตร']); ?>
                 </div>
                 <div class="row m-0 p-0 mb-2">
-                    <div class="col-sm-6 col-12 m-0 ">
+                    <div class="col-sm-6 col-12 ">
                         <div class="form-floating mb-3">
                             <label for="floatingemail">รายละเอียด</label>
-                            <textarea class="form-control" rows="4" name="detail" placeholder="รายละเอียด"><?= $education->detail ?></textarea>
+                            <textarea class="form-control" rows="4" name="detail" placeholder="รายละเอียด"><?= $event->detail ?></textarea>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-12 m-0 ">
-                        <div class="form-floating mb-1">
-                            <label for="floatingemail">จุดมุ่งหมาย </label>
-                            <?= $this->Form->input('objective', ['class' => 'form-control ', 'placeholder' => 'จุดมุ่งหมาย']); ?>
-                        </div>
-                        <div class="form-floating mb-1">
-                            <div class="form-floating mb-1">
-                                <label>วันที่แก้ไขหลักสูตร</label>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar"></i></span>
+                    <div class="col-sm-6 col-12 m-0 p-0 ">
+                        <div class="row m-0 p-0">
+                            <div class="col-12 col-sm-6">
+                                <div class="form-floating mb-1">
+                                    <label>วันเริ่มต้น</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar"></i></span>
+                                        </div>
+                                        <input type="text" name="start" class="form-control editstartdate" value="<?= $event->start ?>">
                                     </div>
-                                    <input type="text" name="updated" class="form-control addnew" value="">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-floating mb-1">
+                                    <label>วันสิ้นสุด</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar"></i></span>
+                                        </div>
+                                        <input type="text" name="end" class="form-control editenddate" value="<?= $event->end ?>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-0 p-0">
+                            <div class="col-12 col-sm-6">
+                                <div class="form-floating mb-1">
+                                    <label>เวลาเริ่ม</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-clock"></i></span>
+                                        </div>
+                                        <input type="time" name="time_start" value="<?= $event->time_start ?>" class="form-control " value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-floating mb-1">
+                                    <label>เวลาสิ้นสุด</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-clock"></i></span>
+                                        </div>
+                                        <input type="time" name="time_end" value="<?= $event->time_end ?>" class="form-control" value="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="row m-0 p-0">
-                    <div class="col-sm-6 col-12 m-0 ">
-                        <div class="form-floating mb-3">
-                            <label for="floatingemail">ผู้จัดทำ </label>
-                            <textarea class="form-control" rows="4" name="credit" placeholder="รายละเอียด"><?= $education->credit ?></textarea>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12 m-0 ">
-                        <div class="form-floating mb-1">
-                            <label for="floatingemail">วัตถุประสงค์ </label>
-                            <?= $this->Form->input('goal', ['class' => 'form-control ', 'placeholder' => 'วัตถุประสงค์']); ?>
-                        </div>
-                        <div class="form-floating mb-1">
-                            <label for="floatingemail">เว็บไซต์ </label>
-                            <?= $this->Form->input('website', ['class' => 'form-control ', 'placeholder' => 'เว็บไซต์']); ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="row m-0 p-0">
-                    <div class="col-sm-6 col-12 m-0 ">
-                        <div class="form-floating mb-1">
-                            <label for="floatingemail">รายละเอียดแบบย่อ </label>
-                            <textarea class="form-control" rows="5" name="description" placeholder="รายละเอียด"><?= $education->description ?></textarea>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12 m-0 ">
-                        <div class="form-floating mb-1">
-                            <label for="floatingemail">เอกสารประกอบ </label>
-                            <input type="file" name="file" class="form-control">
-                            <input type="hidden" name="fileOld" class="form-control" value="<?= $education->file ?>">
-                            <small class="text-muted mt-2">ไฟล์ปัจจุบัน : <a href="<?= $this->Url->build($education->file)?>">ดาวน์โหลด</a></small>
-                        </div>
-                        <div class="form-floating mb-1">
-                            <label for="floatingemail">ลิงค์ </label>
+                <div class="row m-0 p-0 mb-2">
+                    <div class="col-sm-6 col-12 ">
+                        <div class="form-floating mb-3 m-0 p-0">
+                            <label for="floatingemail">ลิงค์</label>
                             <?= $this->Form->input('link', ['class' => 'form-control ', 'placeholder' => 'ลิงค์อื่นๆ']); ?>
                         </div>
+                        <div class="form-floating mb-3 m-0 p-0">
+                            <label for="floatingemail">สถานที่</label>
+                            <?= $this->Form->input('address', ['class' => 'form-control ', 'placeholder' => 'ลิงค์อื่นๆ']); ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12 ">
+                        <div class="form-floating mb-3 m-0 p-0">
+                            <label for="floatingemail">เอกสารเพิ่มเติม</label>
+                            <input type="file" name="docfile" class="form-control">
+                            <input type="hidden" name="docfileOld" value="<?= $event->docfile ?>">
+                            <small class="text-muted mt-2">ไฟล์ปัจจุบัน : <a href="<?= $this->Url->build($event->docfile) ?>">ดาวน์โหลด</a></small>
+
+                        </div>
+                        <div class="form-floating mb-3 m-0 p-0">
+                            <label for="floatingemail">ภาพหน้าปกกิจกรรม</label>
+                            <input type="file" name="imgcover" id="imgcover" class="form-control">
+                            <input type="hidden" name="imgcoverOld" value="<?= $event->imgcover ?>">
+                        </div>
                     </div>
                 </div>
 
 
-                <!--                 
-                <div class="row m-0 p-0">
-                    <div class="col-12 col-sm-6">
-                        <div class="form-floating mb-1">
-                            <label>วันเริ่มต้น</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar"></i></span>
-                                </div>
-                                <input type="text" name="startdate" class="form-control addnew" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <div class="form-floating mb-1">
-                            <label>วันสิ้นสุด</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar"></i></span>
-                                </div>
-                                <input type="text" name="enddate" class="form-control addnew" value="">
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+
 
                 <div class="col-12 form-floating  mb-3">
                     <label for="floatingemail">สถานะการใช้งาน</label>
@@ -193,10 +154,10 @@
                 <?= $this->Form->end() ?>
             </div>
         </div>
-
     </div>
-
 </div>
+
+
 
 <script>
     $(document).ready(function() {
@@ -204,25 +165,31 @@
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
-                    $('#bannerImgPreviews').attr('src', e.target.result);
-                    $('#bannerImgPreviews').attr('hidden', false);
+                    $('#EventsImgPreviews').attr('src', e.target.result);
+                    $('#EventsImgPreviews').attr('hidden', false);
                 }
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        $("#bannerImg").change(function() {
+        $("#imgcover").change(function() {
             readURL(this);
         });
-    })
-    $(function() {
-        $(".addnew").datepicker({
-            todayHighlight: true, // to highlight the today's date
-            format: 'dd-MM-yyyy',
-            autoclose: true,
-            todayHighlight: true
-        }).datepicker('update', new Date());
-    });
 
+        $(".editstartdate").datepicker({
+            todayHighlight: true, // to highlight the today's date
+            format: 'dd-m-yyyy',
+            autoclose: true,
+        });
+
+        $(".editenddate").datepicker({
+            todayHighlight: true, // to highlight the today's date
+            format: 'dd-m-yyyy',
+            autoclose: true,
+
+        });
+
+
+    })
     function deletePosts(id) {
         Swal.fire({
             title: 'คุณแน่ใจใช่ไหม?',
@@ -236,7 +203,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "<?= $this->Url->build(['controller' => 'education', 'action' => 'delete']) ?>",
+                    url: "<?= $this->Url->build(['action' => 'delete']) ?>",
                     type: "post",
                     dataType: 'json',
                     data: {

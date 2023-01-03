@@ -4,7 +4,7 @@
     <div class="col-12 col-md-12 col-lg-12 p-3">
         <h3>หน้าหลัก</h3>
     </div>
-    <div class="col-12 col-md-12 col-lg-8 ">
+    <div class="col-12 col-md-12 col-lg-8 m-0 p-0 ">
         <div class="row m-0 p-0">
             <div class="col-12 col-lg-4 m-0  ">
                 <div class="mb-2 p-3 m-0 p-0 rounded card ">
@@ -13,7 +13,7 @@
                             <h1 class="fas fa-chalkboard-teacher m-0 p-0 "></h1>
                         </div>
                         <div class=" col-9 my-auto">
-                            <p class="m-0 p-0 text-muted"></i>จำนวนผุ้เข้าชมทั้งหมด</p>
+                            <small class="m-0 p-0 text-muted">จำนวนผุ้เข้าชมทั้งหมด</small>
                             <h5 class="mt-2"><?= number_format((float)$countVisiter) ?>
                                 <span class="m-0 p-0">
                                     <small class="m-0 p-0">/ ครั้ง</small>
@@ -30,7 +30,7 @@
                             <h1 class="fas fa-book m-0 p-0"></h1>
                         </div>
                         <div class=" col-9 my-auto">
-                            <p class="m-0 p-0 text-muted">จำนวนหลักสูตรทั้งหมด</p>
+                            <small class="m-0 p-0 text-muted">จำนวนหลักสูตรทั้งหมด</small>
                             <h5 class="mt-2"><?= $countCauses ?>
                                 <span class="m-0 p-0">
                                     <small class="m-0 p-0">/ หลักสูตร</small>
@@ -47,7 +47,7 @@
                             <h1 class="fas fa-users-cog m-0 p-0"></h1>
                         </div>
                         <div class=" col-9 my-auto ">
-                            <p class="m-0 p-0 text-muted">จำนวนผู้ใช้งานทั้งหมด</p>
+                            <small class="m-0 p-0 text-muted">จำนวนผู้ใช้งานทั้งหมด</small>
                             <h5 class="mt-2"><?= $countUsers ?>
                                 <span class="m-0 p-0">
                                     <small class="m-0 p-0">/ ผู้ใช้งาน</small>
@@ -111,7 +111,7 @@
                     </tbody>
                 </table>
                 <div class="btn btn text-right m-0 p-0 mt-3">
-                    <a type="button" onclick="viewsEducation()" class="text-muted">อ่านต่อทั้งหมด </a>
+                    <a type="button" onclick="viewsUserlog()" class="text-muted">อ่านต่อทั้งหมด </a>
                 </div>
             </div>
         </div>
@@ -219,7 +219,7 @@
 
             series: [{
                 name: 'ยอดเข้าชม',
-                data: <?= $amount ?> 
+                data: <?= $amount ?>
 
             }],
             xaxis: {
@@ -255,8 +255,8 @@
 
 
 
-    function viewsEducation() {
-
+    function viewsUserlog() {
+        $.LoadingOverlay("show");
         $.ajax({
             url: "<?= $this->Url->build(['action' => 'userlogview']) ?>",
             type: "get",
@@ -270,16 +270,17 @@
 
                 html = ''
                 for (let i = 0; i < data.length; i++) {
-
+                   
+                 let date = moment(data[i].created).format("Do MMMM YYYY, h:mm:ss a");
                     html += `
                         <tr>
                             <td> <small>${data[i].user['name']}</small> </td>
-                            <td  class="text-muted"><small>${data[i].created}</small> </td>
+                            <td  class="text-muted text-wrap"><small>${date}</small> </td>
                         </tr>
                        
-                        `
+                 `
                 }
-
+                $.LoadingOverlay("hide");
                 $('#userlogData').html(html)
                 $('#viewsData').modal('show')
             }

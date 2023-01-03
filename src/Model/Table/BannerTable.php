@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -72,10 +73,9 @@ class BannerTable extends Table
             ->requirePresence('detail', 'create')
             ->notEmptyString('detail');
 
-            $validator
+        $validator
             ->isArray('img')
             ->allowEmptyArray('img');
-        // ->allowEmptyFile('file');
 
         $validator
             ->scalar('link')
@@ -83,12 +83,16 @@ class BannerTable extends Table
             ->notEmptyString('link');
 
         $validator
-            ->date('startdate')
-            ->notEmptyDate('startdate');
+            ->scalar('startdate')
+            ->maxLength('startdate', 200)
+            ->requirePresence('startdate', 'create')
+            ->notEmptyString('startdate');
 
         $validator
-            ->date('enddate')
-            ->notEmptyDate('enddate');
+            ->scalar('enddate')
+            ->maxLength('enddate', 200)
+            ->requirePresence('enddate', 'create')
+            ->notEmptyString('enddate');
 
         $validator
             ->requirePresence('status', 'create')

@@ -1,8 +1,10 @@
+<?php $this->assign('title', 'เพิ่มเอกสาร'); ?>
+
 <div class="row my-3 m-2">
     <div class="col-12 d-flex justify-content-between mb-3">
         <div>
             <small class="text-muted">Insert File Systems </small>
-            <h3 class="m-0 p-0"><i class="fas fa-plus-circle"></i> เพิ่มเอกสาร</h3>
+            <h3 class="m-0 p-0">เพิ่มเอกสาร</h3>
         </div>
         <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="m-0 p-0  text-reset my-auto">
             <h3 class="fas fa-arrow-alt-circle-left my-auto"></h3>

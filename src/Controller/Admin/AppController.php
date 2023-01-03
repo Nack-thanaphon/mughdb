@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use Cake\Controller\Controller;
 use Cake\Event\EventInterface;
+use DateTime;
+use Cake\ORM\TableRegistry;
 
 class AppController extends Controller
 {
@@ -95,5 +97,68 @@ class AppController extends Controller
             $Exprired = 'กำลังใช้งาน';
         }
         return $Exprired;
+    }
+
+    // format Y/m/d H:i:s
+    public function DateFormat($date)
+    {
+        $dateData = strtr($date, '/', '-');
+        $newDate = date("Y-m-d", strtotime($dateData));
+
+        return  $newDate;
+    }
+
+
+
+    public function getDataImg($Imgcolumn = NULL, $id = NULL)
+    {
+        $table = TableRegistry::getTableLocator()->get('Image');
+
+        $ImgData  = $table->find()
+            ->select([
+                'id' => 'Image.id',
+                'name' => 'Image.name',
+                'cover' => 'Image.cover',
+            ])
+            ->where([
+                'Image.' . $Imgcolumn . '' => $id
+            ])
+            ->toArray();
+
+
+        $img = [];
+        $coverImg = [];
+        $ImgAll = [];
+        $ImgDataResponse = [];
+
+        foreach ($ImgData as  $data) {
+
+            $ImgAll[] =  [
+                'id' => $data['id'],
+                'name' => $data['name']
+            ];
+
+            if ($data['cover'] == 1) {
+                $coverImg[] =  [
+                    'id' => $data['id'],
+                    'name' => $data['name']
+                ];
+            }
+            if ($data['cover'] == 0) {
+                $img[] = [
+                    'id' => $data['id'],
+                    'name' => $data['name']
+                ];
+            }
+        }
+
+        $ImgDataResponse[] = [
+            'img' => $img,
+            'cover' =>  $coverImg,
+            'all' => $ImgAll,
+        ];
+
+
+        return $ImgDataResponse;
     }
 }
