@@ -28,12 +28,12 @@ class PostsController extends AppController
             ->join([
                 'd' => [
                     'table' => 'image',
-                    'type' => 'INNER',
+                    'type' => 'LEFT',
                     'conditions' => 'd.post_id = posts.id',
                 ],
                 'p' => [
                     'table' => 'posts_type',
-                    'type' => 'INNER',
+                    'type' => 'LEFT',
                     'conditions' => 'p.pt_id = posts.p_type_id',
                 ],
                 's' => [

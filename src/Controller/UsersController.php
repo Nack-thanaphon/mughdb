@@ -26,15 +26,15 @@ class UsersController extends AppController
         $userloginsession =  $session->read('userlogin');
         $result = $this->Authentication->getResult();
         $userAuthentication = $result->getData();
-        $userLog = TableRegistry::getTableLocator()->get('Users');
+
 
 
 
         if (!empty($userloginsession)) {
             if (
-                $userAuthentication['user_role_id'] == 1
-                || $userAuthentication['user_role_id'] == 2
-                || $userAuthentication['user_role_id'] == 3
+                $userloginsession['user_type_id'] == 1
+                || $userloginsession['user_type_id'] == 2
+                || $userloginsession['user_type_id'] == 3
             ) {
                 return $this->redirect([
                     'prefix' => 'Admin',
@@ -52,7 +52,11 @@ class UsersController extends AppController
                 if ($result && $result->isValid()) {
                     $session->write('userlogin', $userAuthentication);
                     if (($userAuthentication['verified'] == 1)) {
-                        if ($userAuthentication['user_role_id'] == 1) {
+                        if (
+                            $userAuthentication['user_type_id'] == 1
+                            || $userAuthentication['user_type_id'] == 2
+                            || $userAuthentication['user_type_id'] == 3
+                        ) {
                             return $this->redirect([
                                 'prefix' => 'Admin',
                                 'controller' => 'dashboard',
