@@ -30,10 +30,10 @@
                             <h1 class="fas fa-book m-0 p-0"></h1>
                         </div>
                         <div class=" col-9 my-auto">
-                            <small class="m-0 p-0 text-muted">จำนวนหลักสูตรทั้งหมด</small>
-                            <h5 class="mt-2"><?= $countCauses ?>
+                            <small class="m-0 p-0 text-muted">จำนวนข่าวสารทั้งหมด</small>
+                            <h5 class="mt-2"><?= $countNews ?>
                                 <span class="m-0 p-0">
-                                    <small class="m-0 p-0">/ หลักสูตร</small>
+                                    <small class="m-0 p-0">/ ข่าว</small>
                                 </span>
                             </h5>
                         </div>

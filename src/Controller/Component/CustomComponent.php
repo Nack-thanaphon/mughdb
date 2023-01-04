@@ -172,11 +172,11 @@ class CustomComponent extends Component
         $countProduct = $table->find()->count();
         return $countProduct;
     }
-    public function countCauses()
+    public function countNews()
     {
-        $table = TableRegistry::getTableLocator()->get('Education');
-        $countProduct = $table->find()->count();
-        return $countProduct;
+        $table = TableRegistry::getTableLocator()->get('Posts');
+        $countNews = $table->find()->count();
+        return $countNews;
     }
     public function countUsers()
     {

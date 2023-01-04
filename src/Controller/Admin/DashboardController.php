@@ -15,7 +15,7 @@ class DashboardController extends AppController
     public function index()
     {
         $countVisiter =  $this->Custom->countVisiter();
-        $countCauses =  $this->Custom->countCauses();
+        $countNews =  $this->Custom->countNews();
         $countUsers =  $this->Custom->countUsers();
 
         $getUserlogData = $this->Custom->getUserlogData();
@@ -66,7 +66,7 @@ class DashboardController extends AppController
             'getPosts',
             'getUserlogData',
             'countVisiter',
-            'countCauses',
+            'countNews',
             'countUsers',
             'thaiyear',
             'Graphdata',
