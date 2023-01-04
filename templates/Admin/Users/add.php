@@ -9,7 +9,7 @@
     <div class="col-12 col-md-12 col-lg-12 card">
         <div class="row p-3 ">
             <div class="col-12  my-2">
-                <?= $this->Flash->render() ?>
+                
             </div>
             <div class="col-12 col-sm-6 my-2">
                 <h3>รูปภาพประจำตัว</h3>

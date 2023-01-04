@@ -28,7 +28,7 @@ class AppController extends Controller
 
         $result = $this->Authentication->getResult()->getData();
         if (!empty($result)) {
-            if ($result['user_role_id'] == 1) {
+            if ($result['user_type_id'] == 1 || $result['user_type_id'] == 2 || $result['user_type_id'] == 3) {
                 $token = $result['token'];
                 $userData =  $this->Custom->GetUserData($token);
                 $this->set('userData', $userData);

@@ -13,7 +13,7 @@
         <div class="row m-0 p-3">
 
             <div class="form-group col-12 col-sm-12 my-auto ">
-                <?= $this->Flash->render() ?>
+                
                 <?= $this->Form->create($education, ["enctype" => "multipart/form-data"]); ?>
 
                 <div class="row m-0 p-0">

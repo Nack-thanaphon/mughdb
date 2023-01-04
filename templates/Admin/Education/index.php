@@ -44,7 +44,7 @@
         </div>
         <div class="col-sm-12  col-12 p-0 p-sm-1 m-0 ">
             <div class="card  p-2 table-responsive-lg">
-                <?= $this->Flash->render() ?>
+                
                 <div class="col-12  d-sm-flex justify-content-end mb-2 m-0 p-0">
 
                     <div class="btn-group" role="group" aria-label="Basic example">

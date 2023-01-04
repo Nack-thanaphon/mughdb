@@ -41,6 +41,7 @@ class AppView extends View
     {
         $this->loadHelper('Authentication.Identity');
         $this->loadHelper('Custom');
+        // $this->loadHelper('Toast', ['templates' => 'toast-templates']);
         $this->loadHelper('Paginator', ['templates' => 'paginator-templates']);
     }
 }

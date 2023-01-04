@@ -67,7 +67,7 @@ class EducationController extends AppController
     //             $education->user_id = $this->getUsersId();
 
     //             if ($this->Education->save($education)) {
-    //                 $this->Flash->success(__('The education has been saved.'));
+    //                 $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
     //                 return $this->redirect(['action' => 'index']);
     //             }
@@ -77,11 +77,11 @@ class EducationController extends AppController
     //             $education->download = 0;
     //             $education->user_id = $this->getUsersId();
     //             if ($this->Education->save($education)) {
-    //                 $this->Flash->success(__('The education has been saved.'));
+    //                 $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
     //                 return $this->redirect(['action' => 'index']);
     //             }
-    //             $this->Flash->error(__('The education could not be saved. Please, try again.'));
+    //             $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
     //         }
     //     }
     //     $users = $this->Education->Users->find('list', ['limit' => 200])->all();
@@ -111,18 +111,18 @@ class EducationController extends AppController
     //             $Education->file = $EducationfileData;
 
     //             if ($this->Education->save($Education)) {
-    //                 $this->Flash->success(__('The Education has been saved.'));
+    //                 $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
     //                 return $this->redirect(['action' => 'index']);
     //             }
-    //             $this->Flash->error(__('The Education could not be saved. Please, try again.'));
+    //             $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
     //         } else {
 
     //             $Education->file = $EducationfileOld;
     //             if ($this->Education->save($Education)) {
-    //                 $this->Flash->success(__('The Education has been saved.'));
+    //                 $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
     //                 return $this->redirect(['action' => 'index']);
     //             } else {
-    //                 $this->Flash->error(__('The Education could not be saved. Please, try again.'));
+    //                 $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
     //             }
     //         }
     //     }
@@ -136,9 +136,9 @@ class EducationController extends AppController
     //     $id = $this->request->getData('id');
     //     $education = $this->Education->get($id);
     //     if ($this->Education->delete($education)) {
-    //         $this->Flash->success(__('The education has been deleted.'));
+    //         $this->Flash->success(__('ลบข้อมูลสำเร็จ'));
     //     } else {
-    //         $this->Flash->error(__('The education could not be deleted. Please, try again.'));
+    //         $this->Flash->error(__('ลบข้อมูลไม่สำเร็จ'));
     //     }
 
     //     return $this->redirect(['action' => 'index']);

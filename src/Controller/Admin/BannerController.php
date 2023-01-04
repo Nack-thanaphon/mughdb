@@ -97,10 +97,10 @@ class BannerController extends AppController
             
    
             if ($this->Banner->save($banner)) {
-                $this->Flash->success(__('The banner has been saved.'));
+                $this->Flash->success(__('บันทึกสำเร็จ'));
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The banner could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกไม่สำเร็จ'));
         }
         $users = $this->Banner->Users->find('list', ['limit' => 200])->all();
         $this->set(compact('banner'));
@@ -147,17 +147,18 @@ class BannerController extends AppController
                 $banner->user_id = $this->getUsersId();
 
                 if ($this->Banner->save($banner)) {
-                    $this->Flash->success(__('The banner has been saved.'));
+
+                    $this->Flash->success(__('บันทึกสำเร็จ'));
                     return $this->redirect(['action' => 'index']);
                 }
-                $this->Flash->error(__('The banner could not be saved. Please, try again.'));
+                $this->Flash->error(__('บันทึกไม่สำเร็จ'));
             } else {
                 $banner->img = $BannerfileOld;
                 if ($this->Banner->save($banner)) {
-                    $this->Flash->success(__('The banner has been saved.'));
+                    $this->Flash->success(__('บันทึกสำเร็จ'));
                     return $this->redirect(['action' => 'index']);
                 }
-                $this->Flash->error(__('The banner could not be saved. Please, try again.'));
+                $this->Flash->error(__('บันทึกไม่สำเร็จ'));
             }
         }
         $users = $this->Banner->Users->find('list', ['limit' => 200])->all();
@@ -177,9 +178,9 @@ class BannerController extends AppController
         $id = $this->request->getData('id');
         $banner = $this->Banner->get($id);
         if ($this->Banner->delete($banner)) {
-            $this->Flash->success(__('The banner has been deleted.'));
+            $this->Flash->success(__('ลบข้อมูลสำเร็จ'));
         } else {
-            $this->Flash->error(__('The banner could not be deleted. Please, try again.'));
+            $this->Flash->error(__('ลบข้อมูลไม่สำเร็จ'));
         }
 
         return $this->redirect(['action' => 'index']);

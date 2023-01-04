@@ -239,11 +239,11 @@ class PostsController extends AppController
 
 
             if ($this->Posts->save($Posts)) {
-                $this->Flash->success(__('The post has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The post could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
 
 
@@ -312,9 +312,9 @@ class PostsController extends AppController
         $id = $this->request->getData('id');
         $posts = $this->Posts->get($id);
         if ($this->Posts->delete($posts)) {
-            $this->Flash->success(__('The posts has been deleted.'));
+            $this->Flash->success(__('ลบข้อมูลสำเร็จ'));
         } else {
-            $this->Flash->error(__('The posts could not be deleted. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
 
         return $this->redirect(['action' => 'index']);

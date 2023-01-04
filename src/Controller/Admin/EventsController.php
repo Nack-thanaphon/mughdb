@@ -153,7 +153,7 @@ class EventsController extends AppController
                 $event->user_id = $this->getUsersId();
 
                 if ($this->Events->save($event)) {
-                    $this->Flash->success(__('The file has been saved.'));
+                    $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                     return $this->redirect(['action' => 'index']);
                 }
@@ -164,11 +164,11 @@ class EventsController extends AppController
                 $event->user_id = $this->getUsersId();
 
                 if ($this->Events->save($event)) {
-                    $this->Flash->success(__('The file has been saved.'));
+                    $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                     return $this->redirect(['action' => 'index']);
                 }
-                $this->Flash->error(__('The file could not be saved. Please, try again.'));
+                $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
             }
         }
 
@@ -236,11 +236,11 @@ class EventsController extends AppController
             // pr($event);
             // die;
             if ($this->Events->save($event)) {
-                $this->Flash->success(__('The file has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The file could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $users = $this->Events->Users->find('list', ['limit' => 200])->all();
         $this->set(compact('event', 'users', 'getEventGroup'));
@@ -260,9 +260,9 @@ class EventsController extends AppController
         $id = $this->request->getData('id');
         $event = $this->Events->get($id);
         if ($this->Events->delete($event)) {
-            $this->Flash->success(__('The event has been deleted.'));
+            $this->Flash->success(__('ลบข้อมูลสำเร็จ'));
         } else {
-            $this->Flash->error(__('The event could not be deleted. Please, try again.'));
+            $this->Flash->error(__('ลบข้อมูลไม่สำเร็จ'));
         }
 
         return $this->redirect(['action' => 'index']);

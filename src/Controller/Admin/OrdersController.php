@@ -141,11 +141,11 @@ class OrdersController extends AppController
         if ($this->request->is('post')) {
             $order = $this->Orders->patchEntity($order, $this->request->getData());
             if ($this->Orders->save($order)) {
-                $this->Flash->success(__('The order has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The order could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $users = $this->Orders->Users->find('list', ['limit' => 200])->all();
         $this->set(compact('order', 'users'));
@@ -251,11 +251,11 @@ class OrdersController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $order = $this->Orders->patchEntity($order, $this->request->getData());
             if ($this->Orders->save($order)) {
-                $this->Flash->success(__('The order has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The order could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $users = $this->Orders->Users->find('list', ['limit' => 200])->all();
         $this->set(compact('order', 'users', 'OrdersData'));
@@ -295,9 +295,9 @@ class OrdersController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $order = $this->Orders->get($id);
         if ($this->Orders->delete($order)) {
-            $this->Flash->success(__('The order has been deleted.'));
+            $this->Flash->success(__('ลบข้อมูลสำเร็จ'));
         } else {
-            $this->Flash->error(__('The order could not be deleted. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
 
         return $this->redirect(['action' => 'index']);

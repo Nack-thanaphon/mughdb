@@ -88,10 +88,10 @@ class NewsletterController extends AppController
 
 
             if ($this->Newsletter->save($Newsletter)) {
-                $this->Flash->success(__('The Newsletter has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The Newsletter could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $users = $this->Newsletter->Users->find('list', ['limit' => 200])->all();
         $this->set(compact('Newsletter'));
@@ -127,18 +127,18 @@ class NewsletterController extends AppController
                 $Newsletter->file = $NewsletterfileData;
 
                 if ($this->Newsletter->save($Newsletter)) {
-                    $this->Flash->success(__('The Newsletter has been saved.'));
+                    $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
                     return $this->redirect(['action' => 'index']);
                 }
-                $this->Flash->error(__('The Newsletter could not be saved. Please, try again.'));
+                $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
             } else {
 
                 $Newsletter->file = $NewsletterfileOld;
                 if ($this->Newsletter->save($Newsletter)) {
-                    $this->Flash->success(__('The Newsletter has been saved.'));
+                    $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
                     return $this->redirect(['action' => 'index']);
                 } else {
-                    $this->Flash->error(__('The Newsletter could not be saved. Please, try again.'));
+                    $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
                 }
             }
         }
@@ -159,9 +159,9 @@ class NewsletterController extends AppController
         $id = $this->request->getData('id');
         $Newsletter = $this->Newsletter->get($id);
         if ($this->Newsletter->delete($Newsletter)) {
-            $this->Flash->success(__('The Newsletter has been deleted.'));
+            $this->Flash->success(__('ลบข้อมูลสำเร็จ'));
         } else {
-            $this->Flash->error(__('The Newsletter could not be deleted. Please, try again.'));
+            $this->Flash->error(__('ลบข้อมูลไม่สำเร็จ'));
         }
 
         return $this->redirect(['action' => 'index']);

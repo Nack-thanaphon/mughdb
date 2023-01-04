@@ -51,11 +51,11 @@ class EventsTypeController extends AppController
         if ($this->request->is('post')) {
             $eventsType = $this->EventsType->patchEntity($eventsType, $this->request->getData());
             if ($this->EventsType->save($eventsType)) {
-                $this->Flash->success(__('The events type has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The events type could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $this->set(compact('eventsType'));
     }
@@ -75,11 +75,11 @@ class EventsTypeController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $eventsType = $this->EventsType->patchEntity($eventsType, $this->request->getData());
             if ($this->EventsType->save($eventsType)) {
-                $this->Flash->success(__('The events type has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The events type could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $this->set(compact('eventsType'));
     }
@@ -98,9 +98,9 @@ class EventsTypeController extends AppController
 
         $eventsType = $this->EventsType->get($id);
         if ($this->EventsType->delete($eventsType)) {
-            $this->Flash->success(__('The events type has been deleted.'));
+            $this->Flash->success(__('ลบข้อมูลสำเร็จ'));
         } else {
-            $this->Flash->error(__('The events type could not be deleted. Please, try again.'));
+            $this->Flash->error(__('ลบข้อมูลไม่สำเร็จ'));
         }
 
         return $this->redirect(['action' => 'index']);

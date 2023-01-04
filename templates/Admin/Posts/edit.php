@@ -211,15 +211,10 @@
             headers: {
                 'X-CSRF-token': $('meta[name="csrfToken"]').attr('content')
             },
-            success: function(response) {
-                Swal.fire({
-                    text: 'อัพเดตข้อมูลเรียบร้อย',
-                    icon: 'success',
-                    confirmButtonText: 'ตกลง',
-                })
-                GetPostsImg()
-            }
+
         })
+        toastr["success"]("อัพเดตข้อมูลเรียบร้อย")
+        GetPostsImg()
     })
 
     $('#images').on('change', function() {
@@ -241,15 +236,9 @@
             headers: {
                 'X-CSRF-token': $('meta[name="csrfToken"]').attr('content')
             },
-            success: function(response) {
-                Swal.fire({
-                    text: 'อัพเดตข้อมูลเรียบร้อย',
-                    icon: 'success',
-                    confirmButtonText: 'ตกลง',
-                })
-                GetPostsImg()
-            }
         })
+        toastr["success"]("อัพเดตข้อมูลเรียบร้อย")
+        GetPostsImg()
     })
 
     function deletePosts(id) {
@@ -275,11 +264,7 @@
                         'X-CSRF-token': $('meta[name="csrfToken"]').attr('content')
                     },
                 })
-                Swal.fire(
-                    'ลบเรียบร้อย!',
-                    'ดำเนินการเรียบร้อย.',
-                    'success'
-                )
+                toastr["success"]("ดำเนินการลบสำเร็จ")
                 window.location = ('<?= $this->Url->build(['action' => 'index']) ?>')
             }
         })
@@ -308,11 +293,7 @@
                         'X-CSRF-token': $('meta[name="csrfToken"]').attr('content')
                     },
                 })
-                Swal.fire(
-                    'ลบเรียบร้อย!',
-                    'ดำเนินการเรียบร้อย.',
-                    'success'
-                )
+                toastr["success"]("ดำเนินการลบสำเร็จ")
                 GetPostsImg()
             }
         })

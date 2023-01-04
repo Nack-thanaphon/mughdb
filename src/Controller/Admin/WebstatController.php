@@ -58,11 +58,11 @@ class WebstatController extends AppController
         if ($this->request->is('post')) {
             $webstat = $this->Webstat->patchEntity($webstat, $this->request->getData());
             if ($this->Webstat->save($webstat)) {
-                $this->Flash->success(__('The webstat has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The webstat could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $this->set(compact('webstat'));
     }
@@ -82,11 +82,11 @@ class WebstatController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $webstat = $this->Webstat->patchEntity($webstat, $this->request->getData());
             if ($this->Webstat->save($webstat)) {
-                $this->Flash->success(__('The webstat has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The webstat could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $this->set(compact('webstat'));
     }
@@ -103,9 +103,9 @@ class WebstatController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $webstat = $this->Webstat->get($id);
         if ($this->Webstat->delete($webstat)) {
-            $this->Flash->success(__('The webstat has been deleted.'));
+            $this->Flash->success(__('ลบข้อมูลสำเร็จ'));
         } else {
-            $this->Flash->error(__('The webstat could not be deleted. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
 
         return $this->redirect(['action' => 'index']);

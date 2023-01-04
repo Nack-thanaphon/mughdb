@@ -56,11 +56,11 @@ class UserlogController extends AppController
         if ($this->request->is('post')) {
             $userlog = $this->Userlog->patchEntity($userlog, $this->request->getData());
             if ($this->Userlog->save($userlog)) {
-                $this->Flash->success(__('The userlog has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The userlog could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $users = $this->Userlog->Users->find('list', ['limit' => 200])->all();
         $this->set(compact('userlog', 'users'));
@@ -81,11 +81,11 @@ class UserlogController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $userlog = $this->Userlog->patchEntity($userlog, $this->request->getData());
             if ($this->Userlog->save($userlog)) {
-                $this->Flash->success(__('The userlog has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The userlog could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $users = $this->Userlog->Users->find('list', ['limit' => 200])->all();
         $this->set(compact('userlog', 'users'));
@@ -103,9 +103,9 @@ class UserlogController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $userlog = $this->Userlog->get($id);
         if ($this->Userlog->delete($userlog)) {
-            $this->Flash->success(__('The userlog has been deleted.'));
+            $this->Flash->success(__('ลบข้อมูลสำเร็จ'));
         } else {
-            $this->Flash->error(__('The userlog could not be deleted. Please, try again.'));
+            $this->Flash->error(__('ลบข้อมูลไม่สำเร็จ'));
         }
 
         return $this->redirect(['action' => 'index']);

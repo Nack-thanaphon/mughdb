@@ -59,11 +59,11 @@ class ContactController extends AppController
             // pr($this->Contact->patchEntity($contact, $this->request->getData()));die;
             // pr($this->Contact->save($contact));die;
             if ($this->Contact->save($contact)) {
-                $this->Flash->success(__('The contact has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The contact could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $this->set(compact('contact'));
     }

@@ -15,11 +15,11 @@
         <div class="row m-0 p-3 card">
 
             <div class="form-group col-12 col-sm-12 my-auto ">
-                <?= $this->Flash->render() ?>
+                
                 <?= $this->Form->create($event, ["enctype" => "multipart/form-data"]); ?>
                 <div class="row m-0 p-0 mb-2">
                     <div class="col-12 col-sm-12 mb-2">
-                        <img style="object-fit:cover;height:150px;width: 100%;" id="EventsImgPreviews" class="py-2" src="" hidden>
+                        <img style="object-fit:cover;height:400px;width: 100%;" id="EventsImgPreviews" class="py-2" src="" hidden>
                     </div>
                     <div class="col-12 col-sm-6 ">
                         <div class="form-floating mb-3 m-0 p-0">

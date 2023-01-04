@@ -15,7 +15,7 @@
         <div class="row p-3 ">
 
             <div class="form-group col-12 col-sm-12 my-auto ">
-                <?= $this->Flash->render() ?>
+                
                 <?= $this->Form->create($banner, ["enctype" => "multipart/form-data"]); ?>
                 <input type="file" name="img" class="mb-3" id="bannerImg">
 

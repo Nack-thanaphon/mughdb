@@ -53,11 +53,11 @@ class FileGroupController extends AppController
         if ($this->request->is('post')) {
             $fileGroup = $this->FileGroup->patchEntity($fileGroup, $this->request->getData());
             if ($this->FileGroup->save($fileGroup)) {
-                $this->Flash->success(__('The file group has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The file group could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $this->set(compact('fileGroup'));
     }
@@ -77,11 +77,11 @@ class FileGroupController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $fileGroup = $this->FileGroup->patchEntity($fileGroup, $this->request->getData());
             if ($this->FileGroup->save($fileGroup)) {
-                $this->Flash->success(__('The file group has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The file group could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $this->set(compact('fileGroup'));
     }
@@ -98,9 +98,9 @@ class FileGroupController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $fileGroup = $this->FileGroup->get($id);
         if ($this->FileGroup->delete($fileGroup)) {
-            $this->Flash->success(__('The file group has been deleted.'));
+            $this->Flash->success(__('ลบข้อมูลสำเร็จ'));
         } else {
-            $this->Flash->error(__('The file group could not be deleted. Please, try again.'));
+            $this->Flash->error(__('ลบข้อมูลไม่สำเร็จ'));
         }
 
         return $this->redirect(['action' => 'index']);

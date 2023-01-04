@@ -52,11 +52,11 @@ class ImageController extends AppController
         if ($this->request->is('post')) {
             $image = $this->Image->patchEntity($image, $this->request->getData());
             if ($this->Image->save($image)) {
-                $this->Flash->success(__('The image has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The image could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $posts = $this->Image->Posts->find('list', ['limit' => 200])->all();
         $products = $this->Image->Products->find('list', ['limit' => 200])->all();
@@ -86,12 +86,12 @@ class ImageController extends AppController
                     "status" => 1,
                 ));
                 if ($this->Image->save($imageData)) {
-                    $this->Flash->success(__('The image has been saved.'));
+                    $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                     return $this->redirect(['action' => 'index']);
                 }
             }
-            $this->Flash->error(__('The image could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $posts = $this->Image->Posts->find('list', ['limit' => 200])->all();
         $products = $this->Image->Products->find('list', ['limit' => 200])->all();
@@ -251,11 +251,11 @@ class ImageController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $image = $this->Image->patchEntity($image, $this->request->getData());
             if ($this->Image->save($image)) {
-                $this->Flash->success(__('The image has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The image could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $posts = $this->Image->Posts->find('list', ['limit' => 200])->all();
         $products = $this->Image->Products->find('list', ['limit' => 200])->all();

@@ -68,7 +68,7 @@ class CustomComponent extends Component
                     'type' => 'ut.ut_name',
                     'role' => 'ur.ur_name',
                     'status' => 'users.status',
-                    'role_id' => 'users.user_role_id'
+                    'type_id' => 'users.user_type_id'
                 ])
                 ->join([
                     'ur' => ([

@@ -43,20 +43,19 @@ class UsersController extends AppController
                 ]);
             }
         }
+        
 
         if ($this->request->is('post')) {
-            //     pr($result);
-            // pr($userAuthentication);die;
+
             if (!empty($userAuthentication['id'])) {
                 $this->Custom->UserLog($userAuthentication['id']);
                 if ($result && $result->isValid()) {
                     $session->write('userlogin', $userAuthentication);
-                    if (($userAuthentication['verified'] == 1)) {
-                        if (
-                            $userAuthentication['user_type_id'] == 1
-                            || $userAuthentication['user_type_id'] == 2
-                            || $userAuthentication['user_type_id'] == 3
-                        ) {
+                    if (($userAuthentication['verified'] == 1 && $userAuthentication['status'] == 1)) {
+
+                        // pr($result);
+                        // pr($userAuthentication);die;
+                        if ($userAuthentication['user_type_id'] == 1 || $userAuthentication['user_type_id'] == 2 || $userAuthentication['user_type_id'] == 3) {
                             return $this->redirect([
                                 'prefix' => 'Admin',
                                 'controller' => 'dashboard',
@@ -67,7 +66,7 @@ class UsersController extends AppController
                         $this->Flash->error(__('กรุณายืนยันอีเมลล์เพื่อเข้าสู่ระบบ'));
                     }
                 } else {
-                    $this->Flash->error(__('Username or password is incorrect'));
+                    $this->Flash->error(__('ชื่อผู้ใช้งานและรหัสผ่านไม่ตรงกัน'));
                 }
             } else {
                 $this->Flash->error(__('กรุณาเข้าสู่ระบบ หรือ สมัครสมาชิก !!'));

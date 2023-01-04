@@ -111,7 +111,7 @@ class FileController extends AppController
 
 
                 if ($this->File->save($file)) {
-                    $this->Flash->success(__('The file has been saved.'));
+                    $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                     return $this->redirect(['action' => 'index']);
                 }
@@ -121,11 +121,11 @@ class FileController extends AppController
                 $file->download = 0;
                 $file->user_id = $this->getUsersId();
                 if ($this->File->save($file)) {
-                    $this->Flash->success(__('The file has been saved.'));
+                    $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                     return $this->redirect(['action' => 'index']);
                 }
-                $this->Flash->error(__('The file could not be saved. Please, try again.'));
+                $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
             }
         }
         $users = $this->File->Users->find('list', ['limit' => 200])->all();
@@ -166,18 +166,18 @@ class FileController extends AppController
                 $File->filetype = $fileType;
 
                 if ($this->File->save($File)) {
-                    $this->Flash->success(__('The File has been saved.'));
+                    $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
                     return $this->redirect(['action' => 'index']);
                 }
-                $this->Flash->error(__('The File could not be saved. Please, try again.'));
+                $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
             } else {
 
                 $File->file = $fileDataOld;
                 if ($this->File->save($File)) {
-                    $this->Flash->success(__('The File has been saved.'));
+                    $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
                     return $this->redirect(['action' => 'index']);
                 } else {
-                    $this->Flash->error(__('The File could not be saved. Please, try again.'));
+                    $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
                 }
             }
         }
@@ -198,9 +198,9 @@ class FileController extends AppController
         $id = $this->request->getData('id');
         $file = $this->File->get($id);
         if ($this->File->delete($file)) {
-            $this->Flash->success(__('The file has been deleted.'));
+            $this->Flash->success(__('ลบข้อมูลสำเร็จ'));
         } else {
-            $this->Flash->error(__('The file could not be deleted. Please, try again.'));
+            $this->Flash->error(__('ลบข้อมูลไม่สำเร็จ'));
         }
 
         return $this->redirect(['action' => 'index']);

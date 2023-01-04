@@ -7,9 +7,7 @@ namespace App\Controller\Admin;
 use App\Controller\Admin\AppController;
 use Cake\ORM\TableRegistry;
 use Cake\Datasource\ConnectionManager;
-// import the PhpSpreadsheet Class
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 
 class DashboardController extends AppController
 {

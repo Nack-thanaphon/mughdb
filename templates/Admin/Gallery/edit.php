@@ -199,11 +199,9 @@
             headers: {
                 'X-CSRF-token': $('meta[name="csrfToken"]').attr('content')
             },
-            success: function(response) {
-                toastr["success"]("อัพโหลดสำเร็จ")
-                GetPostsImg()
-            }
         })
+        toastr["success"]("อัพโหลดสำเร็จ")
+        GetPostsImg()
     })
 
     $('#images').on('change', function() {
@@ -225,11 +223,10 @@
             headers: {
                 'X-CSRF-token': $('meta[name="csrfToken"]').attr('content')
             },
-            success: function(response) {
-                toastr["success"]("อัพโหลดสำเร็จ")
-                GetPostsImg()
-            }
+    
         })
+        toastr["success"]("อัพโหลดสำเร็จ")
+        GetPostsImg()
     })
 
     function deletePosts(id) {

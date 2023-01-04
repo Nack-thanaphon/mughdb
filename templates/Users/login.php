@@ -7,7 +7,7 @@
       <h2 class="m-0 p-0">เข้าสู่ระบบ</h2>
       <small>AUN-HPN</small>
     </div>
-    
+
     <div class="card-body">
       <?= $this->Form->create() ?>
       <input type="hidden" id="cart_storage" name="cart_storage">
@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="input-group mb-3">
-        <?= $this->Form->password('password', ['class' => 'form-control', 'placeholder' => 'รหัสผ่าน']) ?>
+        <input type="password" class="form-control" name="password" placeholder="รหัสผ่าน" autocomplete="on">
         <div class="input-group-append">
           <div class="input-group-text">
             <span class="fas fa-lock"></span>

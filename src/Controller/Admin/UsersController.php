@@ -77,7 +77,7 @@ class UsersController extends AppController
             $user->updated_at = date('Y-m-d H:i:s');
 
             if ($usertable->save($user)) {
-                $this->Flash->set('กรุณาเช็คอีเมลล์เพื่อยืนยัน', ['element' => 'success']);
+                $this->Flash->success('กรุณาเช็คอีเมลล์เพื่อยืนยัน');
                 TransportFactory::setConfig('gmail', [
                     'host' => 'smtp.gmail.com',
                     'port' => 587,
@@ -100,10 +100,10 @@ class UsersController extends AppController
                     ->viewBuilder()
                     ->setTemplate('verify');
                 $mailer->deliver();
-                $this->Flash->set('ลงทะเบียนสำเร็จ', ['element' => 'success']);
+                $this->Flash->error('ลงทะเบียนสำเร็จ');
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->set('ลงทะเบียนไม่สำเร็จ', ['element' => 'error']);
+                $this->Flash->error('ลงทะเบียนไม่สำเร็จ');
             }
         }
         $this->set(compact('user', 'getUserRole', 'getUserType'));
@@ -129,7 +129,7 @@ class UsersController extends AppController
             $userid = $this->request->getData('userId');
 
             $userimgDataSave = '';
-            
+
             $imgcoverName = $userimg->getClientFilename();
 
             if ($userimg->getError() == 0) {
@@ -145,11 +145,56 @@ class UsersController extends AppController
             $user->id = $userid;
 
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
+        }
+        $this->set(compact('user', 'getUserRole', 'getUserType'));
+    }
+
+    public function profile($token = null)
+    {
+        $getUserRole = $this->Custom->getUserRole();
+        $getUserType = $this->Custom->getUserType();
+        $user = $this->Users->find()
+            ->where([
+                'token =' => $token
+            ])
+            ->contain(['UsersType', 'UsersRole'])
+            ->first();
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            ///file
+            $userimg = $this->request->getData("userimage");
+            ///filetext
+            $userimgText = $this->request->getData("imgold");
+            //userId
+            $userid = $this->request->getData('userId');
+
+            $userimgDataSave = '';
+
+            $imgcoverName = $userimg->getClientFilename();
+
+            if ($userimg->getError() == 0) {
+                $userimgData = WWW_ROOT . "img/user/" . DS . $imgcoverName;
+                $userimg->moveTo($userimgData);
+                $userimgDataSave = "img/user/" . $imgcoverName;
+            }
+            if (($userimgDataSave == '')) {
+                $userimgDataSave = $userimgText;
+            }
+
+            $user->image = $userimgDataSave;
+            $user->id = $userid;
+
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
+
+                return $this->redirect(['controller'=>'dashboard','action' => 'index']);
+            }
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $this->set(compact('user', 'getUserRole', 'getUserType'));
     }
@@ -161,9 +206,9 @@ class UsersController extends AppController
         $id = $this->request->getData('id');
         $Users = $this->Users->get($id);
         if ($this->Users->delete($Users)) {
-            $this->Flash->success(__('The users type has been deleted.'));
+            $this->Flash->success(__('ลบข้อมูลสำเร็จ'));
         } else {
-            $this->Flash->error(__('The users type could not be deleted. Please, try again.'));
+            $this->Flash->error(__('ลบข้อมูลไม่สำเร็จ'));
         }
 
         return $this->redirect(['action' => 'index']);

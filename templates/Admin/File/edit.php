@@ -18,7 +18,7 @@
                 <h5 class="fas fa-trash-alt my-auto" type="button" onclick="deletePosts(<?= $file->id ?>)"></h5>
             </div>
             <div class="form-group col-12 col-sm-12 my-auto ">
-                <?= $this->Flash->render() ?>
+                
                 <?= $this->Form->create($file, ["enctype" => "multipart/form-data"]); ?>
 
                 <div class="row m-0 p-0">

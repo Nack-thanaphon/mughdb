@@ -96,11 +96,11 @@ $routes->prefix('Admin', function (RouteBuilder $routes) {
 
     $routes->connect('/', ['controller' => 'dashboard', 'action' => 'index']);
     $routes->connect('/users', ['controller' => 'users', 'action' => 'index']);
-    $routes->connect(
-        '/edit/{token}', // For example, /blog/3-CakePHP_Rocks
-        ['controller' => 'users', 'action' => 'edit']
-    )
-        ->setPass(['token']);
+    // $routes->connect(
+    //     '/profile/{token}', // For example, /blog/3-CakePHP_Rocks
+    //     ['controller' => 'users', 'action' => 'profile']
+    // )
+    //     ->setPass(['token']);
     $routes->connect('/posts', ['controller' => 'posts', 'action' => 'index']);
     $routes->connect('/postcover', ['controller' => 'posts', 'action' => 'postcover']);
     $routes->connect('/dashboard', ['controller' => 'dashboard', 'action' => 'index']);

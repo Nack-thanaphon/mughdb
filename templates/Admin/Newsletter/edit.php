@@ -15,7 +15,7 @@
     <div class="col-12 col-md-12 col-lg-12 card">
         <div class="row p-3 ">
             <div class="form-group col-12 col-sm-12 my-auto ">
-                <?= $this->Flash->render() ?>
+                
                 <?= $this->Form->create($Newsletter, ['type' => 'file']); ?>
                 <div class="row m-0 p-0">
                     <div class="col-12 col-sm-12 m-0 p-0 mb-2">
