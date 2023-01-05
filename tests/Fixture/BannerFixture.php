@@ -34,8 +34,8 @@ class BannerFixture extends TestFixture
                 'startdate' => 'Lorem ipsum dolor sit amet',
                 'enddate' => 'Lorem ipsum dolor sit amet',
                 'status' => 1,
-                'created_at' => 1672080952,
-                'updated_at' => 1672080952,
+                'created_at' => 1672951160,
+                'updated_at' => 1672951160,
             ],
         ];
         parent::init();

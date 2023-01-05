@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -74,13 +73,12 @@ class BannerTable extends Table
             ->notEmptyString('detail');
 
         $validator
-            ->isArray('img')
-            ->allowEmptyArray('img');
+            ->scalar('img')
+            ->allowEmptyString('img');
 
         $validator
             ->scalar('link')
-            ->requirePresence('link', 'create')
-            ->notEmptyString('link');
+            ->allowEmptyString('link');
 
         $validator
             ->scalar('startdate')

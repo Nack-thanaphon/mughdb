@@ -13,7 +13,7 @@ use Cake\ORM\Entity;
  * @property string $title
  * @property string $detail
  * @property string|null $img
- * @property string $link
+ * @property string|null $link
  * @property string $startdate
  * @property string $enddate
  * @property int $status
