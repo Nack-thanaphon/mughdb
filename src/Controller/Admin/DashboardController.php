@@ -26,18 +26,18 @@ class DashboardController extends AppController
 
         $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
-            "select 'มกราคม' as month ,count(c_ip) as amount from webstat where c_date like '%" . $year . "-01%' UNION
-            select 'กุมภาพันธ์' as month , count(c_ip) as amount from webstat where c_date like '%" . $year . "-02%' UNION
-            select 'มีนาคม' as month , count(c_ip) as amount from webstat where c_date like '%" . $year . "-03%'UNION
-            select 'เมษายน' as month ,count(c_ip) as amount from webstat where c_date like '%" . $year . "-04%' UNION
-            select 'พฤษภาคม' as month , count(c_ip) as amount from webstat where c_date like '%" . $year . "-05%' UNION
-            select 'มิถุนายน' as month , count(c_ip) as amount from webstat where c_date like '%" . $year . "-06%'UNION
-            select 'กรกฎาคม' as month ,count(c_ip) as amount from webstat where c_date like '%" . $year . "-07%' UNION
-            select 'สิงหาคม' as month , count(c_ip) as amount from webstat where c_date like '%" . $year . "-08%' UNION
-            select 'กันยายน' as month , count(c_ip) as amount from webstat where c_date like '%" . $year . "-09%'UNION
-            select 'ตุลาคม' as month ,count(c_ip) as amount from webstat where c_date like '%" . $year . "-10%' UNION
-            select 'พฤศจิกายน' as month , count(c_ip) as amount from webstat where c_date like '%" . $year . "-11%' UNION
-            select 'ธันวาคม' as month , count(c_ip) as amount from webstat where c_date like '%" . $year . "-12%';"
+            "select 'มกราคม' as month ,count(ip) as amount from webstat where date like '%" . $year . "-01%' UNION
+            select 'กุมภาพันธ์' as month , count(ip) as amount from webstat where date like '%" . $year . "-02%' UNION
+            select 'มีนาคม' as month , count(ip) as amount from webstat where date like '%" . $year . "-03%'UNION
+            select 'เมษายน' as month ,count(ip) as amount from webstat where date like '%" . $year . "-04%' UNION
+            select 'พฤษภาคม' as month , count(ip) as amount from webstat where date like '%" . $year . "-05%' UNION
+            select 'มิถุนายน' as month , count(ip) as amount from webstat where date like '%" . $year . "-06%'UNION
+            select 'กรกฎาคม' as month ,count(ip) as amount from webstat where date like '%" . $year . "-07%' UNION
+            select 'สิงหาคม' as month , count(ip) as amount from webstat where date like '%" . $year . "-08%' UNION
+            select 'กันยายน' as month , count(ip) as amount from webstat where date like '%" . $year . "-09%'UNION
+            select 'ตุลาคม' as month ,count(ip) as amount from webstat where date like '%" . $year . "-10%' UNION
+            select 'พฤศจิกายน' as month , count(ip) as amount from webstat where date like '%" . $year . "-11%' UNION
+            select 'ธันวาคม' as month , count(ip) as amount from webstat where date like '%" . $year . "-12%';"
         );
         $rows = $stmt->fetchAll('assoc');
         $Graphdata = [];

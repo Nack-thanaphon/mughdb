@@ -8,10 +8,13 @@ use Cake\ORM\Entity;
 /**
  * Webstat Entity
  *
- * @property int $c_id
- * @property string $c_ip
- * @property string $c_nation
- * @property \Cake\I18n\FrozenDate $c_date
+ * @property int $id
+ * @property string $ip
+ * @property string|null $latitude
+ * @property string|null $longitude
+ * @property string|null $org
+ * @property string $nation
+ * @property \Cake\I18n\FrozenDate $date
  */
 class Webstat extends Entity
 {
@@ -25,8 +28,11 @@ class Webstat extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'c_ip' => true,
-        'c_nation' => true,
-        'c_date' => true,
+        'ip' => true,
+        'latitude' => true,
+        'longitude' => true,
+        'org' => true,
+        'nation' => true,
+        'date' => true,
     ];
 }

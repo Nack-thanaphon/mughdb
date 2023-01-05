@@ -51,19 +51,31 @@ class WebstatTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('c_ip')
-            ->requirePresence('c_ip', 'create')
-            ->notEmptyString('c_ip');
+            ->scalar('ip')
+            ->requirePresence('ip', 'create')
+            ->notEmptyString('ip');
 
         $validator
-            ->scalar('c_nation')
-            ->maxLength('c_nation', 20)
-            ->requirePresence('c_nation', 'create')
-            ->notEmptyString('c_nation');
+            ->scalar('latitude')
+            ->allowEmptyString('latitude');
 
         $validator
-            ->date('c_date')
-            ->notEmptyDate('c_date');
+            ->scalar('longitude')
+            ->allowEmptyString('longitude');
+
+        $validator
+            ->scalar('org')
+            ->allowEmptyString('org');
+
+        $validator
+            ->scalar('nation')
+            ->maxLength('nation', 20)
+            ->requirePresence('nation', 'create')
+            ->notEmptyString('nation');
+
+        $validator
+            ->date('date')
+            ->notEmptyDate('date');
 
         return $validator;
     }
