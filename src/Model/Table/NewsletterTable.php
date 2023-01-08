@@ -72,10 +72,8 @@ class NewsletterTable extends Table
             ->notEmptyString('detail');
 
         $validator
-            // ->scalar('file')
-            // ->allowEmptyFile('file');
-            ->isArray('file')
-            ->allowEmptyArray('file');
+            ->scalar('file')
+            ->allowEmptyFile('file');
 
         $validator
             ->scalar('download')
@@ -93,8 +91,8 @@ class NewsletterTable extends Table
             ->notEmptyString('status');
 
         $validator
-            ->date('create')
-            ->notEmptyDate('create');
+            ->dateTime('create')
+            ->notEmptyDateTime('create');
 
         return $validator;
     }

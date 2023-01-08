@@ -16,7 +16,7 @@ use Cake\ORM\Entity;
  * @property string $download
  * @property string $date
  * @property string $status
- * @property \Cake\I18n\FrozenDate $create
+ * @property \Cake\I18n\FrozenTime $create
  *
  * @property \App\Model\Entity\User $user
  */
