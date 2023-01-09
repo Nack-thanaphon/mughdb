@@ -32,7 +32,50 @@ class UsersController extends AppController
 
         $this->set(compact('usersUnVerifiled',  'getUserRole', 'getUserType'));
     }
+    public function forgetpassword()
+    {
 
+        $this->viewBuilder()->setlayout('frontend');
+
+        if ($this->request->is('post')) {
+            $email = $this->request->getData('email');
+            $usertable = TableRegistry::getTableLocator()->get('Users');
+            $user = $usertable->find('all')->where(['email' => $email])->first();
+            $token = $user->token;
+            if ($user != null) {
+                $user->password = '';
+                if ($usertable->save($user)) {
+                    $this->Flash->set('กรุณาเช็คในอีเมลล์ ' . $email . ' เพื่อยืนยันการเปลี่ยนรหัสผ่าน', ['element' => 'success']);
+                    $mailer = new Mailer('default');
+                    $mailer->setFrom(['e21bvz@gmail.com' => 'AUN-HPN'])
+                        ->setTo($email)
+                        ->setEmailFormat('html')
+                        ->setSubject('เปลี่ยนรหัสผ่านการเข้าใช้งาน AUN-HPN')
+                        ->setTransport('gmail')
+                        ->setViewVars([
+                            'name' => $user->name,
+                            'verify' => $token
+                        ])
+                        ->viewBuilder()
+                        ->setTemplate('resetpassword');
+
+                    $mailer->deliver();
+                    $htmlStatusCode = 200;
+                    $response = [
+                        'status' => $htmlStatusCode,
+                        'message' => 'OK',
+                    ];
+                    $this->set(compact('response'));
+                    $this->viewBuilder()->setOption('serialize', ['response']);
+                    $this->setResponse($this->response->withStatus($htmlStatusCode));
+                } else {
+                    $this->Flash->set('เปลี่ยนรหัสผ่านไม่สำเร็จ หรือข้อมูลไม่ถูกต้อง', ['element' => 'error']);
+                }
+            } else {
+                $this->Flash->set('ไม่มีข้อมูลในระบบ', ['element' => 'error']);
+            }
+        }
+    }
     public function view($token = null)
     {
         $user = $this->Users->find()
@@ -78,14 +121,7 @@ class UsersController extends AppController
 
             if ($usertable->save($user)) {
                 $this->Flash->success('กรุณาเช็คอีเมลล์เพื่อยืนยัน');
-                TransportFactory::setConfig('gmail', [
-                    'host' => 'smtp.gmail.com',
-                    'port' => 587,
-                    'username' => 'e21bvz@gmail.com',
-                    'password' => 'jxcsblueiiwjzvxd',
-                    'className' => 'Smtp',
-                    'tls' => true
-                ]);
+
 
                 $mailer = new Mailer('default');
                 $mailer->setFrom(['e21bvz@gmail.com' => 'AUN-HPN'])
@@ -192,7 +228,7 @@ class UsersController extends AppController
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 
-                return $this->redirect(['controller'=>'dashboard','action' => 'index']);
+                return $this->redirect(['controller' => 'dashboard', 'action' => 'index']);
             }
             $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }

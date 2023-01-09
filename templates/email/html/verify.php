@@ -23,7 +23,7 @@
                     </tr>
                     <tr>
                         <td style="text-align:center;">
-                            <a href="https://www.xn--12cad1h3akrb3jvcc3g9d.com" title="logo" target="_blank">
+                            <a href="https://info.aun-hpn.or.th" title="logo" target="_blank">
                                 <img width="60" src="<?= $this->Url->image("logo.png", ['fullBase' => true]); ?>" title="logo" alt="logo">
                             </a>
                         </td>
@@ -46,7 +46,7 @@
                                             สมัครสมาชิกเพื่อเป็นส่วนหนึ่งของเรา
                                             กรุณากดยืนยันอีเมลล์เพื่อเข้ายืนยันตัวตน
                                         </p>
-                                        <a href="https://www.xn--12cad1h3akrb3jvcc3g9d.com/verification/<?= $verify ?>" style="background:#20e277;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">
+                                        <a href="https://info.aun-hpn.or.th/users/verification/<?= $verify ?>" style="background:#20e277;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">
                                             ยืนยันอีเมลล์
                                         </a>
                                     </td>

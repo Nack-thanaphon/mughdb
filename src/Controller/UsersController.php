@@ -113,14 +113,7 @@ class UsersController extends AppController
 
             if ($usertable->save($user)) {
                 $this->Flash->set('กรุณาเช็คอีเมลล์เพื่อยืนยัน', ['element' => 'success']);
-                TransportFactory::setConfig('gmail', [
-                    'host' => 'smtp.gmail.com',
-                    'port' => 587,
-                    'username' => 'e21bvz@gmail.com',
-                    'password' => 'jxcsblueiiwjzvxd',
-                    'className' => 'Smtp',
-                    'tls' => true
-                ]);
+              
 
                 $mailer = new Mailer('default');
                 $mailer->setFrom(['e21bvz@gmail.com' => 'AUN-HPN'])
@@ -150,24 +143,13 @@ class UsersController extends AppController
 
         if ($this->request->is('post')) {
             $email = $this->request->getData('email');
-            $token = Security::hash(Security::randomBytes(25));
             $usertable = TableRegistry::getTableLocator()->get('Users');
             $user = $usertable->find('all')->where(['email' => $email])->first();
+            $token = $user->token ;
             if ($user != null) {
                 $user->password = '';
-                $user->token = $token;
-
                 if ($usertable->save($user)) {
                     $this->Flash->set('กรุณาเช็คในอีเมลล์ ' . $email . ' เพื่อยืนยันการเปลี่ยนรหัสผ่าน', ['element' => 'success']);
-                    TransportFactory::setConfig('gmail', [
-                        'host' => 'smtp.gmail.com',
-                        'port' => 587,
-                        'username' => 'e21bvz@gmail.com',
-                        'password' => 'jxcsblueiiwjzvxd',
-                        'className' => 'Smtp',
-                        'tls' => true
-                    ]);
-
                     $mailer = new Mailer('default');
                     $mailer->setFrom(['e21bvz@gmail.com' => 'AUN-HPN'])
                         ->setTo($email)

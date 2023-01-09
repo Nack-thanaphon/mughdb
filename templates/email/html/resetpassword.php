@@ -23,8 +23,8 @@
                     </tr>
                     <tr>
                         <td style="text-align:center;">
-                            <a href="https://www.xn--12cad1h3akrb3jvcc3g9d.com" title="logo" target="_blank">
-                                <img width="60" src="<?= $this->Url->image("logo.png", ['fullBase' => true]); ?>" title="logo" alt="logo">
+                            <a href="https://info.aun-hpn.or.th/" title="logo" target="_blank">
+                            <img width="60" src="<?= $this->Url->image("logo.png", ['fullBase' => true]); ?>" title="logo" alt="logo">
                             </a>
                         </td>
                     </tr>
@@ -46,7 +46,7 @@
                                             กรุณากดยืนยันเปลี่ยนรหัสผ่าน
                                             เพื่อดำเนินการ เปลี่ยนรหัสใช้งานเข้าสู่ระบบ
                                         </p>
-                                        <a href="https://www.xn--12cad1h3akrb3jvcc3g9d.com/resetpassword/<?= $verify ?>" style="background:#20e277;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">
+                                        <a href="https://info.aun-hpn.or.th/users/resetpassword/<?= $verify ?>" style="background:#20e277;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">
                                             ยืนยันเปลี่ยนรหัสผ่าน
                                         </a>
                                     </td>
