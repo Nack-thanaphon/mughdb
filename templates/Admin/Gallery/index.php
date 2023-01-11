@@ -36,9 +36,9 @@
                 </a>
             </div>
         </div>
-        <div class="col-sm-8  col-12 my-3">
-            <div class="row m-0 p-0">
-                <div class="col-12 mb-3">
+        <div class="col-sm-8  col-12 my-3 h-100">
+            <div class="row m-0 p-0 h-100">
+                <div class="col-12 mb-3 h-100">
                     <form>
                         <div class="row mb-4">
                             <div class="form-group col-md-9">
@@ -51,23 +51,28 @@
                     </form>
                 </div>
 
-                <?php foreach ($Gallery as $key => $data) : ?>
-                    <?php if ($data->img != NULL) { ?>
-                        <div class="col-6 col-sm-4 mb-2 ">
-                            <a type="button" onclick="viewsImg(<?= $data->id ?>)">
-                                <img style="object-fit:cover; width:100%; height: 100%; " src="<?php echo $this->Url->build($data->img, ['fullBase' => true]); ?>">
-                            </a>
-                        </div>
-                    <?php } else { ?>
-                        <div class="col-6 col-sm-4 mb-2 ">
-                            <a type="button" onclick="viewsImg(<?= $data->id ?>)">
-                                <img style="object-fit:cover; width:100%; height: 100%;" src="https://archive.org/download/no-photo-available/no-photo-available.png">
-                            </a>
-                        </div>
-                    <?php } ?>
-                <?php endforeach ?>
+                <?php if ($Gallery) { ?>
+                    <?php foreach ($Gallery as $key => $data) : ?>
+                        <?php if ($data->img != NULL) { ?>
+                            <div class="col-6 col-sm-4 mb-2 ">
+                                <a type="button" onclick="viewsImg(<?= $data->id ?>)">
+                                    <img style="object-fit:cover; width:100%; height: 100%; " src="<?php echo $this->Url->build($data->img, ['fullBase' => true]); ?>">
+                                </a>
+                            </div>
+                        <?php } else { ?>
+                            <div class="col-6 col-sm-4 mb-2 ">
+                                <a type="button" onclick="viewsImg(<?= $data->id ?>)">
+                                    <img style="object-fit:cover; width:100%; height: 100%;" src="https://archive.org/download/no-photo-available/no-photo-available.png">
+                                </a>
+                            </div>
+                        <?php } ?>
+                    <?php endforeach ?>
+                <?php } else { ?>
+                    <p>ไม่พบข้อมูล</p>
+                <?php } ?>
             </div>
-            <div id="bigPagination" class="row m-0 p-0 my-3">
+
+            <div id="bigPagination" class="row m-0 p-0 my-3 <?= $Gallery ? '' : 'd-none' ?>">
                 <div class="col-12 col-sm-6 mb-2"><?= $this->Paginator->counter(__('แสดง {{page}} - {{pages}} | แสดง {{current}} ข้อมูลทั้งหมด {{count}} ')) ?></div>
                 <div class="col-12 col-sm-6 mb-2 d-sm-flex justify-content-end">
                     <ul class='pagination'>

@@ -67,6 +67,7 @@ class CustomComponent extends Component
                     'name' => 'users.name',
                     'type' => 'ut.ut_name',
                     'role' => 'ur.ur_name',
+                    'role_id' => 'users.user_role_id',
                     'status' => 'users.status',
                     'type_id' => 'users.user_type_id'
                 ])

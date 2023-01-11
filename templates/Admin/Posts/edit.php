@@ -172,7 +172,7 @@
                 let ImageData = resp.img
                 let CoverImg = ''
                 let Img = ''
-
+                
                 for (i = 0; i < CoverImageData.length; i++) {
                     CoverId = CoverImageData[i].id
                     CoverImg += `<img id="singleimages" src="<?php echo $this->Url->build('${CoverImageData[i].name}', ['fullBase' => true]); ?>" class="w-100">`
@@ -225,7 +225,6 @@
         for (var index = 0; index < totalfiles; index++) {
             formData.append("files[]", document.getElementById('images').files[index]);
         }
-
         $.ajax({
             url: "<?= $this->Url->build(['controller' => 'Image', 'action' => 'postsImageAdd']) ?>",
             type: 'post',

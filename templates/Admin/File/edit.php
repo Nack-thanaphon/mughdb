@@ -18,7 +18,7 @@
                 <h5 class="fas fa-trash-alt my-auto" type="button" onclick="deletePosts(<?= $file->id ?>)"></h5>
             </div>
             <div class="form-group col-12 col-sm-12 my-auto ">
-                
+
                 <?= $this->Form->create($file, ["enctype" => "multipart/form-data"]); ?>
 
                 <div class="row m-0 p-0">
@@ -57,7 +57,8 @@
                             <label for="floatingemail">เอกสารประกอบ (*ถ้ามี)</label>
                             <input type="file" name="file" class="form-control">
                             <input type="hidden" name="fileOld" class="form-control" value="<?= $file->file ?>">
-                            <small class="text-muted mt-2">ไฟล์ปัจจุบัน : <a href="<?= $this->Url->build($file->file) ?>">ดาวน์โหลด</a></small>
+                            <small class="text-muted mt-2">ไฟล์ปัจจุบัน : <?= ($file->file) ? '<a href="' . $this->Url->build($file->file) . '">ดาวน์โหลด</a>' : 'ไม่มีข้อมูล' ?></small>
+                        
                         </div>
                     </div>
                     <div class="col-sm-12 col-12 mb-3 m-0 ">

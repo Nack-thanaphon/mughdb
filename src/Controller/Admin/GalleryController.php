@@ -371,8 +371,9 @@ class GalleryController extends AppController
         $this->request->allowMethod(['post', 'delete']);
 
         $id = $this->request->getData('id');
-        $event = $this->Events->get($id);
-        if ($this->Events->delete($event)) {
+
+        $event = $this->Gallery->get($id);
+        if ($this->Gallery->delete($event)) {
             $this->Flash->success(__('ลบข้อมูลสำเร็จ'));
         } else {
             $this->Flash->error(__('ลบข้อมูลไม่สำเร็จ'));

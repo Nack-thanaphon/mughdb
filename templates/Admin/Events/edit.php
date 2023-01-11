@@ -121,7 +121,7 @@
                             <label for="floatingemail">เอกสารเพิ่มเติม</label>
                             <input type="file" name="docfile" class="form-control">
                             <input type="hidden" name="docfileOld" value="<?= $event->docfile ?>">
-                            <small class="text-muted mt-2">ไฟล์ปัจจุบัน : <a href="<?= $this->Url->build($event->docfile) ?>">ดาวน์โหลด</a></small>
+                            <small class="text-muted mt-2">ไฟล์ปัจจุบัน : <?= ($event->docfile) ? '<a href="' . $this->Url->build($event->docfile) . '">ดาวน์โหลด</a>' : 'ไม่มีข้อมูล' ?></small>
 
                         </div>
                         <div class="form-floating mb-3 m-0 p-0">

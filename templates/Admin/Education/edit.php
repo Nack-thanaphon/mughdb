@@ -137,7 +137,8 @@
                             <label for="floatingemail">เอกสารประกอบ </label>
                             <input type="file" name="file" class="form-control">
                             <input type="hidden" name="fileOld" class="form-control" value="<?= $education->file ?>">
-                            <small class="text-muted mt-2">ไฟล์ปัจจุบัน : <a href="<?= $this->Url->build($education->file) ?>">ดาวน์โหลด</a></small>
+                            <small class="text-muted mt-2">ไฟล์ปัจจุบัน : <?= ($education->file) ? '<a href="' . $this->Url->build($education->file) . '">ดาวน์โหลด</a>' : 'ไม่มีข้อมูล' ?></small>
+                        
                         </div>
                         <div class="form-floating mb-1">
                             <label for="floatingemail">ลิงค์ </label>

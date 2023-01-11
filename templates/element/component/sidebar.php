@@ -96,7 +96,7 @@
                 </li>
                 <li class="nav-header text-secondary text-uppercase"><small>System Area</small></li>
 
-                <?php if ($userData->type_id == 1) { ?>
+                <?php if ($userData->role_id == 1) { ?>
                     <li class="nav-item">
                         <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'Users', 'action' => 'index']) ?>" class="nav-link">
                             <i class="fas fa-users-cog"></i>

@@ -139,6 +139,6 @@
             format: 'dd-MM-yyyy',
             autoclose: true,
             todayHighlight: true
-        }).datepicker('update', new Date(<?= $PostsData->p_date ?>));
+        }).datepicker('update', new Date());
     });
 </script>

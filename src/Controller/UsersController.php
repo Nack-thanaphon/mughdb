@@ -32,9 +32,9 @@ class UsersController extends AppController
 
         if (!empty($userloginsession)) {
             if (
-                $userloginsession['user_type_id'] == 1
-                || $userloginsession['user_type_id'] == 2
-                || $userloginsession['user_type_id'] == 3
+                $userloginsession['user_role_id'] == 1
+                || $userloginsession['user_role_id'] == 2
+                || $userloginsession['user_role_id'] == 3
             ) {
                 return $this->redirect([
                     'prefix' => 'Admin',
@@ -43,24 +43,22 @@ class UsersController extends AppController
                 ]);
             }
         }
-        
+
 
         if ($this->request->is('post')) {
-
             if (!empty($userAuthentication['id'])) {
                 $this->Custom->UserLog($userAuthentication['id']);
                 if ($result && $result->isValid()) {
                     $session->write('userlogin', $userAuthentication);
                     if (($userAuthentication['verified'] == 1 && $userAuthentication['status'] == 1)) {
-
-                        // pr($result);
-                        // pr($userAuthentication);die;
-                        if ($userAuthentication['user_type_id'] == 1 || $userAuthentication['user_type_id'] == 2 || $userAuthentication['user_type_id'] == 3) {
+                        if ($userAuthentication['user_role_id'] == 1 || $userAuthentication['user_role_id'] == 2 || $userAuthentication['user_role_id'] == 3) {
                             return $this->redirect([
                                 'prefix' => 'Admin',
                                 'controller' => 'dashboard',
                                 'action' => 'index',
                             ]);
+                        } else {
+                            $this->Flash->error(__('กรุณารอแอดมินอนุมัติการใช้งาน'));
                         }
                     } else {
                         $this->Flash->error(__('กรุณายืนยันอีเมลล์เพื่อเข้าสู่ระบบ'));
@@ -101,7 +99,7 @@ class UsersController extends AppController
             $mytoken = Security::hash(Security::randomBytes(32));
             $user->name = $myname;
             $user->email = $myemail;
-            $user->user_type_id = 1;
+            $user->user_type_id = 5;
             $user->user_role_id = 2;
             $user->status = 1;
             $user->verified = 0;
@@ -113,7 +111,7 @@ class UsersController extends AppController
 
             if ($usertable->save($user)) {
                 $this->Flash->set('กรุณาเช็คอีเมลล์เพื่อยืนยัน', ['element' => 'success']);
-              
+
 
                 $mailer = new Mailer('default');
                 $mailer->setFrom(['e21bvz@gmail.com' => 'AUN-HPN'])
@@ -145,7 +143,7 @@ class UsersController extends AppController
             $email = $this->request->getData('email');
             $usertable = TableRegistry::getTableLocator()->get('Users');
             $user = $usertable->find('all')->where(['email' => $email])->first();
-            $token = $user->token ;
+            $token = $user->token;
             if ($user != null) {
                 $user->password = '';
                 if ($usertable->save($user)) {
@@ -183,6 +181,8 @@ class UsersController extends AppController
 
     public function resetpassword()
     {
+        $this->viewBuilder()->setlayout('frontend');
+
         if ($this->request->is('post')) {
             $usertable = TableRegistry::getTableLocator()->get('Users');
             $token = $this->request->getData('token');

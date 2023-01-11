@@ -124,7 +124,7 @@
     $(function() {
         $("#addnew").datepicker({
             todayHighlight: true, // to highlight the today's date
-            format: 'dd-m-yyyy',
+            format: 'dd-MM-yyyy',
             autoclose: true,
             todayHighlight: true
         }).datepicker('update', new Date());
