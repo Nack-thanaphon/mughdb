@@ -74,10 +74,9 @@
                     <label>ชนิดบทความ</label>
                     <select name="p_type_id" class="form-control selectpicker">
                         <?php
-                        foreach ($PostsType as $row) {
-                            echo '<option value="' . $row->pt_id . '" >' . $row->pt_name . '</option>';
-                        }
-                        ?>
+                        foreach ($PostsType as $row) { ?>
+                            <option value="<?= $row->pt_id ?>" <?= $row->pt_id == $Posts->p_type_id ? 'selected' : '' ?>><?= $row->pt_name ?></option>
+                        <?php } ?>
                     </select>
                 </div>
                 <div class="form-floating mb-1">
@@ -172,7 +171,7 @@
                 let ImageData = resp.img
                 let CoverImg = ''
                 let Img = ''
-                
+
                 for (i = 0; i < CoverImageData.length; i++) {
                     CoverId = CoverImageData[i].id
                     CoverImg += `<img id="singleimages" src="<?php echo $this->Url->build('${CoverImageData[i].name}', ['fullBase' => true]); ?>" class="w-100">`
