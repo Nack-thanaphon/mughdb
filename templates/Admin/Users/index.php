@@ -35,7 +35,7 @@
                     </div>
                 </div>
 
-                <table id="example" class="table table-hover row-border display dt-responsive nowrap" class="w-100">
+                <table id="example" class="table table-responsive-lg display-nowrap" class="w-100">
 
                     <thead>
                         <tr>

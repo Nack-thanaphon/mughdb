@@ -43,18 +43,10 @@ var singleimagesPreview = function (input) {
 //  $(document).ready(function() {
 
 $('#example').DataTable({
-    olumnDefs: [
-        {
-            searchable: false,
-            orderable: false,
-            targets: 0,
-        },
+    columnDefs: [
+        { responsivePriority: 1, targets: 0 },
+        { responsivePriority: 4, targets: -1 }
     ],
-    order: [[1, 'desc']],
-
-    fnDrawCallback: function () {
-        $('.toggle-event').bootstrapToggle();
-    },
     responsive: true,
     stateSave: true,
     language: {

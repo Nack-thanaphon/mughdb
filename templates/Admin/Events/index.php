@@ -80,7 +80,7 @@
                                 <a href="<?= $this->Url->build(['controller' => 'Events', 'action' => 'add']) ?>" class="btn btn-primary m-1"><i class="fas fa-plus-circle"></i> เพิ่มกิจกรรม</a>
                             </div>
                         </div>
-                        <table id="example" class="table table-hover row-border display dt-responsive nowrap" style="width:100%">
+                        <table id="example" class="table table-responsive-lg display-nowrap" style="width:100%">
 
                             <thead>
                                 <tr>
