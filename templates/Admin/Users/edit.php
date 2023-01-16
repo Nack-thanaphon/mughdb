@@ -39,7 +39,7 @@
                     <?= $this->Form->input('email', ['class' => 'form-control ', 'placeholder' => 'อีเมลล์ผู้ใช้งาน']); ?>
                 </div>
                 <div class="row m-0 p-0 d-flex  justify-content-between">
-                    <div class="col-6 m-0 p-0">
+                    <div class="col-sm-6 col-12 m-0 p-0">
                         <div class="form-floating my-3 ">
                             <label for="floatingemail">ตำแหน่งผู้ใช้งาน</label>
                             <select class="form-control" name="user_role_id">
@@ -49,7 +49,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-5 m-0 p-0">
+                    <div class="col-sm-5 col-12 m-0 p-0">
                         <div class="form-floating my-3 ">
                             <label for="floatingemail">สิทธิ์ผู้ใช้งาน</label>
                             <select class="form-control" name="user_type_id">

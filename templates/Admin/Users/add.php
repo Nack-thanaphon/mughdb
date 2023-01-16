@@ -9,12 +9,12 @@
     <div class="col-12 col-md-12 col-lg-12 card">
         <div class="row p-3 ">
             <div class="col-12  my-2">
-                
+
             </div>
             <div class="col-12 col-sm-6 my-2">
                 <h3>รูปภาพประจำตัว</h3>
                 <input type="file" name="" id="imgcover">
-                <img  src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png" class="w-100 my-3" id="EventsImgPreviews" class="py-2" alt="">
+                <img src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png" class="w-100 my-3" id="EventsImgPreviews" class="py-2" alt="">
             </div>
             <div class="form-group col-12 col-sm-6 my-auto ">
                 <?= $this->Form->create($user, ["enctype" => "multipart/form-data"]); ?>
@@ -30,8 +30,8 @@
                     <label for="floatingemail">รหัสผ่าน</label>
                     <?= $this->Form->input('password', ['type' => 'password', 'class' => 'form-control ', 'placeholder' => 'รหัสผ่าน']); ?>
                 </div>
-                <div class="row m-0 p-0">
-                    <div class="col-6">
+                <div class="row m-0 p-0 d-flex  justify-content-between">
+                    <div class="col-sm-6 col-12 m-0 p-0">
                         <div class="form-floating my-3 ">
                             <label for="floatingemail">ตำแหน่งผู้ใช้งาน</label>
                             <select class="form-control" name="user_role_id">
@@ -41,7 +41,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-sm-5 col-12 m-0 p-0">
                         <div class="form-floating my-3 ">
                             <label for="floatingemail">สิทธิ์ผู้ใช้งาน</label>
                             <select class="form-control" name="user_type_id">

@@ -32,9 +32,9 @@ class UsersController extends AppController
 
         if (!empty($userloginsession)) {
             if (
-                $userloginsession['user_role_id'] == 1
-                || $userloginsession['user_role_id'] == 2
-                || $userloginsession['user_role_id'] == 3
+                $userloginsession['user_type_id'] == 1
+                || $userloginsession['user_type_id'] == 2
+                || $userloginsession['user_type_id'] == 3
             ) {
                 return $this->redirect([
                     'prefix' => 'Admin',
@@ -49,9 +49,9 @@ class UsersController extends AppController
             if (!empty($userAuthentication['id'])) {
                 $this->Custom->UserLog($userAuthentication['id']);
                 if ($result && $result->isValid()) {
-                    $session->write('userlogin', $userAuthentication);
                     if (($userAuthentication['verified'] == 1 && $userAuthentication['status'] == 1)) {
-                        if ($userAuthentication['user_role_id'] == 1 || $userAuthentication['user_role_id'] == 2 || $userAuthentication['user_role_id'] == 3) {
+                        $session->write('userlogin', $userAuthentication);
+                        if ($userAuthentication['user_type_id'] == 1 || $userAuthentication['user_type_id'] == 2 || $userAuthentication['user_type_id'] == 3) {
                             return $this->redirect([
                                 'prefix' => 'Admin',
                                 'controller' => 'dashboard',

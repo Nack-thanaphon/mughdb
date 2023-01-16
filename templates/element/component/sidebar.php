@@ -32,7 +32,7 @@
                 <li class="nav-header text-secondary text-uppercase"><small>Management space</small></li>
                 <li class="nav-item">
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'dashboard', 'action' => 'index']) ?>" class="nav-link">
-                        <i class="fas fa-database"></i>
+                        <i class="nav-icon fas fa-database"></i>
                         <p class="text-bold text-uppercase">
                             หน้าหลัก
                         </p>
@@ -40,31 +40,31 @@
                 </li>
                 <li class="nav-item">
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'posts', 'action' => 'index']) ?>" class="nav-link">
-                        <i class="fas fa-newspaper"></i>
+                        <i class="nav-icon fas fa-newspaper"></i>
                         <p class="text-bold text-uppercase">
-                            จัดการ ข่าวสาร
+                            จัดการข่าวสาร
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'banner', 'action' => 'index']) ?>" class="nav-link">
-                        <i class="fab fa-font-awesome-flag"></i>
+                        <i class="nav-icon fab fa-font-awesome-flag"></i>
                         <p class="text-bold text-uppercase">
-                            จัดการ แบนเนอร์
+                            จัดการแบนเนอร์
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'events', 'action' => 'index']) ?>" class="nav-link">
-                        <i class="fas fa-calendar-day"></i>
+                        <i class="nav-icon fas fa-calendar-day"></i>
                         <p class="text-bold text-uppercase">
-                            จัดการ กิจกรรม
+                            จัดการกิจกรรม
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'file', 'action' => 'index']) ?>" class="nav-link">
-                        <i class="fas fa-bookmark"></i>
+                        <i class="nav-icon fas fa-bookmark"></i>
                         <p class="text-bold text-uppercase">
                             จัดการ เอกสาร
                         </p>
@@ -80,9 +80,9 @@
                 </li> -->
                 <li class="nav-item">
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'newsletter', 'action' => 'index']) ?>" class="nav-link">
-                        <i class="fas fa-envelope-open-text"></i>
+                        <i class="nav-icon fas fa-envelope-open-text"></i>
                         <p class="text-bold text-uppercase">
-                            จัดการ จดหมายข่าว
+                            จัดการจดหมายข่าว
                         </p>
                     </a>
                 </li>
@@ -90,18 +90,18 @@
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'gallery', 'action' => 'index']) ?>" class="nav-link">
                         <i class="fas fa-fw fa-table"></i>
                         <p class="text-bold text-uppercase">
-                            จัดการ คลังรูปภาพ
+                            จัดการคลังรูปภาพ
                         </p>
                     </a>
                 </li>
                 <li class="nav-header text-secondary text-uppercase"><small>System Area</small></li>
 
-                <?php if ($userData->role_id == 1) { ?>
+                <?php if ($userData->type_id == 1) { ?>
                     <li class="nav-item">
                         <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'Users', 'action' => 'index']) ?>" class="nav-link">
-                            <i class="fas fa-users-cog"></i>
+                            <i class="nav-icon fas fa-users-cog"></i>
                             <p class="text-bold text-uppercase">
-                                จัดการ ผู้ใช้งาน
+                                จัดการผู้ใช้งาน
                             </p>
                         </a>
                     </li>
@@ -109,7 +109,7 @@
 
                 <li class="nav-item">
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'contact', 'action' => 'index']) ?>" class="nav-link">
-                        <i class="fas fa-address-card"></i>
+                        <i class="nav-icon fas fa-address-card"></i>
                         <p class="text-bold text-uppercase">
                             ช่องทางการติดต่อ
                         </p>
@@ -126,7 +126,7 @@
 
                 <li class="nav-item">
                     <a onclick="logout()" type="button" class="nav-link">
-                        <i class="fas fa-sign-out"></i>
+                        <i class="nav-icon fas fa-sign-out"></i>
                         <p class="text-bold text-uppercase">
                             ออกจากระบบ
                         </p>

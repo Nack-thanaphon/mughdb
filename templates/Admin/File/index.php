@@ -47,7 +47,7 @@
                 <div class="col-12  d-sm-flex justify-content-end mb-2 m-0 p-0">
 
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" data-toggle="modal" data-target="#SubData" class="btn btn-secondary">ระดับการศึกษา</button>
+                        <!-- <button type="button" data-toggle="modal" data-target="#SubData" class="btn btn-secondary">ระดับการศึกษา</button> -->
                         <a type="button" href="<?= $this->Url->build(['controller' => 'File', 'action' => 'add']) ?>" class="btn btn-primary"><i class="fas fa-plus-circle"></i> เพิ่มเอกสารภายใน</a>
                     </div>
 
