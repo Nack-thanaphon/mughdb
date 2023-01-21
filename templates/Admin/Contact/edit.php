@@ -21,7 +21,7 @@
                         <div class="m-0 p-0">
                             <small>ชื่อย่อสถาบัน</small>
                             <div class=" my-2">
-                                <input type="text" name="name" class="form-control" value="<?= $contact->nickname ?>">
+                                <input type="text" name="nickname" class="form-control" value="<?= $contact->nickname ?>">
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1"> <i class="fas fa-phone"></i></span>
                                             </div>
-                                            <input type="text" name="" value="<?= $contact->phone ?>" class="form-control" placeholder="หมายเลขโทรศัพท์" aria-label="Username" aria-describedby="basic-addon1">
+                                            <input type="text" name="phone" value="<?= $contact->phone ?>" class="form-control" placeholder="หมายเลขโทรศัพท์" aria-label="Username" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
                                 </section>

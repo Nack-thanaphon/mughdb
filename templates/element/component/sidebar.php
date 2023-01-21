@@ -4,7 +4,7 @@
         <div class="pl-4 my-2 text-white">
 
             <small class="text-muted">ระบบจัดการเว็บไซต์</small>
-            <h6 class=" m-0 p-0">AUN-HPN</h6>
+            <h6 class=" m-0 p-0">MUGH</h6>
         </div>
     </a>
 
@@ -70,14 +70,14 @@
                         </p>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'education', 'action' => 'index']) ?>" class="nav-link">
-                        <i class="fas fa-book"></i>
+                        <i class="nav-icon  fas fa-book"></i>
                         <p class="text-bold text-uppercase">
                             จัดการ หลักสูตร
                         </p>
                     </a>
-                </li> -->
+                </li>
                 <li class="nav-item">
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'newsletter', 'action' => 'index']) ?>" class="nav-link">
                         <i class="nav-icon fas fa-envelope-open-text"></i>
@@ -88,7 +88,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'gallery', 'action' => 'index']) ?>" class="nav-link">
-                        <i class="fas fa-fw fa-table"></i>
+                        <i class="nav-icon fas fa-fw fa-table"></i>
                         <p class="text-bold text-uppercase">
                             จัดการคลังรูปภาพ
                         </p>

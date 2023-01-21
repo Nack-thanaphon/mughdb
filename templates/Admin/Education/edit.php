@@ -1,5 +1,5 @@
 <div class="row my-3 m-2">
-    <div class="col-12 d-flex justify-content-between mb-3">
+    <div class="col-12 d-flex justify-content-between mb-2">
         <div>
             <small class="text-muted">Update Education Systems </small>
             <h3 class="m-0 p-0">อัพเดตหลักสูตร</h3>
@@ -13,24 +13,18 @@
     <div class="col-12 col-md-12 col-lg-12 card">
 
         <div class="row p-3 ">
-            <div class="col-12 d-flex justify-content-end mb-3">
+            <div class="col-12 d-flex justify-content-end mb-2">
                 <h5 class="fas fa-trash-alt my-auto" type="button" onclick="deletePosts(<?= $education->id ?>)"></h5>
             </div>
             <div class="form-group col-12 col-sm-12 my-auto ">
-                
+
                 <?= $this->Form->create($education, ["enctype" => "multipart/form-data"]); ?>
 
-                <div class="row m-0 p-0">
-                    <div class="col-12 col-sm-6 m-0 ">
-                        <div class="col-12 form-floating mb-3 m-0 p-0">
-                            <label for="floatingemail">รหัสและชื่อรายวิชา</label>
-                            <?= $this->Form->input('code', ['class' => 'form-control ', 'placeholder' => 'รหัสและชื่อรายวิชา']); ?>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 m-0 ">
-                        <div class="row m-0 p-0">
-                            <div class="col-12 col-sm-6 m-0 p-0 p-sm-1">
-                                <div class="form-floating mb-3 m-0 p-0">
+                <div class="row m-0 p-0 mt-3">
+                    <div class="col-12 col-sm-6 m-0 mb-3">
+                        <div class="row m-0 p-0 alert alert-info p-2">
+                            <div class="col-12 col-sm-12 m-0 p-0 p-sm-1">
+                                <div class="form-floating mb-2 m-0 p-0">
                                     <label for="floatingemail">ประเภทของรายวิชา </label>
                                     <select class="form-control" name="type">
                                         <option value="รายวิชาเฉพาะ" <?= ($education->type == 'รายวิชาเฉพาะ') ? 'selected' : '' ?>>รายวิชาเฉพาะ</option>
@@ -38,8 +32,8 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-6 m-0 p-0 p-sm-1">
-                                <div class="form-floating mb-3">
+                            <div class="col-12 col-sm-12 m-0 p-0 p-sm-1">
+                                <div class="form-floating mb-2">
                                     <label for="floatingemail">ระดับ </label>
                                     <select class="form-control" name="level">
                                         <option value="ปริญญาตรี" <?= ($education->level == 'ปริญญาตรี') ? 'selected' : '' ?>>ปริญญาตรี</option>
@@ -75,15 +69,23 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 col-sm-6 m-0 ">
+                        <div class="row m-0 p-0 mb-3">
+                            <div class="col-12  mb-2 m-0 p-0">
+                                <h6 class=" m-0 p-0">รหัสและชื่อรายวิชา</h6>
+                                <?= $this->Form->input('code', ['class' => 'form-control ', 'placeholder' => 'รหัสและชื่อรายวิชา']); ?>
+                            </div>
+                            <div class="col-12  mb-2 m-0 p-0">
+                                <h6 class=" m-0 p-0">หัวข้อหลักสูตร</h6>
+                                <?= $this->Form->input('title', ['class' => 'form-control ', 'placeholder' => 'หัวข้อหลักสูตร']); ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="col-12 form-floating my-3">
-                    <label for="floatingemail">หัวข้อหลักสูตร</label>
-                    <?= $this->Form->input('title', ['class' => 'form-control ', 'placeholder' => 'หัวข้อหลักสูตร']); ?>
-                </div>
                 <div class="row m-0 p-0 mb-2">
                     <div class="col-sm-6 col-12 m-0 ">
-                        <div class="form-floating mb-3">
+                        <div class="form-floating mb-2">
                             <label for="floatingemail">รายละเอียด</label>
                             <textarea class="form-control" rows="4" name="detail" placeholder="รายละเอียด"><?= $education->detail ?></textarea>
                         </div>
@@ -96,7 +98,7 @@
                         <div class="form-floating mb-1">
                             <div class="form-floating mb-1">
                                 <label>วันที่แก้ไขหลักสูตร</label>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar"></i></span>
                                     </div>
@@ -109,7 +111,7 @@
 
                 <div class="row m-0 p-0">
                     <div class="col-sm-6 col-12 m-0 ">
-                        <div class="form-floating mb-3">
+                        <div class="form-floating mb-2">
                             <label for="floatingemail">ผู้จัดทำ </label>
                             <textarea class="form-control" rows="4" name="credit" placeholder="รายละเอียด"><?= $education->credit ?></textarea>
                         </div>
@@ -138,7 +140,7 @@
                             <input type="file" name="file" class="form-control">
                             <input type="hidden" name="fileOld" class="form-control" value="<?= $education->file ?>">
                             <small class="text-muted mt-2">ไฟล์ปัจจุบัน : <?= ($education->file) ? '<a href="' . $this->Url->build($education->file) . '">ดาวน์โหลด</a>' : 'ไม่มีข้อมูล' ?></small>
-                        
+
                         </div>
                         <div class="form-floating mb-1">
                             <label for="floatingemail">ลิงค์ </label>
@@ -153,7 +155,7 @@
                     <div class="col-12 col-sm-6">
                         <div class="form-floating mb-1">
                             <label>วันเริ่มต้น</label>
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-2">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar"></i></span>
                                 </div>
@@ -164,7 +166,7 @@
                     <div class="col-12 col-sm-6">
                         <div class="form-floating mb-1">
                             <label>วันสิ้นสุด</label>
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-2">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar"></i></span>
                                 </div>
@@ -174,7 +176,7 @@
                     </div>
                 </div> -->
 
-                <div class="col-12 form-floating  mb-3">
+                <div class="col-12 form-floating  mb-2">
                     <label for="floatingemail">สถานะการใช้งาน</label>
                     <div class="form-check">
                         <input class="form-check-input " type="radio" name="status" value='1' checked>

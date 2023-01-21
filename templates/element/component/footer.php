@@ -5,9 +5,9 @@
 </style>
 <div class="row mt-3 text-white m-0 my-success py-5 m-0 text-md-left ">
   <div class="col-md-8 col-lg-8 col-xl-6 mx-auto mb-4">
-    <h3 class="text-uppercase font-weight-bold">AUN-HPN</h3>
+    <h3 class="text-uppercase font-weight-bold">MUGH</h3>
     <hr class="my-secondary accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-    <p>สตรอเบอรี่AUN-HPN แบรนด์ดังในเชียงใหม่ 
+    <p>สตรอเบอรี่MUGH แบรนด์ดังในเชียงใหม่ 
       ที่มีลูกค้าทั้งปลีกและส่งทั่วประเทศ <br> 
       สนใจเป็นตัวแทนจำหน่ายติดต่อได้ 0818451588</p>
 
@@ -32,7 +32,7 @@
   <div class="row py-3 m-0 d-flex align-items-center">
     <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
       <div class="footer-copyright   py-2">© 2022 Copyright:
-        <a href="/"> AUN-HPN.com</a>
+        <a href="/"> MUGH.com</a>
       </div>
     </div>
 

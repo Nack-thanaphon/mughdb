@@ -20,13 +20,13 @@
                             <div class="m-0 p-0">
                                 <small>ชื่อย่อสถาบัน</small>
                                 <div class=" my-2">
-                                    <h3 class="text-success"><?= $contacts->nickname ?></h3>
+                                    <h3 class="text-success"><?= $contacts->nickname ? $contacts->nickname : 'ไม่พบข้อมูล' ?></h3>
                                 </div>
                             </div>
                             <div class="m-0 p-0">
                                 <small>ชื่อสถาบัน</small>
                                 <div class=" my-2">
-                                    <h4 class="text-success"><?= $contacts->name ?></h4>
+                                    <h4 class="text-success"><?= $contacts->name ? $contacts->name : 'ไม่พบข้อมูล' ?></h4>
                                 </div>
                             </div>
                         </div>
@@ -43,17 +43,17 @@
                                         <small class="text-muted">รายละเอียดเว็บไซต์</small>
                                         <div class="my-2">
                                             <p class="m-0 p-0">
-                                                <?= $contacts->about ?>
+                                                <?= $contacts->about ? $contacts->about : 'ไม่พบข้อมูล' ?>
                                             </p>
                                         </div>
                                     </section>
                                     <section class="mb-3">
                                         <div class="my-2">
                                             <p class="m-0 p-0">
-                                                <span class="text-muted">ชื่อที่อยู่ :</span> <?= $contacts->name_address ?>
+                                                <span class="text-muted">ชื่อที่อยู่ :</span> <?= $contacts->name_address ? $contacts->name_address : 'ไม่พบข้อมูล' ?>
                                             </p>
                                             <p class="m-0 p-0">
-                                                <span class="text-muted">ที่อยู่ :</span> <?= $contacts->address ?>
+                                                <span class="text-muted">ที่อยู่ :</span> <?= $contacts->address ? $contacts->address : 'ไม่พบข้อมูล' ?>
                                             </p>
                                         </div>
                                     </section>
@@ -61,7 +61,7 @@
                                         <small class="text-muted">เบอร์โทรติดต่อ</small>
                                         <div class="my-2">
                                             <h4 class="m-0 p-0">
-                                                <?= $contacts->phone ?>
+                                                <?= $contacts->phone ? $contacts->phone : 'ไม่พบข้อมูล' ?>
                                             </h4>
                                         </div>
                                     </section>
@@ -70,17 +70,17 @@
                                         <div class="my-2">
                                             <i class="fas fa-envelope"></i>
                                             <a class="m-0 p-0">
-                                                <?= $contacts->email ?>
+                                                <?= $contacts->email ? $contacts->email : 'ไม่พบข้อมูล' ?>
                                             </a>
                                             <br>
                                             <i class="fab fa-facebook"></i>
                                             <a class="m-0 p-0">
-                                                <?= $contacts->facebook ?>
+                                                <?= $contacts->facebook ? $contacts->facebook : 'ไม่พบข้อมูล' ?>
                                             </a>
                                             <br>
                                             <i class="fas fa-fax"></i>
                                             <a class="m-0 p-0">
-                                                <?= $contacts->fax ?>
+                                                <?= $contacts->fax ? $contacts->fax : 'ไม่พบข้อมูล' ?>
                                             </a>
                                             <br>
                                         </div>
@@ -107,11 +107,11 @@
                 <div class="card-body p-0 pt-2">
                     <div class="mb-2">
                         <p class="m-0 p-0 text-success">Line TOKEN</p>
-                        <small><?= $contacts->linetoken ?></small>
+                        <small><?= $contacts->linetoken ? $contacts->linetoken : 'ไม่พบข้อมูล' ?></small>
                     </div>
                     <div class="mb-2">
                         <p class="m-0 p-0 text-success">LineOA</p>
-                        <small><?= $contacts->lineoficial ?></small>
+                        <small><?= $contacts->lineoficial ? $contacts->lineoficial : 'ไม่พบข้อมูล' ?></small>
                     </div>
                 </div>
             </div>

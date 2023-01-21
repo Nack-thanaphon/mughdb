@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="<?= $this->Url->Build(['controller' => 'dashboard']) ?>" class="brand-link text-start ">
-        <h3 class="brand-text font-weight-bold p-3">AUN-HPN</h3>
+        <h3 class="brand-text font-weight-bold p-3">MUGH</h3>
     </a>
 
     <div class="sidebar">

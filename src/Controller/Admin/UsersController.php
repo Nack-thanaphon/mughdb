@@ -47,10 +47,10 @@ class UsersController extends AppController
                 if ($usertable->save($user)) {
                     $this->Flash->set('กรุณาเช็คในอีเมลล์ ' . $email . ' เพื่อยืนยันการเปลี่ยนรหัสผ่าน', ['element' => 'success']);
                     $mailer = new Mailer('default');
-                    $mailer->setFrom(['e21bvz@gmail.com' => 'AUN-HPN'])
+                    $mailer->setFrom(['e21bvz@gmail.com' => 'MUGH'])
                         ->setTo($email)
                         ->setEmailFormat('html')
-                        ->setSubject('เปลี่ยนรหัสผ่านการเข้าใช้งาน AUN-HPN')
+                        ->setSubject('เปลี่ยนรหัสผ่านการเข้าใช้งาน MUGH')
                         ->setTransport('gmail')
                         ->setViewVars([
                             'name' => $user->name,
@@ -124,10 +124,10 @@ class UsersController extends AppController
 
 
                 $mailer = new Mailer('default');
-                $mailer->setFrom(['e21bvz@gmail.com' => 'AUN-HPN'])
+                $mailer->setFrom(['e21bvz@gmail.com' => 'MUGH'])
                     ->setTo($myemail)
                     ->setEmailFormat('html')
-                    ->setSubject('กรุณายืนยันอีเมลล์ของคุณเพื่อเข้าใช้งาน AUN-HPN')
+                    ->setSubject('กรุณายืนยันอีเมลล์ของคุณเพื่อเข้าใช้งาน MUGH')
                     ->setTransport('gmail')
                     ->setViewVars([
                         'name' => $myname,

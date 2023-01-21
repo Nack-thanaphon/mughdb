@@ -1,5 +1,5 @@
 <?php
-$cakeDescription = 'AUN-HPN | ';
+$cakeDescription = 'MUGH | ';
 ?>
 <!DOCTYPE html>
 <html>

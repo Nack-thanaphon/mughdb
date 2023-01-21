@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-12 col-sm-4 m-0 p-0">
                     <div class="m-1 py-4 p-2 card bg-primary">
-                        <h5 class="m-0 p-0 ">กำลังใช้งาน</h5>
+                        <h5 class="m-0 p-0 ">กำลังเผยแพร่</h5>
                         <h6 class="text-right m-0 p-0 font-weight-bold">
                             <?= ($countEducationActive) ? $countEducationActive : 0; ?>
                             <span><small>/ รายการ</small></span>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-12 col-sm-4 m-0 p-0">
                     <div class="m-1 py-4 p-2 card shadow-sm ">
-                        <h5 class="m-0 p-0 ">หมดอายุ</h5>
+                        <h5 class="m-0 p-0 ">ไม่ได้เผยแพร่</h5>
                         <h6 class="text-right m-0 p-0 font-weight-bold">
                             <?= ($countEducationUnActive) ? $countEducationUnActive : 0; ?>
                             <span><small>/ รายการ</small></span>
@@ -49,12 +49,13 @@
 
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <!-- <button type="button" class="btn btn-secondary">Left</button> -->
-                        <button type="button" data-toggle="modal" data-target="#SubData" class="btn btn-secondary">ระดับการศึกษา</button>
+                        <!-- <button type="button" data-toggle="modal" data-target="#SubData" class="btn btn-secondary">ระดับการศึกษา</button> -->
                         <a type="button" href="<?= $this->Url->build(['controller' => 'Education', 'action' => 'add']) ?>" class="btn btn-primary"><i class="fas fa-plus-circle"></i> เพิ่มหลักสูตร</a>
                     </div>
 
                 </div>
                 <table id="example" class="table table-responsive-lg display-nowrap" style="width:100%">
+
 
                     <thead>
                         <tr>
