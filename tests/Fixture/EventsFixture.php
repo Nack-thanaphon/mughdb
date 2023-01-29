@@ -33,7 +33,7 @@ class EventsFixture extends TestFixture
                 'status' => 'Lorem ipsum dolor sit amet',
                 'time_start' => 'Lorem ipsum dolor sit amet',
                 'time_end' => 'Lorem ipsum dolor sit amet',
-                'created_at' => 1672034157,
+                'created_at' => 1674918312,
             ],
         ];
         parent::init();

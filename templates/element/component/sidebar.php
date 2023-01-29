@@ -3,7 +3,7 @@
     <a href="/" class="text-decoration-none">
         <div class="pl-4 my-2 text-white">
 
-            <small class="text-muted">ระบบจัดการเว็บไซต์</small>
+            <small class="text-muted">ระบบเว็บไซต์</small>
             <h6 class=" m-0 p-0">MUGH</h6>
         </div>
     </a>
@@ -42,7 +42,7 @@
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'posts', 'action' => 'index']) ?>" class="nav-link">
                         <i class="nav-icon fas fa-newspaper"></i>
                         <p class="text-bold text-uppercase">
-                            จัดการข่าวสาร
+                        ข่าวสาร
                         </p>
                     </a>
                 </li>
@@ -50,7 +50,7 @@
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'banner', 'action' => 'index']) ?>" class="nav-link">
                         <i class="nav-icon fab fa-font-awesome-flag"></i>
                         <p class="text-bold text-uppercase">
-                            จัดการแบนเนอร์
+                        แบนเนอร์
                         </p>
                     </a>
                 </li>
@@ -58,7 +58,7 @@
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'events', 'action' => 'index']) ?>" class="nav-link">
                         <i class="nav-icon fas fa-calendar-day"></i>
                         <p class="text-bold text-uppercase">
-                            จัดการกิจกรรม
+                        กิจกรรม
                         </p>
                     </a>
                 </li>
@@ -66,7 +66,7 @@
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'file', 'action' => 'index']) ?>" class="nav-link">
                         <i class="nav-icon fas fa-bookmark"></i>
                         <p class="text-bold text-uppercase">
-                            จัดการ เอกสาร
+                            เอกสาร
                         </p>
                     </a>
                 </li>
@@ -74,7 +74,7 @@
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'education', 'action' => 'index']) ?>" class="nav-link">
                         <i class="nav-icon  fas fa-book"></i>
                         <p class="text-bold text-uppercase">
-                            จัดการ หลักสูตร
+                             หลักสูตร
                         </p>
                     </a>
                 </li>
@@ -82,7 +82,7 @@
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'newsletter', 'action' => 'index']) ?>" class="nav-link">
                         <i class="nav-icon fas fa-envelope-open-text"></i>
                         <p class="text-bold text-uppercase">
-                            จัดการจดหมายข่าว
+                            จดหมายข่าว
                         </p>
                     </a>
                 </li>
@@ -90,7 +90,7 @@
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'gallery', 'action' => 'index']) ?>" class="nav-link">
                         <i class="nav-icon fas fa-fw fa-table"></i>
                         <p class="text-bold text-uppercase">
-                            จัดการคลังรูปภาพ
+                            คลังรูปภาพ
                         </p>
                     </a>
                 </li>
@@ -101,7 +101,7 @@
                         <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'Users', 'action' => 'index']) ?>" class="nav-link">
                             <i class="nav-icon fas fa-users-cog"></i>
                             <p class="text-bold text-uppercase">
-                                จัดการผู้ใช้งาน
+                                ผู้ใช้งาน
                             </p>
                         </a>
                     </li>
@@ -141,7 +141,7 @@
 
 <!-- Modal -->
 <div class="modal" id="userData" tabindex="-1" role="dialog" aria-labelledby="userDataLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="userDataLabel">ข้อมูลผู้ใช้งาน</h5>
@@ -156,16 +156,15 @@
                     <div class="col-12  my-2">
                         <h3>รูปภาพประจำตัว</h3>
                     </div>
-                    <div class="col-12  my-2">
+                    <div class="col-4  my-2">
                         <div class="row m-0 py-3 my-auto w-100" style="overflow: hidden;">
                             <a data-fslightbox href="<?php echo $this->Url->build($userData->image, ['fullBase' => true]); ?>">
-                                <img id="user_image_file" src="<?php echo $this->Url->build($userData->image, ['fullBase' => true]); ?>" class="w-100">
+                                <img id="user_image_file" src="<?php echo $this->Url->build($userData->image, ['fullBase' => true]); ?>" class="w-75" style="">
                             </a>
                         </div>
                         <!-- <img src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png" class="w-100 " alt=""> -->
                     </div>
-                    <div class="form-group col-12  mt-2">
-
+                    <div class="col-8">
                         <div class="form-floating mb-3">
                             <label for="floatingemail" class="text-muted">ชื่อ-นามสกุล</label>
                             <h5 class=" text-uppercase"><?= $userData->name ?></h5>
@@ -184,18 +183,18 @@
                             <label for="floatingemail" class="text-muted">สถานะผู้ใช้งาน</label>
                             <h5 class=""><?= $userData->role ?></h5>
                         </div>
-                        <div class="row m-0 p-0">
-                            <div class="col-12 col-sm-6 form-floating mb-3 m-0 p-0">
-                                <label for="floatingemail" class="text-muted">สถานะการยืนยันตัวตน</label>
-                                <p class=""><?= ($userData->verified == 1) ? '<i class="fas fa-check-circle text-success"></i> ยืนยันตัวตนเรียบร้อย</small>' : '<i class="fas fa-times-circle text-danger"></i> รอการยืนยันตัวตน</small>' ?>
 
-                            </div>
+                        <div class="form-floating mb-3 m-0 p-0">
+                            <label for="floatingemail" class="text-muted">สถานะการยืนยันตัวตน</label>
+                            <p class=""><?= ($userData->verified == 1) ? '<i class="fas fa-check-circle text-success"></i> ยืนยันตัวตนเรียบร้อย</small>' : '<i class="fas fa-times-circle text-danger"></i> รอการยืนยันตัวตน</small>' ?>
 
-                            <div class="col-12 col-sm-6 form-floating mb-3 m-0 p-0">
-                                <label for="floatingemail" class="text-muted">สถานะผู้ใช้งาน</label>
-                                <p class=""><?= ($userData->status == 1) ? '<i class="fas fa-check-circle text-success"></i> กำลังใช้งาน</small>' : '<i class="fas fa-times-circle text-danger"></i>ไม่ได้ใช้งาน</small>' ?>
-                            </div>
                         </div>
+
+                        <div class="form-floating mb-3 m-0 p-0">
+                            <label for="floatingemail" class="text-muted">สถานะผู้ใช้งาน</label>
+                            <p class=""><?= ($userData->status == 1) ? '<i class="fas fa-check-circle text-success"></i> กำลังใช้งาน</small>' : '<i class="fas fa-times-circle text-danger"></i>ไม่ได้ใช้งาน</small>' ?>
+                        </div>
+
                     </div>
                 </div>
             </div>

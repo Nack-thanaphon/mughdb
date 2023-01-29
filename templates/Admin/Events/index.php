@@ -123,7 +123,7 @@
 
 <!-- Modal -->
 <div class="modal" id="SubData" tabindex="-1" role="dialog" aria-labelledby="viewsDataLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="my-auto d-flex">
@@ -164,7 +164,7 @@
 
 <!-- Modal -->
 <div class="modal" id="viewsData" tabindex="-1" role="dialog" aria-labelledby="viewsDataLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title" id="viewsDataLabel">

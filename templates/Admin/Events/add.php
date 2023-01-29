@@ -15,7 +15,7 @@
         <div class="row m-0 p-3 card">
 
             <div class="form-group col-12 col-sm-12 my-auto ">
-                
+
                 <?= $this->Form->create($event, ["enctype" => "multipart/form-data"]); ?>
                 <div class="row m-0 p-0 mb-2">
                     <div class="col-12 col-sm-12 mb-2">
@@ -30,7 +30,8 @@
                     <div class="col-12 col-sm-6 ">
                         <div class="form-floating mb-3 ">
                             <label for="floatingemail">ประเภทของกิจกรรม </label>
-                            <select class="form-control" name="typeid">
+                            <select class="form-control" name="typeid" required>
+                                <option selected disabled>กรุณาเลือกประเภทของกิจกรรม</option>
                                 <?php foreach ($getEventGroup as $data) : ?>
                                     <option value="<?= $data->id ?>"><?= $data->name ?></option>
                                 <?php endforeach; ?>
@@ -73,7 +74,7 @@
                         <div class="row m-0 p-0">
                             <div class="col-12 col-sm-6">
                                 <div class="form-floating mb-1">
-                                    <label>เวลาเริ่ม</label>
+                                    <label data-toggle="tooltip" data-placement="top" title="PM = ช่วงเวลา 12.00 น.-23.00 น.">เวลาเริ่ม</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-clock"></i></span>
@@ -84,7 +85,7 @@
                             </div>
                             <div class="col-12 col-sm-6">
                                 <div class="form-floating mb-1">
-                                    <label>เวลาสิ้นสุด</label>
+                                    <label data-toggle="tooltip" data-placement="top" title="AM = ช่วงเวลา 00.00 น.-11.00 น.">เวลาสิ้นสุด</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-clock"></i></span>

@@ -127,49 +127,36 @@ class EventsController extends AppController
             $docfile = $this->request->getData('docfile');
             $imgcover = $this->request->getData('imgcover');
 
+
+            $docfileName = $docfile->getClientFilename();
+            $imgcoverName = $imgcover->getClientFilename();
+
             $docfileDataSave = '';
             $imgcoverDataSave = '';
 
             if ($docfile->getError() == 0) {
-                $event = $this->Events->patchEntity($event, $this->request->getData());
-
-                $docfileName = $docfile->getClientFilename();
-                $docfileType = $docfile->getClientMediaType();
-
-                $imgcoverName = $imgcover->getClientFilename();
-                $imgcoverType = $imgcover->getClientMediaType();
-
-                $docfileData = WWW_ROOT . "document/event/" . DS . $docfileName;
-                $imgcoverData = WWW_ROOT . "img/event/" . DS . $imgcoverName;
-
+                $docfileData = WWW_ROOT . "document/file/" . DS . $docfileName;
                 $docfile->moveTo($docfileData);
-                $imgcover->moveTo($imgcoverData);
-
                 $docfileDataSave = "document/file/" . $docfileName;
-                $imgcoverDataSave = "img/event/" . $imgcoverName;
-
-                $event->docfile = $docfileDataSave;
-                $event->imgcover = $imgcoverDataSave;
-                $event->user_id = $this->getUsersId();
-
-                if ($this->Events->save($event)) {
-                    $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
-
-                    return $this->redirect(['action' => 'index']);
-                }
-            } else {
-                $event = $this->Events->patchEntity($event, $this->request->getData());
-                $event->docfile = $docfileDataSave;
-                $event->imgcover = $imgcoverDataSave;
-                $event->user_id = $this->getUsersId();
-
-                if ($this->Events->save($event)) {
-                    $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
-
-                    return $this->redirect(['action' => 'index']);
-                }
-                $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
             }
+            if ($imgcover->getError() == 0) {
+                $imgcoverData = WWW_ROOT . "img/event/" . DS . $imgcoverName;
+                $imgcover->moveTo($imgcoverData);
+                $imgcoverDataSave = "img/event/" . $imgcoverName;
+            }
+
+            $event = $this->Events->patchEntity($event, $this->request->getData());
+
+            $event->docfile = $docfileDataSave;
+            $event->imgcover = $imgcoverDataSave;
+            $event->user_id = $this->getUsersId();
+
+            if ($this->Events->save($event)) {
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
 
         $users = $this->Events->Users->find('list', ['limit' => 200])->all();
