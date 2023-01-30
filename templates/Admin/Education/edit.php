@@ -90,7 +90,7 @@
             <div class="col-sm-6 col-12 m-0 ">
                 <div class="form-floating mb-2">
                     <label for="floatingemail" class="text-muted">เอกสารประกอบ </label>
-                    <input type="file" name="file" class="form-control">
+                    <input type="file" name="fileNews" class="form-control">
                     <input type="hidden" name="fileOld" class="form-control" value="<?= $education->file ?>">
                     <small class="text-muted mt-2">ไฟล์ปัจจุบัน : <?= ($education->file) ? '<a href="' . $this->Url->build($education->file) . '">ดาวน์โหลด</a>' : 'ไม่มีข้อมูล' ?></small>
 
@@ -109,7 +109,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar"></i></span>
                         </div>
-                        <input type="text" name="updated" class="form-control addnew" value="">
+                        <input type="text" name="updated" class="form-control Editnew" value="<?= $education->updated ?>" >
                     </div>
                 </div>
             </div>
@@ -153,14 +153,9 @@
             readURL(this);
         });
     })
-    $(function() {
-        $(".addnew").datepicker({
-            todayHighlight: true, // to highlight the today's date
-            format: 'dd-MM-yyyy',
-            autoclose: true,
-            todayHighlight: true
-        }).datepicker('update', new Date());
-    });
+
+
+
 
     function deletePosts(id) {
         Swal.fire({
@@ -194,4 +189,15 @@
             }
         })
     }
+
+        
+    $(function() {
+        $(".Editnew").datepicker({
+            todayHighlight: true, // to highlight the today's date
+            format: 'dd-mm-yyyy',
+            autoclose: true,
+            todayHighlight: true
+        });
+    });
+
 </script>

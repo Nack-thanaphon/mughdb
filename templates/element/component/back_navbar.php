@@ -1,7 +1,7 @@
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
   <!-- Left navbar links -->
   <!-- <a class="nav-link" href="<?= $this->Url->build(['prefix' => false, 'controller' => 'Home', 'action' => 'index']) ?>" target="blank" > -->
-  <a class="nav-link" href="https://v1.MUGH.or.th/" target="blank">
+  <a class="nav-link" href="https://MUGH.or.th/" target="blank">
     กลับไปหน้าหลัก
   </a>
 

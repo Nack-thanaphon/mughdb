@@ -21,16 +21,13 @@ class FileController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users'],
-            'order' => ['File.id' => 'desc']
-        ];
+
+        $file = $this->File->find('all')->contain('Users')->toArray();
 
         $countFile = $this->Custom->countFile();
         $countFileDownload = $this->Custom->countFileDownload();
         $countFileActive = $this->Custom->countFileActive();
 
-        $file = $this->paginate($this->File);
         $this->set(compact(
             'file',
             'countFile',

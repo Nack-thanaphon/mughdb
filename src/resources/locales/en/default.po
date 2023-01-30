@@ -297,13 +297,13 @@ msgstr ""
 #: ./templates/Admin/Posts/edit.php:44
 #: ./templates/Admin/Products/edit.php:44
 #: ./templates/Admin/Products/view.php:44
-msgid "อัพเดตสินค้า"
+msgid "อัพเดตรูปภาพ"
 msgstr ""
 
 #: ./templates/Admin/Products/add.php:21
 #: ./templates/Admin/Products/productType.php:8
 #: ./templates/Admin/Products/promotions.php:8
-msgid "เพิ่มสินค้า"
+msgid "เพิ่มรูปภาพ"
 msgstr ""
 
 #: ./templates/Admin/Users/add.php:3
@@ -406,7 +406,7 @@ msgstr "Login"
 
 #: ./templates/element/component/front_navbar.php:36
 #: ./templates/element/component/front_navbar.php:76
-msgid "สั่งซื้อสินค้า"
+msgid "สั่งซื้อรูปภาพ"
 msgstr "OrderNow"
 
 #: ./templates/element/component/front_navbar.php:45
@@ -414,7 +414,7 @@ msgid "ธุรกิจของเรา"
 msgstr "OurBussiness"
 
 #: ./templates/element/component/front_navbar.php:49
-msgid "สินค้าของเรา"
+msgid "รูปภาพของเรา"
 msgstr "OurProducts"
 
 #: ./templates/element/component/front_navbar.php:53

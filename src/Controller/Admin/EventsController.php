@@ -24,11 +24,7 @@ class EventsController extends AppController
         $CountEvents = $this->Custom->CountEvents();
         $CountActiveEvents = $this->Custom->CountActiveEvents();
         $CountUnActiveEvents = $this->Custom->CountUnActiveEvents();
-        $this->paginate = [
-            'contain' => ['Users'],
-        ];
-        $events = $this->paginate($this->Events);
-
+        $events = $this->Events->find('all')->contain('Users')->toArray();
         // pr($CountActiveEvents);die;
         $this->set(compact('events', 'CountEvents', 'CountActiveEvents', 'CountUnActiveEvents'));
     }
@@ -120,37 +116,37 @@ class EventsController extends AppController
     public function add()
     {
         $getEventGroup = $this->Custom->getEventGroup();
-
         $event = $this->Events->newEmptyEntity();
-        if ($this->request->is(['patch', 'post', 'put'])) {
 
+        if ($this->request->is(['post', 'put'])) {
             $docfile = $this->request->getData('docfile');
             $imgcover = $this->request->getData('imgcover');
 
-
-            $docfileName = $docfile->getClientFilename();
-            $imgcoverName = $imgcover->getClientFilename();
-
             $docfileDataSave = '';
             $imgcoverDataSave = '';
-
-            if ($docfile->getError() == 0) {
-                $docfileData = WWW_ROOT . "document/file/" . DS . $docfileName;
-                $docfile->moveTo($docfileData);
-                $docfileDataSave = "document/file/" . $docfileName;
+            if (!empty($docfile)) {
+                $docfileName = $docfile->getClientFilename();
+                if (!$docfile->getError()) {
+                    $docfileData = WWW_ROOT . "document/file/" . DS . $docfileName;
+                    $docfile->moveTo($docfileData);
+                    $docfileDataSave = "document/file/" . $docfileName;
+                }
             }
-            if ($imgcover->getError() == 0) {
-                $imgcoverData = WWW_ROOT . "img/event/" . DS . $imgcoverName;
-                $imgcover->moveTo($imgcoverData);
-                $imgcoverDataSave = "img/event/" . $imgcoverName;
+            if (!empty($imgcover)) {
+                $imgcoverName = $imgcover->getClientFilename();
+                if (!$imgcover->getError()) {
+                    $imgcoverData = WWW_ROOT . "img/event/" . DS . $imgcoverName;
+                    $imgcover->moveTo($imgcoverData);
+                    $imgcoverDataSave = "img/event/" . $imgcoverName;
+                }
             }
-
+            
             $event = $this->Events->patchEntity($event, $this->request->getData());
-
             $event->docfile = $docfileDataSave;
             $event->imgcover = $imgcoverDataSave;
             $event->user_id = $this->getUsersId();
-
+            // pr($event);die;
+            
             if ($this->Events->save($event)) {
                 $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
 

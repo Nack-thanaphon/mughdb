@@ -19,6 +19,7 @@ class DashboardController extends AppController
         $countUsers =  $this->Custom->countUsers();
 
         $getUserlogData = $this->Custom->getUserlogData();
+        // pr($getUserlogData);die;
         $getPosts = $this->Custom->getPosts();
         
         $thaiyear = (date("Y") + 543);

@@ -33,7 +33,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar"></i></span>
                         </div>
-                        <input type="text" name="p_date" class="form-control" id="addnew" value="<?= $PostsData->p_date ?>">
+                        <input type="text" name="p_date" class="form-control dateAdd" >
                     </div>
 
                 </div>
@@ -101,7 +101,7 @@
                 <p class="my-2 p-0">รูปภาพประกอบ
                     <br>
                     <span>
-                        <small class="text-muted img-warning">**กรุณาอัพโหลดภาพสินค้า</small>
+                        <small class="text-muted img-warning">**กรุณาอัพโหลดภาพรูปภาพ</small>
                     </span>
                 </p>
                 <label class="my-2 p-0" for="images"><i class="fas fa-arrow-circle-up"></i></label>
@@ -119,7 +119,7 @@
 </div>
 
 <script>
-    CKEDITOR.replace('editor1');
+    
     
 
     $(function() {
@@ -134,9 +134,9 @@
         });
     });
     $(function() {
-        $("#addnew").datepicker({
+        $(".dateAdd").datepicker({
             todayHighlight: true, // to highlight the today's date
-            format: 'dd-MM-yyyy',
+            format: 'dd-mm-yyyy',
             autoclose: true,
             todayHighlight: true
         }).datepicker('update', new Date());

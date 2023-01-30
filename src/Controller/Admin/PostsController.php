@@ -19,7 +19,7 @@ class PostsController extends AppController
                 'status' => 'posts.p_status',
                 'detail' => 'posts.p_detail',
                 'user' => 's.name',
-                'date' => 'posts.p_created_at',
+                'date' => 'posts.p_date',
                 'image' => 'd.name'
             ])
             ->from([
@@ -38,18 +38,18 @@ class PostsController extends AppController
                 ],
                 's' => [
                     'table' => 'users',
-                    'type' => 'INNER',
+                    'type' => 'LEFT',
                     'conditions' => 's.id = posts.p_user_id',
                 ],
             ])
-            // ->where([
-            //     'd.cover' => 1,
-            //     'd.status' => 1
-            // ])
+            ->where([
+                'd.cover' => 1,
+                'd.status' => 1
+            ])
             ->order(['posts.id' => 'DESC'])
             ->group('id,title');
 
-        $this->set(compact('post','countPostsViews'));
+        $this->set(compact('post', 'countPostsViews'));
     }
 
     public function view($id = null)

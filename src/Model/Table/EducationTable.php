@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -50,7 +49,6 @@ class EducationTable extends Table
 
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
-            'joinType' => 'INNER',
         ]);
     }
 
@@ -65,75 +63,70 @@ class EducationTable extends Table
         $validator
             ->scalar('code')
             ->maxLength('code', 255)
-            ->requirePresence('code', 'create')
-            ->notEmptyString('code');
+            ->allowEmptyString('code');
+
+        $validator
+            ->scalar('faculty')
+            ->allowEmptyString('faculty');
 
         $validator
             ->scalar('title')
-            ->requirePresence('title', 'create')
-            ->notEmptyString('title');
+            ->allowEmptyString('title');
 
         $validator
             ->scalar('detail')
-            ->requirePresence('detail', 'create')
-            ->notEmptyString('detail');
+            ->allowEmptyString('detail');
 
         $validator
             ->scalar('credit')
-            ->requirePresence('credit', 'create')
-            ->notEmptyString('credit');
+            ->allowEmptyString('credit');
 
         $validator
             ->scalar('level')
-            ->requirePresence('level', 'create')
-            ->notEmptyString('level');
+            ->allowEmptyString('level');
 
         $validator
-            ->requirePresence('score', 'create')
-            ->notEmptyString('score');
+            ->allowEmptyString('score');
 
         $validator
             ->scalar('type')
-            ->requirePresence('type', 'create')
-            ->notEmptyString('type');
+            ->allowEmptyString('type');
 
         $validator
             ->scalar('goal')
-            ->requirePresence('goal', 'create')
-            ->notEmptyString('goal');
+            ->allowEmptyString('goal');
 
         $validator
             ->scalar('objective')
-            ->requirePresence('objective', 'create')
-            ->notEmptyString('objective');
+            ->allowEmptyString('objective');
 
         $validator
             ->scalar('description')
-            ->requirePresence('description', 'create')
-            ->notEmptyString('description');
+            ->allowEmptyString('description');
 
         $validator
             ->scalar('website')
-            ->requirePresence('website', 'create')
-            ->notEmptyString('website');
+            ->allowEmptyString('website');
 
         $validator
-            ->notEmptyString('user_id');
-
+            ->allowEmptyString('user_id');
 
         $validator
-            ->isArray('file')
-            ->allowEmptyArray('file');
-            // ->allowEmptyFile('file');
+            ->scalar('file')
+            ->allowEmptyFile('file')
+            ->allowEmptyString('file');
+
 
         $validator
             ->integer('download')
-            ->requirePresence('download', 'create')
-            ->notEmptyString('download');
+            ->allowEmptyString('download');
 
         $validator
-            ->requirePresence('status', 'create')
-            ->notEmptyString('status');
+            ->scalar('link')
+            ->allowEmptyString('link');
+
+        $validator
+            ->allowEmptyString('status');
 
         return $validator;
     }

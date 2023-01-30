@@ -139,7 +139,7 @@
 
 
 <script>
-    CKEDITOR.replace('editor1');
+    
     var PostsId = $('#pId').val();
     var CoverId = 0
     GetPostsImg()
@@ -296,7 +296,7 @@
     $(document).ready(function() {
         $(".editnew").datepicker({
             todayHighlight: true, // to highlight the today's date
-            format: 'dd-MM-yyyy',
+            format: 'dd-mm-yyyy',
             autoclose: true,
         });
     })

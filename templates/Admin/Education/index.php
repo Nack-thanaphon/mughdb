@@ -44,7 +44,7 @@
         </div>
         <div class="col-sm-12  col-12 p-0 p-sm-1 m-0 ">
             <div class="card  p-2 table-responsive-lg">
-                
+
                 <div class="col-12  d-sm-flex justify-content-end mb-2 m-0 p-0">
 
                     <div class="btn-group" role="group" aria-label="Basic example">
@@ -77,8 +77,8 @@
                                 <td width="60%">
                                     <small>รหัสวิชา : <?= $data->code ?></small>
                                     <h5 class="m-0 p-0 "><?= $data->title ?></a></h5>
-                                    <small class="m-0 p-0 text-muted"><?= $data->created ?></small><br>
-                                    <small class="m-0 p-0 text-muted"> <?= $data->user['name'] ?></small>
+                                    <small class="m-0 p-0 text-muted"><?= $data->updated ?></small><br>
+                                    <small class="m-0 p-0 text-muted"><?= $data->user['name'] ?></small>
                                 </td>
                                 <td width="10%">
                                     <?= $data->level ?>

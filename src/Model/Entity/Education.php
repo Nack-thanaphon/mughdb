@@ -9,23 +9,25 @@ use Cake\ORM\Entity;
  * Education Entity
  *
  * @property int $id
- * @property string $code
- * @property string $title
- * @property string $detail
- * @property string $credit
- * @property string $level
- * @property int $score
- * @property string $type
- * @property string $goal
- * @property string $objective
- * @property string $description
- * @property string $website
- * @property int $user_id
+ * @property string|null $code
+ * @property string|null $faculty
+ * @property string|null $title
+ * @property string|null $detail
+ * @property string|null $credit
+ * @property string|null $level
+ * @property int|null $score
+ * @property string|null $type
+ * @property string|null $goal
+ * @property string|null $objective
+ * @property string|null $description
+ * @property string|null $website
+ * @property int|null $user_id
  * @property string|null $file
- * @property int $download
- * @property int $status
+ * @property int|null $download
+ * @property string|null $link
+ * @property int|null $status
  * @property \Cake\I18n\FrozenTime $created
- * @property \Cake\I18n\FrozenTime $updated
+ * @property string|null $updated
  *
  * @property \App\Model\Entity\User $user
  */
@@ -42,6 +44,7 @@ class Education extends Entity
      */
     protected $_accessible = [
         'code' => true,
+        'faculty' => true,
         'title' => true,
         'detail' => true,
         'credit' => true,
@@ -55,6 +58,7 @@ class Education extends Entity
         'user_id' => true,
         'file' => true,
         'download' => true,
+        'link' => true,
         'status' => true,
         'created' => true,
         'updated' => true,

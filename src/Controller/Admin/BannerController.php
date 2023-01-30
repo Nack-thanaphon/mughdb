@@ -25,11 +25,9 @@ class BannerController extends AppController
         $countBanner = $this->Custom->countBanner();
         $countActive = $this->Custom->countActive();
         $countUnActive = $this->Custom->countUnActive();
-        $this->paginate = [
-            'contain' => ['Users'],
-            'order' => ['Banner.id' => 'desc']
-        ];
-        $banner = $this->paginate($this->Banner);
+        $banner = $this->Banner->find('all')->contain('Users')->toArray();
+
+
         // pr($countBanner);
         // die;
         $this->set(compact(
@@ -67,8 +65,8 @@ class BannerController extends AppController
 
         $CountDateEnd = $this->getDateEndInt($Banner['enddate']);
 
-        $this->set(compact('Banner','CountDateEnd'));
-        $this->set('_serialize', ['Banner','CountDateEnd']);
+        $this->set(compact('Banner', 'CountDateEnd'));
+        $this->set('_serialize', ['Banner', 'CountDateEnd']);
     }
 
     /**
@@ -94,8 +92,8 @@ class BannerController extends AppController
             }
             $banner->img = $BannerImgData;
             $banner->user_id = $this->getUsersId();
-            
-   
+
+
             if ($this->Banner->save($banner)) {
                 $this->Flash->success(__('บันทึกสำเร็จ'));
                 return $this->redirect(['action' => 'index']);
@@ -121,11 +119,11 @@ class BannerController extends AppController
      */
     public function edit($id = null)
     {
-        
+
         $banner = $this->Banner->get($id, [
             'contain' => [],
         ]);
-     
+
         $ContDateleft = $this->getDateEndInt($banner['enddate']);
 
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -162,7 +160,7 @@ class BannerController extends AppController
             }
         }
         $users = $this->Banner->Users->find('list', ['limit' => 200])->all();
-        $this->set(compact('banner', 'users','ContDateleft'));
+        $this->set(compact('banner', 'users', 'ContDateleft'));
     }
 
     /**

@@ -1,7 +1,12 @@
 
+$('#editor1').summernote({
+    airMode: false,
+    height: 350
+});
+
+
 
 $(".delete").attr("onclick", "").unbind("click"); //remove function onclick button
-
 $(document).on('click', '.delete', function () {
     let delete_form = $(this).parent().find('form');
 
@@ -144,7 +149,7 @@ function cart() {
     if (cart_list.length <= 0) {
 
         $("#gotopayment").attr('disabled', true)
-        $("#product_cart").html('ไม่มีสินค้า')
+        $("#product_cart").html('ไม่มีรูปภาพ')
     }
 }
 
@@ -178,7 +183,7 @@ function precal() {
         }
     })
 }
-//ลบสินค้า
+//ลบรูปภาพ
 function delete_product(id) {
 
 

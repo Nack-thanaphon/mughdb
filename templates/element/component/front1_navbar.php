@@ -3,7 +3,7 @@
     <img src="<?= $this->Url->image('logo.png') ?> " width="50" height="50" alt="">
   </a>
   <div class="btn-group d-lg-none" role="group" aria-label="Basic example">
-    <a href="<?= $this->Url->build(['prefix' => false, 'controller' => 'cart', 'action' => 'index']) ?>" type="button" class="btn btn-muted text-white"><?=__('สั่งซื้อสินค้า')?></a>
+    <a href="<?= $this->Url->build(['prefix' => false, 'controller' => 'cart', 'action' => 'index']) ?>" type="button" class="btn btn-muted text-white"><?=__('สั่งซื้อรูปภาพ')?></a>
     <button type="button" class="btn btn-tranparent" data-toggle="collapse" data-target="#navbarSupportedContent"><i class="fas fa-bars"></i></button>
   </div>
 
@@ -13,7 +13,7 @@
         <a class="nav-link text-white" href="<?= $this->Url->build(['prefix' => false, 'controller' => 'Aboutus', 'action' => 'index']) ?> "> <i class="fas fa-link"></i> <?=__('ธุรกิจ')?> <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="<?= $this->Url->build(['prefix' => false, 'controller' => 'Products', 'action' => 'index']) ?> "> <i class="fas fa-link"></i> <?=__('สินค้า')?></a>
+        <a class="nav-link text-white" href="<?= $this->Url->build(['prefix' => false, 'controller' => 'Products', 'action' => 'index']) ?> "> <i class="fas fa-link"></i> <?=__('รูปภาพ')?></a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-white" href="<?= $this->Url->build(['prefix' => false, 'controller' => 'posts', 'action' => 'index']) ?> "> <?=__('บทความ')?></a>
@@ -36,7 +36,7 @@
     </ul>
     <div class=" d-none d-lg-flex justify-content-end col-12 col-sm-4 col-md-12 col-lg-4 m-0 p-0 mt-2 mt-sm-0">
       <!-- <div class="my-auto"><i class="fas fa-cart-arrow-down"><span></span></i></div> -->
-      <a href="<?= $this->Url->build(['prefix' => false,'controller' => 'cart', 'action' => 'index']) ?>" type="button" class="btn btn-muted text-white"><?=__('สั่งซื้อสินค้า')?></a>      <a class="nav-link   my-auto text-white" data-toggle="dropdown" href="<?= $this->Url->build(['prefix' => false, 'controller' => 'carts', 'action' => 'index']) ?>">
+      <a href="<?= $this->Url->build(['prefix' => false,'controller' => 'cart', 'action' => 'index']) ?>" type="button" class="btn btn-muted text-white"><?=__('สั่งซื้อรูปภาพ')?></a>      <a class="nav-link   my-auto text-white" data-toggle="dropdown" href="<?= $this->Url->build(['prefix' => false, 'controller' => 'carts', 'action' => 'index']) ?>">
         <i class="fas fa-cart-shopping"></i>
         <span class="badge badge-danger navbar-badge"  id="cart_total"></span>
       </a>
@@ -68,6 +68,6 @@
           <div class="dropdown-divider"></div>
 
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">ไปหน้าชำระสินค้า</a>
+          <a href="#" class="dropdown-item dropdown-footer">ไปหน้าชำระรูปภาพ</a>
         </div>`
 </script>

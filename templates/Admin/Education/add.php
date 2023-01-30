@@ -105,7 +105,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar"></i></span>
                         </div>
-                        <input type="text" name="updated" class="form-control addnew" value="">
+                        <input type="text" name="updated" class="form-control addnew">
                     </div>
                 </div>
             </div>
@@ -154,7 +154,7 @@
     $(function() {
         $(".addnew").datepicker({
             todayHighlight: true, // to highlight the today's date
-            format: 'dd-MM-yyyy',
+            format: 'dd-mm-yyyy',
             autoclose: true,
             todayHighlight: true
         }).datepicker('update', new Date());

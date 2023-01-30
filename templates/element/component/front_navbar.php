@@ -34,7 +34,7 @@
   <div class="btn-group d-lg-none" role="group" aria-label="Basic example">
 
     <a href="<?= $this->Url->build(['prefix' => false, 'controller' => 'cart', 'action' => 'index']) ?>" type="button" class="btn btn-muted text-white">
-      <?= __("สั่งซื้อสินค้า") ?></a>
+      <?= __("สั่งซื้อรูปภาพ") ?></a>
     <button type="button" class="btn btn-tranparent" data-toggle="collapse" data-target="#navbarSupportedContent"><i class="fas fa-bars"></i></button>
 
   </div>
@@ -52,7 +52,7 @@
         <a class="nav-link text-white" href="<?= $this->Url->build(['prefix' => false, 'controller' => 'Products', 'action' => 'index']) ?> ">
           <!-- <i class="fas fa-chevron-down"> -->
 
-          </i></i> <?= __("สินค้า") ?>
+          </i></i> <?= __("รูปภาพ") ?>
         </a>
       </li>
       <li class="nav-item">
@@ -90,7 +90,7 @@
     <div class=" d-none d-lg-flex justify-content-end col-12 col-sm-4 col-md-12 col-lg-4 m-0 p-0 mt-2 mt-sm-0">
       <!-- <div class="my-auto"><i class="fas fa-cart-arrow-down"><span></span></i></div> -->
       <a href="<?= $this->Url->build(['prefix' => false, 'controller' => 'cart', 'action' => 'index']) ?>" type="button" class="btn btn-muted text-white">
-        <?= __("สั่งซื้อสินค้า") ?></a> <a class="nav-link   my-auto text-white" data-toggle="dropdown" href="<?= $this->Url->build(['controller' => 'carts', 'action' => 'index']) ?>">
+        <?= __("สั่งซื้อรูปภาพ") ?></a> <a class="nav-link   my-auto text-white" data-toggle="dropdown" href="<?= $this->Url->build(['controller' => 'carts', 'action' => 'index']) ?>">
         <i class="fas fa-cart-shopping"></i>
         <a href="<?= $this->Url->build(['prefix' => false, 'controller' => 'cart', 'action' => 'index']) ?>">
           <span class="badge badge-danger navbar-badge" id="cart_total"></span>

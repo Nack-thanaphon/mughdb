@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -85,11 +86,13 @@ class EventsTable extends Table
 
         $validator
             ->scalar('docfile')
-            ->allowEmptyFile('docfile');
+            ->allowEmptyFile('docfile')
+            ->allowEmptyString('file');
 
         $validator
             ->scalar('imgcover')
-            ->allowEmptyString('imgcover');
+            ->allowEmptyFile('imgcover')
+            ->allowEmptyString('file');
 
         $validator
             ->scalar('link')

@@ -108,7 +108,7 @@
 </div>
 
 <script>
-    CKEDITOR.replace('editor1');
+    
     
     $(function() {
         $('#imagecover').on('change', function() {
@@ -124,7 +124,7 @@
     $(function() {
         $("#addnew").datepicker({
             todayHighlight: true, // to highlight the today's date
-            format: 'dd-MM-yyyy',
+            format: 'dd-mm-yyyy',
             autoclose: true,
             todayHighlight: true
         }).datepicker('update', new Date());

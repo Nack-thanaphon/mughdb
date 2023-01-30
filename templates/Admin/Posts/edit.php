@@ -62,13 +62,13 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar"></i></span>
                         </div>
-                        <input type="text" name="p_date" class="form-control" id="editnew" value="<?= $Posts->p_date ?>">
+                        <input type="text" name="p_date" class="form-control dateEdit" value="<?= $Posts->p_date ?>">
                     </div>
 
                 </div>
                 <div class="form-floating mb-1">
                     <label>หัวข้อ</label>
-                    <?= $this->Form->input('p_title', ['class' => 'form-control ', 'placeholder' => 'ชื่อสินค้า']); ?>
+                    <?= $this->Form->input('p_title', ['class' => 'form-control ', 'placeholder' => 'ชื่อรูปภาพ']); ?>
                 </div>
                 <div class="form-floating mb-1">
                     <label>ชนิดบทความ</label>
@@ -130,7 +130,7 @@
                 <p class="my-2 p-0">รูปภาพประกอบ
                     <br>
                     <span>
-                        <small class="text-muted img-warning">**กรุณาอัพโหลดภาพสินค้า</small>
+                        <small class="text-muted img-warning">**กรุณาอัพโหลดภาพรูปภาพ</small>
                     </span>
                 </p>
                 <label class="my-2 p-0" for="images"><i class="fas fa-arrow-circle-up"></i></label>
@@ -150,7 +150,7 @@
 
 
 <script>
-    CKEDITOR.replace('editor1');
+    
     var PostsId = $('#pId').val();
     var CoverId = 0
     GetPostsImg()
@@ -300,11 +300,11 @@
 
     // console.log(dateString)
     $(function() {
-        $("#editnew").datepicker({
+        $(".dateEdit").datepicker({
             todayHighlight: true, // to highlight the today's date
-            format: 'dd-MM-yyyy',
+            format: 'dd-mm-yyyy',
             autoclose: true,
             todayHighlight: true
-        }).datepicker('update', new Date(<?= $Posts->p_date ?>));
+        });
     });
 </script>

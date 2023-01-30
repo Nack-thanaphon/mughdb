@@ -21,10 +21,11 @@ $cakeDescription = 'MUGH | ';
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css">
 
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+    <!-- <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script> -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -84,7 +85,6 @@ $cakeDescription = 'MUGH | ';
         <?= $this->Html->script("plugins/summernote/summernote-bs4.min.js"); ?>
         <?= $this->Html->script("overlayScrollbars.min.js"); ?>
         <?= $this->Html->script("custom.js"); ?>
-
         <?= $this->Html->script("plugins/fullcalendar/lib/moment.min.js"); ?>
         <?= $this->Html->script("plugins/fullcalendar/fullcalendar.min.js"); ?>
 
@@ -94,7 +94,6 @@ $cakeDescription = 'MUGH | ';
             $.LoadingOverlay("hide");
         </script>
         <?= $this->Html->script("fslightbox.js"); ?>
-        <?= $this->Html->script("custom.js"); ?>
 
     </div>
 

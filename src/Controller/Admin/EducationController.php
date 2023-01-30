@@ -17,11 +17,8 @@ class EducationController extends AppController
     }
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users'],
-            'order' => ['education.id' => 'desc']
-        ];
-        $education = $this->paginate($this->Education);
+
+        $education = $this->Education->find('all')->toArray();
         $countEducationDownload = $this->Custom->countEducationDownload();
         $countEducationActive = $this->Custom->countEducationActive();
         $countEducationUnActive = $this->Custom->countEducationUnActive();
@@ -53,36 +50,24 @@ class EducationController extends AppController
 
             $fileData = $this->request->getData('file');
 
+            $education = $this->Education->patchEntity($education, $this->request->getData());
+            $fileName = $fileData->getClientFilename();
 
             $fileDataSave = '';
             if ($fileData->getError() == 0) {
-                $education = $this->Education->patchEntity($education, $this->request->getData());
-                $fileName = $fileData->getClientFilename();
-                $fileType = $fileData->getClientMediaType();
                 $FilePath = WWW_ROOT . "document/education/" . DS . $fileName;
                 $fileData->moveTo($FilePath);
                 $fileDataSave = "document/education/" . $fileName;
-                $education->file = $fileDataSave;
-                $education->download = 0;
-                $education->user_id = $this->getUsersId();
-
-                if ($this->Education->save($education)) {
-                    $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
-
-                    return $this->redirect(['action' => 'index']);
-                }
-            } else {
-                $education = $this->Education->patchEntity($education, $this->request->getData());
-                $education->file = $fileDataSave;
-                $education->download = 0;
-                $education->user_id = $this->getUsersId();
-                if ($this->Education->save($education)) {
-                    $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
-
-                    return $this->redirect(['action' => 'index']);
-                }
-                $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
             }
+            $education->file = $fileDataSave;
+            $education->download = 0;
+            $education->user_id = $this->getUsersId();
+            if ($this->Education->save($education)) {
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
         }
         $users = $this->Education->Users->find('list', ['limit' => 200])->all();
         $this->set(compact('education', 'users'));
@@ -94,36 +79,32 @@ class EducationController extends AppController
         $education = $this->Education->get($id, [
             'contain' => [],
         ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
+        if ($this->request->is(['post', 'put'])) {
             $Education = $this->Education->patchEntity($education, $this->request->getData());
-            $Educationfile = $this->request->getData("file");
+            $Educationfile = $this->request->getData("fileNews");
             $EducationfileOld = $this->request->getData("fileOld");
-            if ($Educationfile->getError() == 0) {
+
+            $EducationfileData = '';
+            if (!empty($Educationfile)) {
                 $fileName = $Educationfile->getClientFilename();
-                $fileType = $Educationfile->getClientMediaType();
-
-                $EducationfileData = '';
-
-                $FilePath = WWW_ROOT . "document/education/" . DS . $fileName;
-                $Educationfile->moveTo($FilePath);
-                $EducationfileData = "document/education/" . $fileName;
-
-                $Education->file = $EducationfileData;
-
-                if ($this->Education->save($Education)) {
-                    $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
-                    return $this->redirect(['action' => 'index']);
+                if (!$Educationfile->getError()) {
+                    $FilePath = WWW_ROOT . "document/education/" . DS . $fileName;
+                    $Educationfile->moveTo($FilePath);
+                    $EducationfileData = "document/education/" . $fileName;
                 }
-                $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
+            }
+            if (($EducationfileData) == '') {
+                $EducationfileData = $EducationfileOld;
+            }
+
+
+            $Education->file = $EducationfileData;
+
+            if ($this->Education->save($Education)) {
+                $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
+                return $this->redirect(['action' => 'index']);
             } else {
-
-                $Education->file = $EducationfileOld;
-                if ($this->Education->save($Education)) {
-                    $this->Flash->success(__('บันทึกข้อมูลสำเร็จ'));
-                    return $this->redirect(['action' => 'index']);
-                } else {
-                    $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
-                }
+                $this->Flash->error(__('บันทึกข้อมูลไม่สำเร็จ'));
             }
         }
         $users = $this->Education->Users->find('list', ['limit' => 200])->all();
